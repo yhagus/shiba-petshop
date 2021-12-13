@@ -2,7 +2,7 @@
 include 'header.php';
 ?>
 
-<main class="form-signin text-center my-6">
+<main class="card form-signin text-center my-6">
     <form action="actions/login/user.php" method="post">
         <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
@@ -38,3 +38,7 @@ include 'header.php';
         <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
     </form>
 </main>
+
+<script>
+    document.title = "Login";
+</script>

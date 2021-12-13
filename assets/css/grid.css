@@ -1,4 +1,27 @@
 /*  MARGINS     */
+.m-4-5{
+    margin: 2.25rem !important;
+}
+.mt-4-5{
+    margin-top: 2.25rem !important;
+}
+.mb-4-5{
+    margin-bottom: 2.25rem !important;
+}
+.ms-4-5{
+    margin-left: 2.25rem !important;
+}
+.me-4-5{
+    margin-right: 2.25rem !important;
+}
+.mx-4-5{
+    margin-left: 2.25rem !important;
+    margin-right: 2.25rem !important;
+}
+.my-4-5{
+    margin-top: 2.25rem !important;
+    margin-bottom: 2.25rem !important;
+}
 .m-6 {
     margin: 4.5rem !important;
 }
@@ -8,10 +31,10 @@
 .mb-6 {
     margin-bottom: 4.5rem !important;
 }
-.ml-6 {
+.ms-6 {
     margin-left: 4.5rem !important;
 }
-.mr-6 {
+.me-6 {
     margin-right: 4.5rem !important;
 }
 .mx-6 {
@@ -33,10 +56,10 @@
 .pb-6 {
     padding-bottom: 4.5rem !important;
 }
-.pl-6 {
+.ps-6 {
     padding-left: 4.5rem !important;
 }
-.pr-6 {
+.pe-6 {
     padding-right: 4.5rem !important;
 }
 .px-6 {
