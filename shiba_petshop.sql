@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 07:15 AM
+-- Generation Time: Dec 13, 2021 at 02:25 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 8.0.10
 
@@ -47,6 +47,14 @@ CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+(1, 'makanan'),
+(2, 'kebersihan');
 
 -- --------------------------------------------------------
 
@@ -111,6 +119,14 @@ CREATE TABLE `produk` (
   `foto_produk` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id_produk`, `id_kategori`, `kode_produk`, `nama_produk`, `harga_produk`, `stok`, `berat`, `deskripsi`, `foto_produk`) VALUES
+(1, 1, 'P001', 'wiskas', 30000, 10, 1, 'enak', 'wiskas.jpg'),
+(2, 2, 'P002', 'Pasir ee', 20000, 5, 1, 'enak', 'pasir.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -119,8 +135,8 @@ CREATE TABLE `produk` (
 
 CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
-  `kode_transaksi` varchar(10) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `kode_transaksi` varchar(10) NOT NULL,
   `tgl_transaksi` date NOT NULL,
   `total_biaya` int(11) NOT NULL,
   `status` varchar(50) NOT NULL
@@ -130,17 +146,17 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `kode_transaksi`, `id_user`, `tgl_transaksi`, `total_biaya`, `status`) VALUES
-(7, '', 1, '0000-00-00', 3000, ''),
-(8, '', 1, '0000-00-00', 3000, ''),
-(9, '', 1, '0000-00-00', 3000, ''),
-(10, '', 1, '0000-00-00', 3000, ''),
-(11, '', 1, '0000-00-00', 3000, ''),
-(12, '', 1, '0000-00-00', 3000, ''),
-(13, '', 1, '0000-00-00', 3000, ''),
-(15, '', 1, '0000-00-00', 3000, ''),
-(16, '', 1, '0000-00-00', 3000, ''),
-(17, '', 1, '0000-00-00', 3000, '');
+INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `kode_transaksi`, `tgl_transaksi`, `total_biaya`, `status`) VALUES
+(7, 1, '', '0000-00-00', 3000, ''),
+(8, 1, '', '0000-00-00', 3000, ''),
+(9, 1, '', '0000-00-00', 3000, ''),
+(10, 1, '', '0000-00-00', 3000, ''),
+(11, 1, '', '0000-00-00', 3000, ''),
+(12, 1, '', '0000-00-00', 3000, ''),
+(13, 1, '', '0000-00-00', 3000, ''),
+(15, 1, '', '0000-00-00', 3000, ''),
+(16, 1, '', '0000-00-00', 3000, ''),
+(17, 1, '', '0000-00-00', 3000, '');
 
 -- --------------------------------------------------------
 
@@ -155,15 +171,16 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `nama_user` varchar(50) NOT NULL,
   `no_tlp` varchar(15) NOT NULL,
-  `alamat_user` text NOT NULL
+  `alamat_user` text NOT NULL,
+  `foto_user` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `nama_user`, `no_tlp`, `alamat_user`) VALUES
-(1, 'u1', 'mimin1@gmail.com', 'a', 'a', '2', 'xd');
+INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `nama_user`, `no_tlp`, `alamat_user`, `foto_user`) VALUES
+(1, 'u1', 'mimin1@gmail.com', 'a', 'a', '2', 'xd', '');
 
 -- --------------------------------------------------------
 
@@ -257,7 +274,7 @@ ALTER TABLE `detail_transaksi`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
@@ -281,7 +298,7 @@ ALTER TABLE `pengiriman`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transaksi`

@@ -1,7 +1,4 @@
 <?php
-//if (!session_id()){
-//    session_start();
-//}
 include 'navbar.php';
 ?>
 
@@ -140,6 +137,11 @@ include 'navbar.php';
 
 </main>
 
+<script>
+    // document.title = "Shiba Petshop";
+    document.title = "Home";
+    document.getElementById("home").classList.add("active");
+</script>
 
 <?php
 include 'footer.php';

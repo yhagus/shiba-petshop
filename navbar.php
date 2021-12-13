@@ -11,10 +11,10 @@ include "header.php";
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link" id="home" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" id="catalog" href="catalog.php">Catalog</a>
                 </li>
             </ul>
             <form class="d-flex">

@@ -17,6 +17,10 @@ body{
     text-decoration: underline !important;
 }
 
+.btn-product{
+    width: 75%;
+}
+
 /**/
 .bd-placeholder-img {
     font-size: 1.125rem;
