@@ -9,7 +9,7 @@ ex:
 -> git clone https://github.com/yhagus/shiba-petshop.git<br />
    <br />
 3. If you've made any changes, commit using<br />
--> git commit -m "<message about your changes>"<br />
+-> git commit -m "{message about your changes}"<br />
    <br />
 4. Upload changes using <br />
 -> git push origin main <br />
