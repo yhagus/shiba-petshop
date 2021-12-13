@@ -1,3 +1,7 @@
+<?php
+include "header.php";
+?>
+
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow-navbar">
     <div class="container-fluid">
         <a class="navbar-brand mx-3" href="#">SHIBA</a>
@@ -17,8 +21,28 @@
                 <input class="form-control me-3" type="search" placeholder="Search">
                 <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
             </form>
-            <a class="nav-link me-3" href="login.php">Log in</a>
-
+            <?php
+            if (isset($_SESSION['username'])){?>
+                <div class="flex-shrink-0 dropdown mx-3">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end text-small shadow animate slideIn" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+                    </ul>
+                </div>
+            <?php
+            } else{
+            ?>
+                <a class="nav-link me-3" href="login.php">Log in</a>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </nav>
