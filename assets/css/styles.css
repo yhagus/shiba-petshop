@@ -21,6 +21,27 @@ body{
     width: 75%;
 }
 
+.card-superadmin {
+    float: none;
+    margin: 50px auto 10px;
+    justify-content: center;
+}
+
+.btn-superadmin {
+    padding: 7px 140px;
+}
+
+.center-login-superadmin {
+    margin-left: 70px;
+    margin-bottom: 20px;
+}
+
+#no_tlp::-webkit-outer-spin-button,
+#no_tlp::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /**/
 .bd-placeholder-img {
     font-size: 1.125rem;

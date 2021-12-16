@@ -14,10 +14,10 @@ while ($data = mysqli_fetch_assoc($result)) {
 ?>
 
 
-<div class="container mt-6">
+<div class="container mt-4-5">
     <div class="row">
         <?php foreach ($semua_data as $produk): ?>
-            <div class="col-6 col-md-3">
+            <div class="col-sm-6 col-md-3 mt-4-5">
                 <div class="card p-3">
                     <!-- menampilkan image produk dari perulangan -->
                     <div class="row mx-auto">

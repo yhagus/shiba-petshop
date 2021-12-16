@@ -136,7 +136,6 @@ include 'navbar.php';
 
 
 </main>
-
 <script>
     // document.title = "Shiba Petshop";
     document.title = "Home";

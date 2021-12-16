@@ -10,17 +10,18 @@ include 'config.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <!-- FILE CSS MASUK SINI   -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost/shiba-petshop/assets/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/grid.css">
+    <link rel="stylesheet" href="http://localhost/shiba-petshop/assets/css/styles.css">
+    <link rel="stylesheet" href="http://localhost/shiba-petshop/assets/css/grid.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     <!-- FILE JS MASUK SINI   -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="http://localhost/shiba-petshop/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="http://localhost/shiba-petshop/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="http://localhost/shiba-petshop/assets/js/sweetalert.min.js"></script>
 
-    <script src="assets/js/script.js"></script>
+    <script src="http://localhost/shiba-petshop/assets/js/script.js"></script>
 
 </head>
 <body>

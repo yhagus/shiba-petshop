@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "root";
 $database = "shiba_petshop";
 
 $db = mysqli_connect($host,$user,$pass,$database);
