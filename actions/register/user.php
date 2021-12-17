@@ -26,15 +26,11 @@ $result = mysqli_query($db, $query);
 $counts = mysqli_num_rows($result);
 
 if ($counts==1) {
-    echo "<script>swal({title: 'Username sudah digunakan', icon: 'info'});</script>";
-    header("location: ../../register.php");
+    echo "<script>alert('Username sudah digunakan');location='../../register.php'</script>";
 
 } else {
 //    INSERT TO DATABASE
-    $query2 = "INSERT INTO users (username, email, password, nama_user, no_tlp, alamat_user, foto_user) VALUES ('$username', '$email', '$password', '$name', '$phone_number', '$address', '')";
-    mysqli_query($db,$query2);
-
-    echo "<script>swal({title: 'Berhasil daftar', icon: 'success'})</script>";
-
-    header("location: ../../login.php");
+    $db->query("INSERT INTO `users` (username, email, password, nama_user, no_tlp, alamat_user, foto_user) VALUES ('$username', '$email', '$password', '$name', '$phone_number', '$address', '')");
+//    var_dump($le);
+    echo "<script>alert('Berhasil');location='../../register.php'</script>";
 }

@@ -105,5 +105,4 @@ include 'header.php';
 </main>
 <script>
     document.title = "Register";
-    // swal({title: 'Username sudah digunakan', icon: 'info'});
 </script>
