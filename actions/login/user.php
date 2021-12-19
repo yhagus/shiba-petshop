@@ -21,7 +21,6 @@ if (mysqli_num_rows($res) > 0){
     $_SESSION['id'] = $row['id'];
     $_SESSION['name'] = $row['name'];
     $_SESSION['username'] = $row['username'];
-    $_SESSION['role'] = $row['role'];
 
     header("location: ../../index.php");
 } else{

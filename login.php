@@ -1,5 +1,8 @@
 <?php
 include 'header.php';
+if (isset($_SESSION['username'])){
+    header("location:index.php");
+}
 ?>
 
 <main class="card form-signin text-center my-6">

@@ -1,5 +1,10 @@
 <?php
 include 'header.php';
+if (isset($_SESSION['message'])){
+    echo "<script>swal({title: '". $_SESSION['message'] ."', icon: '". $_SESSION['icon'] ."'})</script>";
+
+    unset($_SESSION['message'], $_SESSION['icon']);
+}
 ?>
 <main>
     <div class="container h-100 my-2">
@@ -23,6 +28,7 @@ include 'header.php';
                                                 <input type="text"
                                                        name="username"
                                                        class="form-control"
+                                                       value="<?= $_SESSION['form_username'] ?? '' ?>"
                                                        required />
                                             </div>
                                         </div>
@@ -34,6 +40,7 @@ include 'header.php';
                                                 <input type="email"
                                                        name="email"
                                                        class="form-control"
+                                                       value="<?= $_SESSION['form_email'] ?? '' ?>"
                                                        required />
                                             </div>
                                         </div>
@@ -41,10 +48,12 @@ include 'header.php';
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="nama_user">Your Name</label>
+                                                <label class="form-label" for="name">Your Name</label>
                                                 <input type="text"
+                                                       id="name"
                                                        name="name"
                                                        class="form-control"
+                                                       value="<?= $_SESSION['form_name'] ?? '' ?>"
                                                        required />
                                             </div>
                                         </div>
@@ -70,6 +79,7 @@ include 'header.php';
                                                        id="no_tlp"
                                                        name="phone_number"
                                                        class="form-control"
+                                                       value="<?= $_SESSION['form_phone_number'] ?? '' ?>"
                                                        required />
                                             </div>
                                         </div>
@@ -80,6 +90,7 @@ include 'header.php';
                                                 <label class="form-label" for="alamat_user">Your Address</label>
                                                 <input type="text"
                                                        name="address"
+                                                       value="<?= $_SESSION['form_address'] ?? '' ?>"
                                                        class="form-control"/>
                                             </div>
                                         </div>
@@ -93,7 +104,7 @@ include 'header.php';
 
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.png" class="img-fluid" alt="Sample image">
+                                    <img src="http://localhost/shiba-petshop/assets/img/register.png" class="img-fluid">
                                 </div>
                             </div>
                         </form>
@@ -106,3 +117,6 @@ include 'header.php';
 <script>
     document.title = "Register";
 </script>
+<?php
+unset($_SESSION['form_username'],$_SESSION['form_name'],$_SESSION['form_email'],$_SESSION['form_phone_number'],$_SESSION['form_address']);
+?>
