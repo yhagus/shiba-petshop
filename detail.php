@@ -1,9 +1,11 @@
+<?php 
 
+  include 'navbar.php';
+?>
 <main>
 <div class="pd-wrap mt-xl-3">
         <div class="container">
             <?php
-            include 'navbar.php';
             $id_produk = $_GET['id'];
             $result = $db->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
             $produk = $result->fetch_assoc();
