@@ -22,9 +22,8 @@ if (isset($_SESSION['message'])){
                                     <form class="mx-1 mx-md-4">
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="username">Your Username</label>
+                                                <label class="form-label" for="username">Username</label>
                                                 <input type="text"
                                                        name="username"
                                                        class="form-control"
@@ -34,7 +33,6 @@ if (isset($_SESSION['message'])){
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="email">Your Email</label>
                                                 <input type="email"
@@ -46,9 +44,8 @@ if (isset($_SESSION['message'])){
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="name">Your Name</label>
+                                                <label class="form-label" for="name">Name</label>
                                                 <input type="text"
                                                        id="name"
                                                        name="name"
@@ -59,7 +56,6 @@ if (isset($_SESSION['message'])){
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="form3Example4c">Password</label>
                                                 <input type="password"
@@ -72,7 +68,6 @@ if (isset($_SESSION['message'])){
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="no_tlp">Your Phone</label>
                                                 <input type="number"
@@ -85,7 +80,6 @@ if (isset($_SESSION['message'])){
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="alamat_user">Your Address</label>
                                                 <input type="text"

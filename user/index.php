@@ -1,3 +1,3 @@
 <?php
 
-header("location:edit.php");
+header("location:profile.php");

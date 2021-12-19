@@ -11,10 +11,10 @@ include "header.php";
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" id="home" href="index.php">Home</a>
+                    <a class="nav-link" id="home" href="http://localhost/shiba-petshop">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="catalog" href="catalog.php">Catalog</a>
+                    <a class="nav-link" id="catalog" href="http://localhost/shiba-petshop/catalog.php">Catalog</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -28,12 +28,12 @@ include "header.php";
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end text-small shadow animate slideIn" aria-labelledby="dropdownUser2">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
+                        <li><a class="dropdown-item" href="http://localhost/shiba-petshop/user/cart.php"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
+                        <li><a class="dropdown-item" href="http://localhost/shiba-petshop/user/profile.php"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+                        <li><a class="dropdown-item" href="http://localhost/shiba-petshop/logout.php">Sign out</a></li>
                     </ul>
                 </div>
             <?php

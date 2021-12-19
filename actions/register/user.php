@@ -33,9 +33,6 @@ $counts = mysqli_num_rows($result);
 //}
 
 if ($counts==1) {
-    $_SESSION['message'] = "Username sudah digunakan";
-    $_SESSION['icon'] = 'info';
-
     $_SESSION['form_username'] = $username;
     $_SESSION['form_name'] = $name;
     $_SESSION['form_email'] = $email;

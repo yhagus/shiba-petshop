@@ -18,8 +18,7 @@ $res = mysqli_query($db, $query);
 if (mysqli_num_rows($res) > 0){
     $row = mysqli_fetch_assoc($res);
 
-    $_SESSION['id'] = $row['id'];
-    $_SESSION['name'] = $row['name'];
+    $_SESSION['id'] = $row['id_user'];
     $_SESSION['username'] = $row['username'];
 
     header("location: ../../index.php");

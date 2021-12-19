@@ -29,7 +29,7 @@ while ($data = mysqli_fetch_assoc($result)) {
                     <div class="row">
                         <div class="col-auto">
                             <!-- menampilkan nama produk dari perulangan produk -->
-                            <a href="detail_produk.php?id=<?php echo $produk['id_produk'] ?>">
+                            <a href="detail.php?id=<?php echo $produk['id_produk'] ?>">
                                 <h3><?php echo $produk['nama_produk'] ?></h3>
                             </a>
 
