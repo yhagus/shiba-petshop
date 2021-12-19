@@ -1,9 +1,6 @@
-<?php
-include 'navbar.php';
+<?php 
 
-if (!isset($_GET['id'])){
-    header("location:catalog.php");
-}
+  include 'navbar.php';
 ?>
 <main>
 <div class="pd-wrap mt-xl-3">
@@ -12,6 +9,10 @@ if (!isset($_GET['id'])){
             $id_produk = $_GET['id'];
             $result = $db->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
             $produk = $result->fetch_assoc();
+// echo "<pre>";
+// print_r ($produk);
+// echo "</pre>";
+
             ?>
             <div class="row">
                 <div class="col-md-6">
