@@ -21,7 +21,7 @@ while ($data = mysqli_fetch_assoc($result)) {
                 <div class="card p-3">
                     <!-- menampilkan image produk dari perulangan -->
                     <div class="row mx-auto">
-                        <a href="detail_produk.php?id=<?php echo $produk['id_produk'] ?>">
+                        <a href="detail.php?id=<?php echo $produk['id_produk'] ?>">
                             <img src="assets/img/<?php echo $produk['foto_produk'] ?>" class="card-img mb-3" height="200">
                         </a>
                     </div>

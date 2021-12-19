@@ -74,8 +74,13 @@ $(document).ready(function() {
     })
     $(".qtyplus").on("click",function(){
         let now = $(".qty").val();
+        let stok = $(".stok").val();
         if ($.isNumeric(now)){
-            $(".qty").val(parseInt(now)+1);
+            if(parseInt(now) < parseInt(stok))
+            {
+            $(".qty").val(parseInt(now)+1);    
+            }
+
         }
     });
 });

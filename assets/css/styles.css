@@ -9,6 +9,15 @@ body{
     border-bottom: rgba(0, 150, 150, 0.2) 0.05rem solid;
 }
 
+.img-produk
+{
+
+    border-radius: 4px;
+    max-height: 80%;
+    overflow-y: hidden;
+    background-size: cover;
+}
+
 .label-login{
     color: grey;
 }
