@@ -21,6 +21,7 @@ $phone_number = stripslashes($_POST['phone_number']);
 $phone_number = mysqli_real_escape_string($db, $phone_number);
 $address = stripslashes($_POST['address']);
 $address = mysqli_real_escape_string($db, $address);
+$foto='default.png';
 
 $query = "SELECT * FROM users WHERE username='$username' LIMIT 1";
 $result = mysqli_query($db, $query);
@@ -43,12 +44,12 @@ if ($counts==1) {
 
 } else {
 //    INSERT TO DATABASE
-    $insert = mysqli_query($db,"INSERT INTO users (username, email, password, nama_user, no_tlp, alamat_user, foto_user) VALUES ('$username', '$email', '$password', '$name', '$phone_number', '$address', '')");
+    $insert = mysqli_query($db,"INSERT INTO users (username, email, password, nama_user, no_tlp, alamat_user, foto_user) VALUES ('$username', '$email', '$password', '$name', '$phone_number', '$address', '$foto')");
     if ($insert){
-        header("location:../../login.php");
+        echo "<script>alert('Pendaftaran berhasil');location='../../login.php'</script>";
     } else {
-        echo "<script>alert('Daftar gagal')</script>";
-        header("location:../../register.php");
+        echo "<script>alert('Pendaftaran gagal');location='../../register.php'</script>";
+        // header("location:../../register.php");
     }
 //    echo "<script>swal({title: 'Berhasil', icon: 'success'})</script>";
 }
