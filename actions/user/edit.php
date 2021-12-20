@@ -10,29 +10,29 @@ include '../../config.php';
  */
 
 
+$id = $_SESSION['id'];
+
 if (isset($_POST)) 
 {
 
 	if(isset($_POST['update_profile']))
 	{
-		$id = $_SESSION['id'];
 		$username = $_POST['username'];
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$address = $_POST['address'];
 		$phone_number = $_POST['phone_number'];
 
-		$query = "SELECT * FROM users WHERE username='$username' AND id_user !='$id' ";
-		$result = mysqli_query($db, $query);
-		$counts = mysqli_num_rows($result);
+        $result = $db->query("SELECT * FROM users WHERE username='$username' AND id_user !='$id' ");
+        $counts = mysqli_num_rows($result);
 
 		if($counts==0)
 		{
-
 			$update = $db->query("UPDATE users SET username='$username',nama_user='$name',email='$email',alamat_user='$address',no_tlp='$phone_number' WHERE id_user='$id'") or die(mysqlI_error($db));
 			if ($update)
 			{
-				echo "<script>alert('Update profile berhasil')</script>";
+                $_SESSION['success'] = "success";
+//				echo "<script>alert('Update profile berhasil')</script>";
 			} 
 			else 
 			{
@@ -44,8 +44,6 @@ if (isset($_POST))
 			echo "<script>alert('username sudah digunakan')</script>";
 			
 		}
-
-		echo "<script>location='../../user/profile.php'</script>";
 	}
 	// ubah foto
 	elseif(isset($_POST['update_foto']) )
@@ -53,7 +51,6 @@ if (isset($_POST))
 
 		if(!empty($_FILES['foto_user']['name']))
 		{
-			$id = $_SESSION['id'];
 			$result = $db->query("SELECT * FROM users WHERE id_user='$id'");
 			$user = $result->fetch_assoc();
 			$foto_lama = $user['foto_user'];
@@ -67,7 +64,6 @@ if (isset($_POST))
 			{
 				if(file_exists("../../assets/img/user/".$foto_lama))
 				{
-
 					unlink("../../assets/img/user/".$foto_lama);
 				}
 			}
@@ -82,14 +78,39 @@ if (isset($_POST))
 			else 
 			{
 				echo "<script>alert('Update foto gagal')</script>";
-			}	
+			}
 		}
-		echo "<script>location='../../user/profile.php'</script>";
 	}
 	elseif(isset($_POST['ubah_pass']))
 	{
+        $old_password = md5($_POST['old_password']);
+        $new_password = md5($_POST['new_password']);
+        $confirm_password = md5($_POST['confirm_password']);
 
+        $result = $db->query("SELECT * FROM users WHERE id_user='$id'");
+        $user = $result->fetch_assoc();
+        var_dump($user['password']);
+
+        if ($old_password != $user['password']){
+            echo "<script>alert('Password lama salah!')</script>";
+        } else {
+
+            if ($new_password == $confirm_password){
+
+                $update = $db->query("UPDATE users SET password='$new_password'");
+
+                if ($update){
+                    echo "<script>alert('Update password berhasil!')</script>";
+                } else{
+                    echo "<script>alert('Update password gagal')</script>";
+                }
+            }
+            else {
+                echo "<script>alert('Konfirmasi password tidak sesuai')</script>";
+            }
+        }
 	}
+    echo "<script>location='../../user/profile.php'</script>";
 } 
 else 
 {
