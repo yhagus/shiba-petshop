@@ -1,9 +1,9 @@
 <?php 
 
-  include 'navbar.php';
+include 'navbar.php';
 ?>
 <main>
-<div class="pd-wrap mt-xl-3">
+    <div class="pd-wrap mt-xl-3">
         <div class="container">
             <?php
             $id_produk = $_GET['id'];
@@ -25,6 +25,7 @@
                             <div class="product-price-discount"><span>Rp <?php echo $produk['harga_produk'] ?></span></div>
                         </div>
                         <p><?php echo $produk['deskripsi'] ?></p>
+                        <p>Berat produk: <?php echo $produk['berat'] ?> gram</p>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="size">Stok</label>
@@ -38,7 +39,18 @@
                                 <input type="text" name="quantity" value="1" class="qty" disabled max="5">
                                 <div class="qtyplus">+</div>
                             </form>
-                            <a href="#" class="round-black-btn text-decoration-none">Add to Cart</a>
+
+                            <?php echo "<pre>";
+                            print_r ($_SESSION);
+                            echo "</pre>"; ?>
+
+                            <?php if (isset($_SESSION['username'])): ?>
+                                <form method="post" action="">
+                                    
+                                <button class="round-black-btn btndi text-decoration-none">Add to Cart</button>
+                                </form>
+                            <?php endif ?>
+                            
                         </div>
                     </div>
                 </div>

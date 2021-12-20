@@ -30,8 +30,6 @@ if (isset($_POST))
 		{
 
 			$update = $db->query("UPDATE users SET username='$username',nama_user='$name',email='$email',alamat_user='$address',no_tlp='$phone_number' WHERE id_user='$id'") or die(mysqlI_error($db));
-
-
 			if ($update)
 			{
 				echo "<script>alert('Update profile berhasil')</script>";
@@ -85,22 +83,13 @@ if (isset($_POST))
 			{
 				echo "<script>alert('Update foto gagal')</script>";
 			}	
-
 		}
 		echo "<script>location='../../user/profile.php'</script>";
-
-
-
-
-
 	}
 	elseif(isset($_POST['ubah_pass']))
 	{
 
 	}
-
-
-
 } 
 else 
 {
