@@ -34,22 +34,15 @@ include 'navbar.php';
                         </div>
                         <div class="product-count">
                             <label for="size">Quantity</label>
-                            <form action="#" class="display-flex">
-                                <div class="qtyminus">-</div>
-                                <input type="text" name="quantity" value="1" class="qty" disabled max="5">
-                                <div class="qtyplus">+</div>
+                            <form action="actions/user/cart.php" method="POST" >
+                                <div class="display-flex">
+                                    <div class="qtyminus">-</div>
+                                    <input type="number" name="qty" value="1" class="qty" readonly="" max="5">
+                                    <div class="qtyplus">+</div>
+                                </div>
+                                    <button class="round-black-btn btndi text-decoration-none" type="submit" name="add_cart">Add to Cart</button>
                             </form>
-
-                            <?php echo "<pre>";
-                            print_r ($_SESSION);
-                            echo "</pre>"; ?>
-
-                            <?php if (isset($_SESSION['username'])): ?>
-                                <form method="post" action="">
-                                    
-                                <button class="round-black-btn btndi text-decoration-none">Add to Cart</button>
-                                </form>
-                            <?php endif ?>
+                       
                             
                         </div>
                     </div>

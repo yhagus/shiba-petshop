@@ -22,19 +22,19 @@ while ($data = mysqli_fetch_assoc($result)) {
                     <!-- menampilkan image produk dari perulangan -->
                     <div class="row mx-auto">
                         <a href="detail.php?id=<?php echo $produk['id_produk'] ?>">
-                            <img src="assets/img/<?php echo $produk['foto_produk'] ?>" class="card-img mb-3" height="200">
+                            <img src="assets/img/produk/<?php echo $produk['foto_produk'] ?>" class="card-img mb-3" height="200">
                         </a>
                     </div>
 
                     <div class="row">
                         <div class="col-auto">
                             <!-- menampilkan nama produk dari perulangan produk -->
-                            <a href="detail.php?id=<?php echo $produk['id_produk'] ?>">
+                            <a href="detail.php?id=<?php echo $produk['id_produk'] ?>" class="text-decoration-none">
                                 <h3><?php echo $produk['nama_produk'] ?></h3>
                             </a>
 
                             <!-- menampilkan harga produk dari perulangan produk -->
-                            <h3>Rp <?php echo $produk['harga_produk'] ?></h3>
+                            <h5>Rp <?php echo $produk['harga_produk'] ?></h5>
                         </div>
                     </div>
                     <div class="row mt-4-5">

@@ -29,7 +29,7 @@ include "header.php";
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end text-small shadow animate slideIn" aria-labelledby="dropdownUser2">
                         <li><a class="dropdown-item" href="http://localhost/shiba-petshop/user/cart.php"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
-                        <li><a class="dropdown-item" href="http://localhost/pwl/shiba-petshop/user/profile.php"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
+                        <li><a class="dropdown-item" href="http://localhost/shiba-petshop/user/profile.php"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
