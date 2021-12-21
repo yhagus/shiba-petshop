@@ -49,7 +49,6 @@ include 'navbar.php';
 
                                 <!-- jika user udah login tombol tambah ke keranjang bisa diklik-->
                                 <?php if (isset($_SESSION['id'])): ?>
-                                    
                                 <button class="round-black-btn btndi text-decoration-none" type="submit" name="add_cart">Add to Cart</button>
                                 <?php else: ?>
                                     <!-- jika user belum login tombol tambah ke keranjang gk bisa diklik dan disuruh login-->
