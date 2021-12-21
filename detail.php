@@ -53,7 +53,7 @@ include 'navbar.php';
                                 <button class="round-black-btn btndi text-decoration-none" type="submit" name="add_cart">Add to Cart</button>
                                 <?php else: ?>
                                     <!-- jika user belum login tombol tambah ke keranjang gk bisa diklik dan disuruh login-->
-                                <button class="round-black-btn btndi text-decoration-none disabled" disabled="" title="silakan login untuk membeli produk"  type="submit" name="add_cart">Add to Cart</button>
+                                <button class="round-black-btn btndi text-decoration-none disabled" disabled="" title="silakan login untuk membeli produk"  type="">Add to Cart</button>
                                 <?php endif ?>
                             </form>
                         </div>
