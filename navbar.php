@@ -22,7 +22,7 @@ include "header.php";
                 <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
             </form>
             <?php
-            if (isset($_SESSION['username'])){?>
+            if (isset($_SESSION['id'])){?>
                 <div class="flex-shrink-0 dropdown mx-3">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
