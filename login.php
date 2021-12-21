@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-if (isset($_SESSION['username'])){
+if (isset($_SESSION['id'])){
     header("location:index.php");
 }
 ?>

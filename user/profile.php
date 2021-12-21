@@ -1,7 +1,7 @@
 <?php
 include '../navbar.php';
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['id'])) {
     header("location: ../index.php");
 }
 $id = $_SESSION['id'];
@@ -222,8 +222,8 @@ $user = $result->fetch_assoc();
 
 <?php
 // include '../footer.php';
-if (isset($_SESSION['success'])){
-    echo "<script>swal({title: 'Berhasil', icon: 'success'})</script>";
-    unset($_SESSION['success']);
+if (isset($_SESSION['swal'])){
+    echo "<script>swal({title: '".$_SESSION['swal']['title']."', icon: '".$_SESSION['swal']['icon']."'})</script>";
+    unset($_SESSION['swal']);
 }
 ?>
