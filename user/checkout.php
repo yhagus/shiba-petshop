@@ -94,7 +94,7 @@ $total_belanja=0;
 			</div>
 			<div class="col-md-6 col-lg-8">
 				<h4 class="mb-3">Penerima</h4>
-				<form class="needs-validation" novalidate>
+				<form class="needs-validation" novalidate method="POST" action="">
 					<div class="row g-3">
 						<div class="col-sm-12">
 							<label for="firstName" class="form-label">Nama Penerima</label>
