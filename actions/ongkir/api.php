@@ -100,25 +100,25 @@ function tampil_ongkir($id_kota_asal,$id_kota_tujuan,$nama_ekspedisi,$total_bera
 }
 
 
-$prov = tampil_provinsi();
-echo "<pre>";
-print_r ($prov);
-echo "</pre>";
-echo "<hr>";
+// $prov = tampil_provinsi();
+// echo "<pre>";
+// print_r ($prov);
+// echo "</pre>";
+// echo "<hr>";
 
-// tampil kota prov jogja
-$kota = tampil_kota(5);
-echo "<pre>";
-print_r ($kota);
-echo "</pre>";
-echo "<hr>";
+// // tampil kota prov jogja
+// $kota = tampil_kota(5);
+// echo "<pre>";
+// print_r ($kota);
+// echo "</pre>";
+// echo "<hr>";
 
 
-	// contoh ongkir sleman ke bandung
-$ongkir = tampil_ongkir(419,23,'jne',1000);
-echo "<pre>";
-print_r ($ongkir);
-echo "</pre>";
+// 	// contoh ongkir sleman ke bandung
+// $ongkir = tampil_ongkir(419,23,'jne',1000);
+// echo "<pre>";
+// print_r ($ongkir);
+// echo "</pre>";
 
 
 ?>
