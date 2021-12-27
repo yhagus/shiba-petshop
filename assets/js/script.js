@@ -85,16 +85,14 @@ $(document).ready(function() {
     });
 
 
-    $("select[name=provinsi]").change(function(){
+    $("select[name=provinsi]").on("change",function(){
         var id_provinsi = $(this).val();
         var prov_tujuan = $("option:selected",this).attr('prov_tujuan');
         $("input[name=prov_tujuan]").val(prov_tujuan);
-
-        $("select[name=pilih_kota]").val(null);
-        $("select[name=pilih_kurir]").val(null);
-        $("select[name=pilih_layanan]").val(null);
+        $("select[name=pilih_kota]").html(null);
+        $("select[name=pilih_kurir]").html(null);
+        $("select[name=pilih_layanan]").empty().append("<option></option>");
         $("input[name=tampil_ongkir]").val(null);
-
 
         $.ajax({
             type:"post",
@@ -111,6 +109,9 @@ $(document).ready(function() {
         var id_kota = $(this).val();
         var kota_tujuan = $("option:selected",this).attr('kota_tujuan');
         $("input[name=kota_tujuan]").val(kota_tujuan);
+
+          $("select[name=pilih_layanan]").empty().append("<option></option>");
+        $("input[name=tampil_ongkir]").val(null);
 
         option_kurir =`<option>-pilih-</option>
         <option value="jne" kurir_name="JNE" >JNE</option>
@@ -200,6 +201,9 @@ $("select[name=pilih_layanan]").change(function(){
         $("textarea[name=alamat_tujuan]").val(null);
         }
     })
+
+
+
         
     
 });

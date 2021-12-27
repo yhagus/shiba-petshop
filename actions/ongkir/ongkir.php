@@ -2,12 +2,12 @@
 
 include 'api.php';
 $id_kota_tujuan = $_POST['id_kota'];
-$total_berat = 1200;
+$total_berat = $_POST['total_berat'];
 $kurir = $_POST['kurir'];
 
 
 
-$ongkir = tampil_ongkir(501,$id_kota_tujuan,$kurir,$total_berat);
+$ongkir = tampil_ongkir(419,$id_kota_tujuan,$kurir,$total_berat);
  
 
  ?>
