@@ -155,15 +155,12 @@ $("select[name=pilih_layanan]").change(function(){
         $("input[name=ongkir]").val(biaya);
         $("input[name=layanan]").val(desc);
 
-
         var total_belanja = $("input[name=total_belanja]").val();
         var total_biaya = parseInt(total_belanja) + parseInt(biaya);
         $("input[name=total_biaya]").val(total_biaya);
 
-        // alert(layanan)
-        // alert(biaya)
-
         $("input[name=tampil_ongkir]").val(biaya);
+        
         // $("input[name=kurir]").val(kurir);
         //         // mendptkan total_berat
         //         var total_berat = $("input[name=total_berat]").val();
