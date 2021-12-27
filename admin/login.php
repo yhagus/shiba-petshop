@@ -9,7 +9,7 @@ include '../header.php';
                 <div class="col-2 col-md-4"></div>
                 <div class="col-8 col-md-4">
                     <div class="card">
-                        <img src="http://localhost/shiba-petshop/assets/img/bg_login.png" height="300" class="card-img-top" alt="SnakeMan">
+                        <img src="/shiba-petshop/assets/img/bg_login.png" height="300" class="card-img-top" alt="SnakeMan">
                         <div class="card-body">
                             <h3 class="text-center">Login Superadmin</h3>
                             <br>

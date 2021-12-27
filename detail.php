@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 include 'navbar.php';
 ?>
 <main>
@@ -14,7 +13,7 @@ include 'navbar.php';
             ?>
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-fluid img-produk" src="assets/img/produk/<?php echo $produk['foto_produk'] ?>" />   
+                    <img class="img-fluid img-produk" src="assets/img/produk/<?php echo $produk['foto_produk'] ?>" alt=""/>
                 </div>
                 <div class="col-md-6">
                     <div class="product-dtl">

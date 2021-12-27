@@ -38,7 +38,7 @@ $total_belanja=0;
 	?>
 	<main>
 		<div class="py-5 text-center">
-			<img class="d-block mx-auto mb-4" src="http://localhost/shiba-petshop/assets/img/checkout.png" alt="" width="150">
+			<img class="d-block mx-auto mb-4" src="/shiba-petshop/assets/img/checkout.png" alt="" width="150">
 			<h2>Checkout form</h2>
 		</div>
 		<hr style="border-bottom: 2px dashed black; background: none">

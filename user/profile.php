@@ -15,7 +15,7 @@ $user = $result->fetch_assoc();
             <div class="col-md-3">
                 <div class="profile-sidebar text-center">
                     <div class="profile-userpic">
-                        <img src="../assets/img/user/<?php echo $user['foto_user'] ?>"
+                        <img src="<?= $user['foto_user'] === '' ? $blank : $avatar ?>"
                              class="img-fluid" alt="">
                     </div>
                     <!-- SIDEBAR USER TITLE -->
@@ -98,9 +98,6 @@ $user = $result->fetch_assoc();
                                     </div>
                                     <button class="btn btn-info" name="update_foto">Update</button>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -206,7 +203,7 @@ $user = $result->fetch_assoc();
                             <button type="submit"
                                     name="update_profile"
                                     class="btn btn-primary btn-lg">
-                                Update Profile
+                                Update
                             </button>
                         </div>
                     </form>

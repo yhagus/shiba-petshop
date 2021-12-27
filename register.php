@@ -28,6 +28,7 @@ if (isset($_SESSION['message'])){
                                                        name="username"
                                                        class="form-control"
                                                        value="<?= $_SESSION['form_username'] ?? '' ?>"
+                                                       autocomplete="nope"
                                                        required />
                                             </div>
                                         </div>
@@ -39,6 +40,7 @@ if (isset($_SESSION['message'])){
                                                        name="email"
                                                        class="form-control"
                                                        value="<?= $_SESSION['form_email'] ?? '' ?>"
+                                                       autocomplete="nope"
                                                        required />
                                             </div>
                                         </div>
@@ -51,6 +53,7 @@ if (isset($_SESSION['message'])){
                                                        name="name"
                                                        class="form-control"
                                                        value="<?= $_SESSION['form_name'] ?? '' ?>"
+                                                       autocomplete="nope"
                                                        required />
                                             </div>
                                         </div>
@@ -63,6 +66,7 @@ if (isset($_SESSION['message'])){
                                                        pattern=".{8,}"
                                                        title="Must contain at least 8 characters."
                                                        class="form-control"
+                                                       autocomplete="nope"
                                                        required />
                                             </div>
                                         </div>
@@ -75,6 +79,7 @@ if (isset($_SESSION['message'])){
                                                        name="phone_number"
                                                        class="form-control"
                                                        value="<?= $_SESSION['form_phone_number'] ?? '' ?>"
+                                                       autocomplete="nope"
                                                        required />
                                             </div>
                                         </div>
@@ -85,7 +90,8 @@ if (isset($_SESSION['message'])){
                                                 <input type="text"
                                                        name="address"
                                                        value="<?= $_SESSION['form_address'] ?? '' ?>"
-                                                       class="form-control"/>
+                                                       class="form-control"
+                                                       autocomplete="nope"/>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -98,7 +104,7 @@ if (isset($_SESSION['message'])){
 
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="http://localhost/shiba-petshop/assets/img/register.png" class="img-fluid">
+                                    <img src="/shiba-petshop/assets/img/register.png" class="img-fluid" alt="">
                                 </div>
                             </div>
                         </form>

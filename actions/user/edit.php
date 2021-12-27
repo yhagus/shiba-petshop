@@ -31,18 +31,28 @@ if (isset($_POST))
 			$update = $db->query("UPDATE users SET username='$username',nama_user='$name',email='$email',alamat_user='$address',no_tlp='$phone_number' WHERE id_user='$id'") or die(mysqlI_error($db));
 			if ($update)
 			{
-                $_SESSION['success'] = "success";
+                $_SESSION['swal'] = [
+                    "icon" => "success",
+                    "title" => "Berhasil update data"
+                ];
 //				echo "<script>alert('Update profile berhasil')</script>";
 			} 
 			else 
 			{
-				echo "<script>alert('Update profile gagal')</script>";
+                $_SESSION['swal'] = [
+                    "icon" => "error",
+                    "title" => "Gagal update data"
+                ];
+//				echo "<script>alert('Update profile gagal')</script>";
 			}
 		}
 		else
-		{	
-			echo "<script>alert('username sudah digunakan')</script>";
-			
+		{
+            $_SESSION['swal'] = [
+                "icon" => "info",
+                "title" => "Username sudah digunakan"
+            ];
+//			echo "<script>alert('username sudah digunakan')</script>";
 		}
 	}
 	// ubah foto
@@ -73,11 +83,19 @@ if (isset($_POST))
 			$update = $db->query("UPDATE users SET foto_user='$rename_img' WHERE id_user='$id'") or die(mysqlI_error($db));
 			if ($update)
 			{
-				echo "<script>alert('Update foto berhasil')</script>";
+                $_SESSION['swal'] = [
+                    "icon" => "success",
+                    "title" => "Foto berhasil diubah"
+                ];
+//				echo "<script>alert('Update foto berhasil')</script>";
 			} 
-			else 
+			else
 			{
-				echo "<script>alert('Update foto gagal')</script>";
+                $_SESSION['swal'] = [
+                    "icon" => "error",
+                    "title" => "Foto gagal diubah"
+                ];
+//				echo "<script>alert('Update foto gagal')</script>";
 			}
 		}
 	}
@@ -89,10 +107,13 @@ if (isset($_POST))
 
         $result = $db->query("SELECT * FROM users WHERE id_user='$id'");
         $user = $result->fetch_assoc();
-        var_dump($user['password']);
 
         if ($old_password != $user['password']){
-            echo "<script>alert('Password lama salah!')</script>";
+            $_SESSION['swal'] = [
+                "icon" => "error",
+                "title" => "Password lama salah"
+            ];
+//            echo "<script>alert('Password lama salah!')</script>";
         } else {
 
             if ($new_password == $confirm_password){
@@ -100,20 +121,33 @@ if (isset($_POST))
                 $update = $db->query("UPDATE users SET password='$new_password'");
 
                 if ($update){
-                    echo "<script>alert('Update password berhasil!')</script>";
+                    $_SESSION['swal'] = [
+                        "icon" => "success",
+                        "title" => "Password berhasil diubah"
+                    ];
+//                    echo "<script>alert('Update password berhasil!')</script>";
                 } else{
-                    echo "<script>alert('Update password gagal')</script>";
+                    $_SESSION['swal'] = [
+                        "icon" => "success",
+                        "title" => "Password gagal diubah"
+                    ];
+//                    echo "<script>alert('Update password gagal')</script>";
                 }
             }
             else {
-                echo "<script>alert('Konfirmasi password tidak sesuai')</script>";
+                $_SESSION['swal'] = [
+                    "icon" => "error",
+                    "title" => "Konfirmasi password salah"
+                ];
+//                echo "<script>alert('Konfirmasi password tidak sesuai')</script>";
             }
         }
 	}
-    echo "<script>location='../../user/profile.php'</script>";
+//    echo "<script>location='../../user/profile.php'</script>";
 } 
 else 
 {
-	
-	echo "<script>location='../../user/profile.php'</script>";
+    header("location: ../../user/profile.php");
+//	echo "<script>location='../../user/profile.php'</script>";
 }
+header("location: ../../user/profile.php");

@@ -1,5 +1,13 @@
 <?php
 include "header.php";
+$avatar = "";
+$blank = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+if (isset($_SESSION['id'])){
+    $id = $_SESSION['id'];
+    $user = $db->query("SELECT * FROM users WHERE id_user='$id'")->fetch_assoc();
+    $avatar = "/shiba-petshop/assets/img/user/".$user['foto_user'];
+}
+
 ?>
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow-navbar">
@@ -11,10 +19,10 @@ include "header.php";
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" id="home" href="http://localhost/shiba-petshop">Home</a>
+                    <a class="nav-link" id="home" href="/shiba-petshop">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="catalog" href="http://localhost/shiba-petshop/catalog.php">Catalog</a>
+                    <a class="nav-link" id="catalog" href="/shiba-petshop/catalog.php">Catalog</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -25,15 +33,16 @@ include "header.php";
             if (isset($_SESSION['id'])){?>
                 <div class="flex-shrink-0 dropdown mx-3">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                        <img src="<?= $user['foto_user'] === '' ? $blank : $avatar ?>" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end text-small shadow animate slideIn" aria-labelledby="dropdownUser2">
-                        <li><a class="dropdown-item" href="http://localhost/shiba-petshop/user/cart.php"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
-                        <li><a class="dropdown-item" href="http://localhost/shiba-petshop/user/profile.php"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
+                        <li><a class="dropdown-item" href="/shiba-petshop/user/riwayat.php"><i class="bi bi-receipt-cutoff me-2"></i>History Transaction</a></li>
+                        <li><a class="dropdown-item" href="/shiba-petshop/user/cart.php"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
+                        <li><a class="dropdown-item" href="/shiba-petshop/user/profile.php"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="http://localhost/shiba-petshop/logout.php">Sign out</a></li>
+                        <li><a class="dropdown-item" href="/shiba-petshop/logout.php"><i class="bi bi-box-arrow-right me-2"></i>Sign out</a></li>
                     </ul>
                 </div>
             <?php
