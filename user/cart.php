@@ -4,8 +4,11 @@ include '../navbar.php';
 if (!isset($_SESSION['id'])) {
     header("location: ../index.php");
 }
-?>
-<main>
+else
+{
 
-</main>
+}
+
+
+?>
 

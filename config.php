@@ -28,3 +28,8 @@ function tanggal($tanggal)
         return $tgl[2]." ".$bln[$tgl[1]]." ".$tgl[0];
     }
 }
+
+function rp($harga)
+{
+    echo "Rp ".str_replace(",", ".", number_format($harga));
+}

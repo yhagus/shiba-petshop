@@ -89,8 +89,8 @@ $(document).ready(function() {
         var id_provinsi = $(this).val();
         var prov_tujuan = $("option:selected",this).attr('prov_tujuan');
         $("input[name=prov_tujuan]").val(prov_tujuan);
-        $("select[name=pilih_kota]").html(null);
-        $("select[name=pilih_kurir]").html(null);
+        $("select[name=pilih_kota]").empty().append("<option></option>");
+        $("select[name=pilih_kurir]").empty().append("<option></option>");
         $("select[name=pilih_layanan]").empty().append("<option></option>");
         $("input[name=tampil_ongkir]").val(null);
 
@@ -110,7 +110,8 @@ $(document).ready(function() {
         var kota_tujuan = $("option:selected",this).attr('kota_tujuan');
         $("input[name=kota_tujuan]").val(kota_tujuan);
 
-          $("select[name=pilih_layanan]").empty().append("<option></option>");
+        $("select[name=pilih_kurir]").empty().append("<option></option>");
+        $("select[name=pilih_layanan]").empty().append("<option></option>");
         $("input[name=tampil_ongkir]").val(null);
 
         option_kurir =`<option>-pilih-</option>
@@ -133,6 +134,8 @@ $(document).ready(function() {
         var kurir_name = $("option:selected",this).attr("kurir_name");
         var id_kota = $("select[name=pilih_kota]").val();
         $("input[name=kurir]").val(kurir_name);
+        $("select[name=pilih_layanan]").empty().append("<option></option>");
+        $("input[name=tampil_ongkir]").val(null);
                 // mendptkan total_berat
                 var total_berat = $("input[name=total_berat]").val();
                 $.ajax({
@@ -146,9 +149,9 @@ $(document).ready(function() {
                         $("select[name=pilih_layanan]").html(hasil);
                     }
                 })
-    })
+            })
 
-$("select[name=pilih_layanan]").change(function(){
+    $("select[name=pilih_layanan]").change(function(){
         var layanan = $(this).val();
         var biaya = $("option:selected",this).attr('biaya');
         var desc = $("option:selected",this).attr('desc');
@@ -158,8 +161,9 @@ $("select[name=pilih_layanan]").change(function(){
         var total_belanja = $("input[name=total_belanja]").val();
         var total_biaya = parseInt(total_belanja) + parseInt(biaya);
         $("input[name=total_biaya]").val(total_biaya);
-
         $("input[name=tampil_ongkir]").val(biaya);
+
+        
         
         // $("input[name=kurir]").val(kurir);
         //         // mendptkan total_berat
@@ -184,23 +188,23 @@ $("select[name=pilih_layanan]").change(function(){
         if ($('input[name=sama]').is(':checked')) {
             // alert("sama")
             var nama = $("input[name=nama]").val();
-        var tlp = $("input[name=tlp]").val();
-        var addr = $("input[name=addr]").val();
+            var tlp = $("input[name=tlp]").val();
+            var addr = $("input[name=addr]").val();
 
-        $("input[name=nama_penerima]").val(nama);
-        $("input[name=telp_penerima]").val(tlp);
-        $("textarea[name=alamat_tujuan]").val(addr);
+            $("input[name=nama_penerima]").val(nama);
+            $("input[name=telp_penerima]").val(tlp);
+            $("textarea[name=alamat_tujuan]").val(addr);
         }
         else
         {
-        $("input[name=nama_penerima]").val(null);
-        $("input[name=telp_penerima]").val(null);
-        $("textarea[name=alamat_tujuan]").val(null);
+            $("input[name=nama_penerima]").val(null);
+            $("input[name=telp_penerima]").val(null);
+            $("textarea[name=alamat_tujuan]").val(null);
         }
     })
 
 
 
-        
+
     
 });

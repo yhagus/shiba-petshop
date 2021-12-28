@@ -10,7 +10,7 @@
 	$user = $result->fetch_assoc();
 
 	$id_keranjang = 1;
-	$result = $db->query("SELECT * FROM keranjang INNER JOIN produk ON keranjang.id_produk=produk.id_produk  ");
+	$result = $db->query("SELECT * FROM keranjang INNER JOIN produk ON keranjang.id_produk=produk.id_produk INNER JOIN kategori ON kategori.id_kategori = produk.id_kategori ");
 
 	while($data = $result->fetch_assoc())
 	{
@@ -21,8 +21,8 @@
 	// print_r ($keranjang);
 	// echo "</pre>";
 
-$total_berat=0;
-$total_belanja=0;
+	$total_berat=0;
+	$total_belanja=0;
 	foreach ($keranjang as $krj) 
 	{
 		$total_berat += $krj['berat']*$krj['jumlah'];
@@ -42,7 +42,7 @@ $total_belanja=0;
 			<h2>Checkout form</h2>
 		</div>
 		<hr style="border-bottom: 2px dashed black; background: none">
-<br>
+		<br>
 		<div class="row g-5">
 			<div class="col-md-6 col-lg-4 order-md-last">
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -50,34 +50,25 @@ $total_belanja=0;
 					<span class="badge bg-primary rounded-pill"><?php echo count($keranjang) ?></span>
 				</h4>
 				<ul class="list-group mb-3">
-					<li class="list-group-item d-flex justify-content-between lh-sm">
-						<div>
-							<h6 class="my-0">Product name</h6>
-							<small class="text-muted">Brief description</small>
-						</div>
-						<span class="text-muted">$12</span>
-					</li>
-					<li class="list-group-item d-flex justify-content-between lh-sm">
-						<div>
-							<h6 class="my-0">Second product</h6>
-							<small class="text-muted">Brief description</small>
-						</div>
-						<span class="text-muted">$8</span>
-					</li>
-					<li class="list-group-item d-flex justify-content-between lh-sm">
-						<div>
-							<h6 class="my-0">Third item</h6>
-							<small class="text-muted">Brief description</small>
-						</div>
-						<span class="text-muted">$5</span>
-					</li>
+					<?php foreach ($keranjang as $krj): ?>
+						
+						<li class="list-group-item d-flex justify-content-between lh-sm">
+							<div>
+								<h6 class="my-0"><?php echo $krj['nama_produk'] ?></h6>
+								<small class="text-muted"><?php echo $krj['nama_kategori'] ?></small>
+							</div>
+							<span class="text-muted"><?php rp($krj['harga_produk']) ?></span>
+						</li>
+					<?php endforeach ?>
+					
+					
 
 					<li class="list-group-item d-flex justify-content-between bg-light">
 						<div class="text-primary">
 							<h6 class="my-0">Ongkir</h6>
-							<small>JNE - REG</small>
+							<span id="kurir">JNE - </span><span id="layanan">REG</span>
 						</div>
-						<span class="text-primary">$5</span>
+						<span class="text-primary biaya_ongkir">$5</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between">
 						<span>Total Biaya</span>
@@ -121,9 +112,9 @@ $total_belanja=0;
 						</div>
 
 						<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="same-address" name="sama">
-						<label class="form-check-label" for="same-address">Data penerima sama seperti profile</label>
-					</div>
+							<input type="checkbox" class="form-check-input" id="same-address" name="sama">
+							<label class="form-check-label" for="same-address">Data penerima sama seperti profile</label>
+						</div>
 
 
 						<hr class="mt-5">
@@ -176,29 +167,29 @@ $total_belanja=0;
 						<div class="col-md-3">
 							<label for="zip" class="form-label">Biaya Ongkir</label>
 							<input type="" class="form-control" name="tampil_ongkir">
-							</select>
-						</div>
-
+						</select>
 					</div>
 
-					<hr class="my-4">
-					<input type="" name="nama" value="<?php echo $user['nama_user'] ?>">
-					<input type="" name="tlp" value="<?php echo $user['no_tlp'] ?>">
-					<input type="" name="addr" value="<?php echo $user['alamat_user'] ?>">
-					<br>
-					<input type="" name="prov_tujuan" placeholder="prov_tujuan">
-					<input type="" name="kota_tujuan" placeholder="kota_tujuan">
-					<input type="" name="kurir" placeholder="kurir">
-					<input type="" name="layanan" placeholder="layanan">
-					<input type="" name="total_berat" placeholder="total_berat" value="<?php echo $total_berat ?>">
-					<input type="" name="total_belanja" placeholder="total_belanja" value="<?php echo $total_belanja ?>">
-					<input type="" name="ongkir" placeholder="ongkir">
-					<input type="" name="total_biaya" placeholder="total_biaya">
+				</div>
 
-					<br>
-					<br>
+				<hr class="my-4">
+				<input type="" name="nama" value="<?php echo $user['nama_user'] ?>">
+				<input type="" name="tlp" value="<?php echo $user['no_tlp'] ?>">
+				<input type="" name="addr" value="<?php echo $user['alamat_user'] ?>">
+				<br>
+				<input type="" name="prov_tujuan" placeholder="prov_tujuan">
+				<input type="" name="kota_tujuan" placeholder="kota_tujuan">
+				<input type="" name="kurir" placeholder="kurir">
+				<input type="" name="layanan" placeholder="layanan">
+				<input type="" name="total_berat" placeholder="total_berat" value="<?php echo $total_berat ?>">
+				<input type="" name="total_belanja" placeholder="total_belanja" value="<?php echo $total_belanja ?>">
+				<input type="" name="ongkir" placeholder="ongkir">
+				<input type="" name="total_biaya" placeholder="total_biaya">
 
-					<hr class="my-4">
+				<br>
+				<br>
+
+				<hr class="my-4">
 
 					<!-- <h4 class="mb-3">Payment</h4>
 
