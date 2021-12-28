@@ -1,6 +1,20 @@
 <?php include '../navbar.php'; ?>
 <?php include '../actions/ongkir/api.php'; ?>
+<<<<<<< Updated upstream
 	<?php
+=======
+
+<?php 
+if (!isset($_SESSION['id'])) {
+	# code...
+}
+ ?>
+<div class="container">
+
+	<?php 
+
+
+>>>>>>> Stashed changes
 	$id = $_SESSION['id'];
 	$result = $db->query("SELECT * FROM users WHERE id_user ='$id'");
 	$user = $result->fetch_assoc();
@@ -57,26 +71,21 @@
 					<li class="list-group-item d-flex justify-content-between bg-light">
 						<div class="text-primary">
 							<h6 class="my-0">Ongkir</h6>
-							<span id="kurir">JNE - </span><span id="layanan">REG</span>
+							<span id="kurir"></span><span> - </span><span id="layanan"></span>
 						</div>
-						<span class="text-primary biaya_ongkir">$5</span>
+						<span class="text-primary" id="biaya_ongkir">-</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between">
 						<span>Total Biaya</span>
-						<strong>$20</strong>
+						<strong id="total_biaya">-</strong>
 					</li>
 				</ul>
 
-				<form class="card p-2">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Promo code">
-						<button type="submit" class="btn btn-secondary">Redeem</button>
-					</div>
-				</form>
+				
 			</div>
 			<div class="col-md-6 col-lg-8">
 				<h4 class="mb-3">Penerima</h4>
-				<form class="needs-validation" novalidate method="POST" action="">
+				<form class="needs-validation" novalidate method="POST" action="../actions/transaction/save.php">
 					<div class="row g-3">
 						<div class="col-sm-12">
 							<label for="firstName" class="form-label">Nama Penerima</label>
@@ -156,16 +165,40 @@
 						</div>
 
 						<div class="col-md-3">
+<<<<<<< Updated upstream
 							<label for="zip" class="form-label">Biaya Ongkir</label>
 							<input type="" class="form-control" name="tampil_ongkir">
                         </div>
+=======
+							<label for="zip" class="form-label" >Biaya Ongkir</label>
+							<input type="" class="form-control" name="tampil_ongkir" readonly="">
+						</select>
+					</div>
+>>>>>>> Stashed changes
 
 				</div>
 
 				<hr class="my-4">
+<<<<<<< Updated upstream
 				<input name="nama" value="<?php echo $user['nama_user'] ?>">
 				<input name="tlp" value="<?php echo $user['no_tlp'] ?>">
 				<input name="addr" value="<?php echo $user['alamat_user'] ?>">
+=======
+				<input type="" name="nama" value="<?php echo $user['nama_user'] ?>">
+				<input type="" name="tlp" value="<?php echo $user['no_tlp'] ?>">
+				<input type="" name="addr" value="<?php echo $user['alamat_user'] ?>">
+				<br>
+				<input type="" name="prov_tujuan" placeholder="prov_tujuan" >
+				<input type="" name="kota_tujuan" placeholder="kota_tujuan" >
+				<input type="" name="kurir" placeholder="kurir" >
+				<input type="" name="layanan" placeholder="layanan" >
+				<input type="" name="total_berat" placeholder="total_berat" value="<?php echo $total_berat ?>" >
+				<input type="" name="total_belanja" placeholder="total_belanja" value="<?php echo $total_belanja ?>" >
+				<input type="" name="ongkir" placeholder="ongkir" >
+				<input type="" name="total_biaya" placeholder="total_biaya" >
+
+				<br>
+>>>>>>> Stashed changes
 				<br>
 				<input name="prov_tujuan" placeholder="prov_tujuan">
 				<input name="kota_tujuan" placeholder="kota_tujuan">

@@ -93,6 +93,8 @@ $(document).ready(function() {
         $("select[name=pilih_kurir]").empty().append("<option></option>");
         $("select[name=pilih_layanan]").empty().append("<option></option>");
         $("input[name=tampil_ongkir]").val(null);
+        $("#biaya_ongkir").html("-");
+        $("#total_biaya").html("-");
 
         $.ajax({
             type:"post",
@@ -113,6 +115,8 @@ $(document).ready(function() {
         $("select[name=pilih_kurir]").empty().append("<option></option>");
         $("select[name=pilih_layanan]").empty().append("<option></option>");
         $("input[name=tampil_ongkir]").val(null);
+        $("#biaya_ongkir").html("-");
+        $("#total_biaya").html("-");
 
         option_kurir =`<option>-pilih-</option>
         <option value="jne" kurir_name="JNE" >JNE</option>
@@ -133,16 +137,20 @@ $(document).ready(function() {
         var kurir = $(this).val();
         var kurir_name = $("option:selected",this).attr("kurir_name");
         var id_kota = $("select[name=pilih_kota]").val();
+        var total_belanja = $("input[name=total_belanja]").val();
         $("input[name=kurir]").val(kurir_name);
+        $("#kurir").html(kurir_name);
         $("select[name=pilih_layanan]").empty().append("<option></option>");
         $("input[name=tampil_ongkir]").val(null);
+        $("#biaya_ongkir").html("-");
+        $("#total_biaya").html("-");
                 // mendptkan total_berat
                 var total_berat = $("input[name=total_berat]").val();
                 $.ajax({
 
                     url:'http://localhost/shiba-petshop/actions/ongkir/ongkir.php',
                     type:'POST',
-                    data: 'id_kota='+id_kota+'&kurir='+kurir+'&total_berat='+total_berat,
+                    data: 'id_kota='+id_kota+'&kurir='+kurir+'&total_berat='+total_berat+'&total_belanja='+total_belanja,
                     success:function(hasil)
                     {
                         // alert(hasil)
@@ -153,15 +161,21 @@ $(document).ready(function() {
 
     $("select[name=pilih_layanan]").change(function(){
         var layanan = $(this).val();
-        var biaya = $("option:selected",this).attr('biaya');
+        var biaya_ongkir = $("option:selected",this).attr('biaya');
+        var tampil_ongkir = $("option:selected",this).attr('tampil_ongkir');
+        var tampil_total_biaya = $("option:selected",this).attr('tampil_total_biaya');
         var desc = $("option:selected",this).attr('desc');
-        $("input[name=ongkir]").val(biaya);
+        var serv = $("option:selected",this).attr('serv');
+        $("input[name=ongkir]").val(biaya_ongkir);
         $("input[name=layanan]").val(desc);
 
         var total_belanja = $("input[name=total_belanja]").val();
-        var total_biaya = parseInt(total_belanja) + parseInt(biaya);
+        var total_biaya = parseInt(total_belanja) + parseInt(biaya_ongkir);
         $("input[name=total_biaya]").val(total_biaya);
-        $("input[name=tampil_ongkir]").val(biaya);
+        $("input[name=tampil_ongkir]").val(biaya_ongkir);
+        $("#biaya_ongkir").html(tampil_ongkir);
+        $("#total_biaya").html(tampil_total_biaya);
+        $("#layanan").html(serv);
 
         
         
