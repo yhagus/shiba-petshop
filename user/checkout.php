@@ -1,10 +1,6 @@
 <?php include '../navbar.php'; ?>
 <?php include '../actions/ongkir/api.php'; ?>
-<div class="container">
-
-	<?php 
-
-
+	<?php
 	$id = $_SESSION['id'];
 	$result = $db->query("SELECT * FROM users WHERE id_user ='$id'");
 	$user = $result->fetch_assoc();
@@ -29,14 +25,9 @@
 		$total_belanja += $krj['harga_produk']*$krj['jumlah'];
 	}
 
-
-
-
 	$prov = tampil_provinsi();
-
-
 	?>
-	<main>
+	<main class="container my-4-5">
 		<div class="py-5 text-center">
 			<img class="d-block mx-auto mb-4" src="/shiba-petshop/assets/img/checkout.png" alt="" width="150">
 			<h2>Checkout form</h2>
@@ -167,27 +158,23 @@
 						<div class="col-md-3">
 							<label for="zip" class="form-label">Biaya Ongkir</label>
 							<input type="" class="form-control" name="tampil_ongkir">
-						</select>
-					</div>
+                        </div>
 
 				</div>
 
 				<hr class="my-4">
-				<input type="" name="nama" value="<?php echo $user['nama_user'] ?>">
-				<input type="" name="tlp" value="<?php echo $user['no_tlp'] ?>">
-				<input type="" name="addr" value="<?php echo $user['alamat_user'] ?>">
+				<input name="nama" value="<?php echo $user['nama_user'] ?>">
+				<input name="tlp" value="<?php echo $user['no_tlp'] ?>">
+				<input name="addr" value="<?php echo $user['alamat_user'] ?>">
 				<br>
-				<input type="" name="prov_tujuan" placeholder="prov_tujuan">
-				<input type="" name="kota_tujuan" placeholder="kota_tujuan">
-				<input type="" name="kurir" placeholder="kurir">
-				<input type="" name="layanan" placeholder="layanan">
-				<input type="" name="total_berat" placeholder="total_berat" value="<?php echo $total_berat ?>">
-				<input type="" name="total_belanja" placeholder="total_belanja" value="<?php echo $total_belanja ?>">
-				<input type="" name="ongkir" placeholder="ongkir">
-				<input type="" name="total_biaya" placeholder="total_biaya">
-
-				<br>
-				<br>
+				<input name="prov_tujuan" placeholder="prov_tujuan">
+				<input name="kota_tujuan" placeholder="kota_tujuan">
+				<input name="kurir" placeholder="kurir">
+				<input name="layanan" placeholder="layanan">
+				<input name="total_berat" placeholder="total_berat" value="<?php echo $total_berat ?>">
+				<input name="total_belanja" placeholder="total_belanja" value="<?php echo $total_belanja ?>">
+				<input name="ongkir" placeholder="ongkir">
+				<input name="total_biaya" placeholder="total_biaya">
 
 				<hr class="my-4">
 
@@ -243,20 +230,12 @@
 						</div>
 					</div> -->
 
-					<hr class="my-4">
-
 					<button class="w-100 btn btn-primary btn-lg" type="submit">Pesan Sekarang</button>
 				</form>
 			</div>
 		</div>
 	</main>
 
-	<footer class="my-5 pt-5 text-muted text-center text-small">
-		<p class="mb-1">&copy; 2017–2021 Company Name</p>
-		<ul class="list-inline">
-			<li class="list-inline-item"><a href="#">Privacy</a></li>
-			<li class="list-inline-item"><a href="#">Terms</a></li>
-			<li class="list-inline-item"><a href="#">Support</a></li>
-		</ul>
-	</footer>
-</div>
+<script>
+    document.title = "Checkout";
+</script>
