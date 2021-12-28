@@ -25,10 +25,10 @@ if (isset($_SESSION['id'])){
                     <a class="nav-link" id="catalog" href="/shiba-petshop/catalog.php">Catalog</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-3" type="search" placeholder="Search">
-                <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-            </form>
+            <form action="search.php" method="get" class="d-flex">
+                    <input class="form-control me-3" type="text" name="cari" placeholder="Search" >
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             <?php
             if (isset($_SESSION['id'])){?>
                 <div class="flex-shrink-0 dropdown mx-3">
