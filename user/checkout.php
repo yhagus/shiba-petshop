@@ -1,12 +1,10 @@
 <?php include '../navbar.php'; ?>
 <?php include '../actions/ongkir/api.php'; ?>
-<<<<<<< Updated upstream
-	<?php
-=======
 
 <?php 
 if (!isset($_SESSION['id'])) {
-	# code...
+	header("location:/shiba-petshop/login.php");
+	exit();
 }
  ?>
 <div class="container">
@@ -14,7 +12,6 @@ if (!isset($_SESSION['id'])) {
 	<?php 
 
 
->>>>>>> Stashed changes
 	$id = $_SESSION['id'];
 	$result = $db->query("SELECT * FROM users WHERE id_user ='$id'");
 	$user = $result->fetch_assoc();
@@ -39,9 +36,14 @@ if (!isset($_SESSION['id'])) {
 		$total_belanja += $krj['harga_produk']*$krj['jumlah'];
 	}
 
+
+
+
 	$prov = tampil_provinsi();
+
+
 	?>
-	<main class="container my-4-5">
+	<main>
 		<div class="py-5 text-center">
 			<img class="d-block mx-auto mb-4" src="/shiba-petshop/assets/img/checkout.png" alt="" width="150">
 			<h2>Checkout form</h2>
@@ -165,25 +167,14 @@ if (!isset($_SESSION['id'])) {
 						</div>
 
 						<div class="col-md-3">
-<<<<<<< Updated upstream
-							<label for="zip" class="form-label">Biaya Ongkir</label>
-							<input type="" class="form-control" name="tampil_ongkir">
-                        </div>
-=======
 							<label for="zip" class="form-label" >Biaya Ongkir</label>
 							<input type="" class="form-control" name="tampil_ongkir" readonly="">
 						</select>
 					</div>
->>>>>>> Stashed changes
 
 				</div>
 
 				<hr class="my-4">
-<<<<<<< Updated upstream
-				<input name="nama" value="<?php echo $user['nama_user'] ?>">
-				<input name="tlp" value="<?php echo $user['no_tlp'] ?>">
-				<input name="addr" value="<?php echo $user['alamat_user'] ?>">
-=======
 				<input type="" name="nama" value="<?php echo $user['nama_user'] ?>">
 				<input type="" name="tlp" value="<?php echo $user['no_tlp'] ?>">
 				<input type="" name="addr" value="<?php echo $user['alamat_user'] ?>">
@@ -198,16 +189,7 @@ if (!isset($_SESSION['id'])) {
 				<input type="" name="total_biaya" placeholder="total_biaya" >
 
 				<br>
->>>>>>> Stashed changes
 				<br>
-				<input name="prov_tujuan" placeholder="prov_tujuan">
-				<input name="kota_tujuan" placeholder="kota_tujuan">
-				<input name="kurir" placeholder="kurir">
-				<input name="layanan" placeholder="layanan">
-				<input name="total_berat" placeholder="total_berat" value="<?php echo $total_berat ?>">
-				<input name="total_belanja" placeholder="total_belanja" value="<?php echo $total_belanja ?>">
-				<input name="ongkir" placeholder="ongkir">
-				<input name="total_biaya" placeholder="total_biaya">
 
 				<hr class="my-4">
 
@@ -263,12 +245,20 @@ if (!isset($_SESSION['id'])) {
 						</div>
 					</div> -->
 
+					<hr class="my-4">
+
 					<button class="w-100 btn btn-primary btn-lg" type="submit">Pesan Sekarang</button>
 				</form>
 			</div>
 		</div>
 	</main>
 
-<script>
-    document.title = "Checkout";
-</script>
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+		<p class="mb-1">&copy; 2017–2021 Company Name</p>
+		<ul class="list-inline">
+			<li class="list-inline-item"><a href="#">Privacy</a></li>
+			<li class="list-inline-item"><a href="#">Terms</a></li>
+			<li class="list-inline-item"><a href="#">Support</a></li>
+		</ul>
+	</footer>
+</div>
