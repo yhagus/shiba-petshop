@@ -1,3 +1,3 @@
 <?php
 
-header("location:profile.php");
+redirect('user/profile');

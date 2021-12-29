@@ -13,7 +13,7 @@ include 'navbar.php';
             ?>
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-fluid img-produk" src="assets/img/produk/<?php echo $produk['foto_produk'] ?>" alt=""/>
+                    <img class="img-fluid img-produk" src="<?php asset('img/produk/' . $produk['foto_produk']);?>" alt=""/>
                 </div>
                 <div class="col-md-6">
                     <div class="product-dtl">
@@ -36,7 +36,7 @@ include 'navbar.php';
                         </div>
                         <div class="product-count">
                             <label for="size">Quantity</label>
-                            <form action="actions/cart/add.php" method="POST" >
+                            <form action="<?php action('cart/add');?>" method="POST" >
                                 <div class="display-flex">
                                 <!-- jumlah produk -->
                                 <!-- user gak bisa beli melebihi stok -->

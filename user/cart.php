@@ -2,7 +2,7 @@
 include '../navbar.php';
 
 if (!isset($_SESSION['id'])) {
-    header("location: ../index.php");
+    redirect('/');
 }
 
 $id_user = $_SESSION['id'];
@@ -38,13 +38,13 @@ while($data = $result->fetch_assoc()){
                                 <div class="row">
                                     <div class="col-2 m-auto">
                                         <a class="thumbnail pull-left" href="#">
-                                            <img height="100" class="img-fluid" src="/shiba-petshop/assets/img/produk/<?= $product['foto_produk']; ?>" alt="">
+                                            <img height="100" class="img-fluid" src="<?php asset('img/produk/' . $product['foto_produk']);?>" alt="">
                                         </a>
                                     </div>
                                     <div class="col-10">
                                         <div class="row">
                                             <h4>
-                                                <a href="/shiba-petshop/detail.php?id=<?= $product['id_produk']; ?>"
+                                                <a href="<?php route('detail.php?id=' . $product['id_produk']);?>"
                                                    class="text-decoration-none">
                                                     <?= $product['nama_produk']; ?>
                                                 </a>
@@ -58,7 +58,7 @@ while($data = $result->fetch_assoc()){
                             <td class="col-sm-1 col-md-1 text-center"><?= $product['harga_produk']; ?></td>
                             <td class="col-sm-1 col-md-1 text-center"><strong><?= $product['harga_produk']*$product['jumlah']; ?></strong></td>
                             <td class="col-sm-1 col-md-1">
-                                <form action="/shiba-petshop/actions/user/cart/delete.php?id_cart=<?= $product['id_keranjang']; ?>" method="post">
+                                <form action="<?php action('user/cart/delete.php?id_cart=' . $product['id_keranjang']);?>" method="post">
                                     <button class="btn btn-danger rounded-pill" name="removeItem">
                                         Remove
                                     </button>
