@@ -33,3 +33,35 @@ function rp($harga)
 {
     echo "Rp ".str_replace(",", ".", number_format($harga));
 }
+
+function redirect($url){
+
+    if ($url === '/'){
+        header("location: /shiba-petshop" . $url);
+    } else{
+        header("location: /shiba-petshop/" . $url . ".php");
+    }
+}
+
+function route($url)
+{
+    if ($url === '/'){
+        echo "/shiba-petshop" . $url;
+    } else{
+        echo "/shiba-petshop/" . $url . ".php";
+    }
+}
+
+function asset($url)
+{
+    echo "/shiba-petshop" . "/assets/" . $url;
+}
+
+function action($url){
+    $uri = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+    if (strpos($uri, ".php") !== false){
+        echo "/shiba-petshop/actions/" . $url;
+    } else{
+        echo "/shiba-petshop/actions/" . $url . ".php";
+    }
+}

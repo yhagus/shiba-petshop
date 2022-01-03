@@ -2,7 +2,6 @@
 include 'header.php';
 if (isset($_SESSION['message'])){
     echo "<script>swal({title: '". $_SESSION['message'] ."', icon: '". $_SESSION['icon'] ."'})</script>";
-
     unset($_SESSION['message'], $_SESSION['icon']);
 }
 ?>
@@ -12,7 +11,7 @@ if (isset($_SESSION['message'])){
             <div class="col-lg-12 col-xl-11">
                 <div class="card text-black" style="border-radius: 25px;">
                     <div class="card-body p-md-5">
-                        <form method="post" action="actions/register/user.php">
+                        <form method="post" action="<?php action('register/user');?>">
 
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
