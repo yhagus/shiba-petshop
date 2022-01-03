@@ -30,6 +30,7 @@ if (isset($_SESSION['id'])){
 
         <div>
             <p class="text-sm-start mx-1">No account? <a href="register.php" class="text-decoration-none" id="register">Create one!</a></p>
+            <p class="text-sm-start mx-1">Forgot Password? <a href="forgot.php" class="text-decoration-none" id="register">Click Me!</a></p>
         </div>
 
         <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
