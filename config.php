@@ -58,10 +58,13 @@ function asset($url)
 }
 
 function action($url){
-    $uri = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-    if (strpos($uri, ".php") !== false){
-        echo "/shiba-petshop/actions/" . $url;
-    } else{
-        echo "/shiba-petshop/actions/" . $url . ".php";
-    }
+
+    echo "/shiba-petshop/actions/" . $url;
+//    $uri = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+//    if (strpos($uri, "php") !== false){
+//        echo "/shiba-petshop/actions/" . $url;
+//    } else{
+//        echo "/shiba-petshop/actions/" . $url . ".php";
+//        echo "<script>alert('$uri')</script>";
+//    }
 }

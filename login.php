@@ -7,7 +7,7 @@ if (isset($_SESSION['id'])){
 ?>
 
 <main class="card form-signin text-center my-6">
-    <form action="<?php action('login/user');?>" method="post">
+    <form action="<?php action('login/user.php');?>" method="post">
         <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
