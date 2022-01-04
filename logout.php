@@ -3,4 +3,5 @@
 session_start();
 session_unset();
 session_destroy();
-redirect('/');
+
+echo "<script>alert('logout Berhasil!');location='index.php'</script>";

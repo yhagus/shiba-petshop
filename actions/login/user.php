@@ -23,5 +23,5 @@ if (mysqli_num_rows($res) > 0){
 
     header("location: ../../index.php");
 } else{
-    header("location: ../../login.php");
+    echo "<script>alert('Akun Tidak Ditemukan');location='../../login.php'</script>";
 }
