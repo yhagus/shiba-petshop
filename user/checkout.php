@@ -74,7 +74,7 @@ $prov = tampil_provinsi();
             </div>
             <div class="col-md-6 col-lg-8">
                 <h4 class="mb-3">Penerima</h4>
-                <form class="needs-validation" novalidate method="POST" action="<?php action('transaction/save');?>">
+                <form class="needs-validation" novalidate method="POST" action="<?php action('transaction/save.php');?>">
                     <div class="row g-3">
                         <div class="col-sm-12">
                             <label for="firstName" class="form-label">Nama Penerima</label>
