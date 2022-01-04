@@ -55,7 +55,7 @@ $user = $result->fetch_assoc();
                             </div>
 
                             <div class="modal-body p-5 pt-0">
-                                <form method="post" action="<?php action('user/edit');?>" class="">
+                                <form method="post" action="<?php action('user/edit.php');?>" class="">
                                     <div class="form-floating mb-3">
                                         <input type="password" name="old_password" class="form-control rounded-4"
                                                placeholder="old password">
@@ -91,7 +91,7 @@ $user = $result->fetch_assoc();
                                         aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" enctype="multipart/form-data" action="<?php action('user/edit');?>">
+                                <form method="post" enctype="multipart/form-data" action="<?php action('user/edit.php');?>">
                                     <div class="form-group mb-4">
 
                                         <input type="file" name="foto_user">
@@ -106,7 +106,7 @@ $user = $result->fetch_assoc();
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
-                    <form class="small" method="post" action="<?php action('user/edit');?>">
+                    <form class="small" method="post" action="<?php action('user/edit.php');?>">
                         <p class="text-center h1 mb-4 mx-1 mx-md-4 mt-4">Edit Profile</p>
 
                         <div class="row my-1">
