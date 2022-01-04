@@ -16,59 +16,53 @@ while ($data = mysqli_fetch_assoc($result)){
 <main class="mt-4-5">
     <div class="container">
         <div class="row">
-            <?php
-            foreach ($transactions as $transaction) {
-                ?>
-                <div class="col-7 mb-3 mx-auto">
-                    <div class="card rounded">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12 col-lg-4 m-auto text-center">
-                                    <img class="img-fluid" width="150"
-                                         src="/shiba-petshop/assets/img/statement.png" alt="">
-                                </div>
-                                <div class="col-12 col-lg-8">
-                                    <h5 class="card-title"><?= $transaction['kode_transaksi']; ?></h5>
-                                    <p class="card-text"><?= tanggal($transaction['tgl_transaksi']); ?></p>
-                                    <p class="card-text">Rp. <?= $transaction['total_biaya']; ?></p>
-                                    <p class="card-text">
-                                        <span
-                                            <?= $transaction['status'] === 'belum bayar' ? 'class="border border-danger text-danger rounded-3 p-1 px-2"' : null; ?>
-                                            <?= $transaction['status'] === 'diproses' ? 'class="border border-info text-info rounded-3 p-1 px-2"' : null; ?>
-                                            <?= $transaction['status'] === 'dikirim' ? 'class="border border-warning text-warning rounded-3 p-1 px-2"' : null; ?>
-                                            <?= $transaction['status'] === 'selesai' ? 'class="border border-success text-success rounded-3 p-1 px-2"' : null; ?>
-                                            >
-                                            <?= $transaction['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
-                                            <?= $transaction['status'] === 'diproses' ? 'Diproses' : null; ?>
-                                            <?= $transaction['status'] === 'dikirim' ? 'Dikirim' : null; ?>
-                                            <?= $transaction['status'] === 'selesai' ? 'Selesai' : null; ?>
-                                        </span>
-                                    </p>
-                                    <p class="card-text">Resi: $transaction['nomor_resi']</p>
+                <div class="col-8 card mx-auto">
+                    <h1 class="display-6 mt-3">My Billing</h1>
+                    <table class="table mt-2">
+                        <thead>
+                        <tr class="table-info">
+                            <th scope="col">Invoice</th>
+                            <th scope="col">Tanggal</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                                    <div class="row">
-                                        <div class="col-6 col-lg-2 text-center">
-                                            <a href="/shiba-petshop/user/riwayat/detail.php?kode=<?= $transaction['kode_transaksi'] ?>">
-                                                <button type="button" title="Show" class="btn btn-outline-dark rounded-pill"><i
-                                                            class="bi bi-search"></i></button>
-                                            </a>
-                                        </div>
-                                        <div class="col-6 col-lg-2 text-center">
-                                            <a href="">
-                                                <button type="button" title="Pay" class="btn btn-outline-dark rounded-pill"><i
-                                                            class="bi bi-cash-coin"></i></button>
-                                            </a>
-                                        </div>
-                                        <div class="col-8 col-lg-8"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php
+                        foreach ($transactions as $transaction) {
+                            ?>
+                            <tr>
+                                <th scope="row"><?= $transaction['kode_transaksi']; ?></th>
+                                <td><?= tanggal($transaction['tgl_transaksi']); ?></td>
+                                <td>Rp. <?= $transaction['total_biaya']; ?>,-</td>
+                                <td>
+                                    <span
+                                        <?= $transaction['status'] === 'selesai' ? 'class="badge rounded-pill bg-success"' : null;?>
+                                        <?= $transaction['status'] === 'dikirim' ? 'class="badge rounded-pill bg-warning"' : null;?>
+                                        <?= $transaction['status'] === 'diproses' ? 'class="badge rounded-pill bg-info"' : null;?>
+                                        <?= $transaction['status'] === 'belum bayar' ? 'class="badge rounded-pill bg-danger"' : null;?>
+                                    >
+                                        <?= $transaction['status'] === 'selesai' ? 'Selesai' : null; ?>
+                                        <?= $transaction['status'] === 'dikirim' ? 'Dikirim' : null; ?>
+                                        <?= $transaction['status'] === 'diproses' ? 'Diproses' : null; ?>
+                                        <?= $transaction['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
+                                    </span>
+                                </td>
+                                <td class="mx-auto">
+                                    <a href="<?php route('user/riwayat/detail.php?kode=' . $transaction['kode_transaksi']);?>">
+                                        <button type="button" title="Show" class="btn btn-sm btn-outline-dark rounded-pill"><i
+                                                    class="bi bi-search"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-                <?php
-            }
-            ?>
         </div>
     </div>
 </main>

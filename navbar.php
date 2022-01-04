@@ -22,10 +22,10 @@ if (isset($_SESSION['id'])){
                     <a class="nav-link" id="home" href="<?php route('/'); ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="catalog" href="<?php route('catalog');?>">Catalog</a>
+                    <a class="nav-link" id="catalog" href="<?php route('catalog.php');?>">Catalog</a>
                 </li>
             </ul>
-            <form action="<?php route('search');?>" method="get" class="d-flex">
+            <form action="<?php route('search.php');?>" method="get" class="d-flex">
                     <input class="form-control me-3" type="text" name="cari" placeholder="Search" >
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -36,13 +36,14 @@ if (isset($_SESSION['id'])){
                         <img src="<?= $user['foto_user'] === '' ? $blank : $avatar ?>" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end text-small shadow animate slideIn" aria-labelledby="dropdownUser2">
-                        <li><a class="dropdown-item" href="<?php route('user/riwayat');?>"><i class="bi bi-receipt-cutoff me-2"></i>History Transaction</a></li>
-                        <li><a class="dropdown-item" href="<?php route('user/cart');?>"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
-                        <li><a class="dropdown-item" href="<?php route('user/profile');?>"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
+                        <li><a class="dropdown-item" href="<?php route('user/riwayat.php');?>"><i class="bi bi-receipt-cutoff me-2"></i>History Transaction</a></li>
+                        <li><a class="dropdown-item" href="<?php route('user/cart.php');?>"><i class="bi bi-cart me-2"></i>Shopping Cart</a></li>
+                        <li><a class="dropdown-item" href="<?php route('user/wishlist.php');?>"><i class="bi bi-heart me-2"></i>Wishlist</a></li>
+                        <li><a class="dropdown-item" href="<?php route('user/profile.php');?>"><i class="bi bi-person me-2"></i>Manage Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="<?php route('logout');?>"><i class="bi bi-box-arrow-right me-2"></i>Sign out</a></li>
+                        <li><a class="dropdown-item" href="<?php route('logout.php');?>"><i class="bi bi-box-arrow-right me-2"></i>Sign out</a></li>
                     </ul>
                 </div>
             <?php

@@ -7,22 +7,29 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($data = mysqli_fetch_assoc($result)) {
     $semua_data[] = $data;
 }
-
 // echo "<pre>";
 // print_r ($semua_data);
 // echo "</pre>";
 ?>
 
-
 <div class="container mt-4-5">
     <div class="row">
         <?php foreach ($semua_data as $produk): ?>
+            <?php
+            $wishlist = '';
+            if (isset($_SESSION['id'])) {
+                $id_user = $_SESSION['id'];
+                $id_produk = $produk['id_produk'];
+                $result = $db->query("SELECT * FROM wishlist WHERE id_user='$id_user' AND id_produk='$id_produk'")->fetch_assoc();
+                if ($result) $wishlist = $result['id_produk'];
+            }
+            ?>
             <div class="col-sm-6 col-md-3 mt-4-5">
                 <div class="card p-3">
                     <!-- menampilkan image produk dari perulangan -->
                     <div class="row mx-auto">
                         <a href="detail.php?id=<?php echo $produk['id_produk'] ?>">
-                            <img src="assets/img/produk/<?php echo $produk['foto_produk'] ?>" class="card-img mb-3" height="200">
+                            <img src="<?php asset('img/produk/' . $produk['foto_produk']);?>" class="card-img mb-3" height="200" alt="">
                         </a>
                     </div>
 
@@ -40,9 +47,9 @@ while ($data = mysqli_fetch_assoc($result)) {
                     <div class="row mt-4-5">
                         <div class="col-7 small">
                             <!-- link ke wishlist -->
-                            <a href="wishlist.php?id=<?php echo $produk['id_produk'] ?>"
+                            <a href="<?php $produk['id_produk'] != $wishlist ? action('wishlist/add.php?id_produk=' . $produk['id_produk']) : action('wishlist/remove.php?id_produk=' . $produk['id_produk']);?>"
                                class="btn-sm btn-primary btn-product text-decoration-none">
-                                <i class="bi bi-heart me-1"></i>
+                                <i class="bi <?= $produk['id_produk'] === $wishlist ? 'bi-heart-fill' : 'bi-heart' ?> me-1"></i>
                                 Wishlist
                             </a>
                         </div>
