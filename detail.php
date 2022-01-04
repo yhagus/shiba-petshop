@@ -36,7 +36,7 @@ include 'navbar.php';
                         </div>
                         <div class="product-count">
                             <label for="size">Quantity</label>
-                            <form action="<?php action('cart/add.php');?>" method="POST" >
+                            <form action="<?php action('cart/add');?>" method="POST" >
                                 <div class="display-flex">
                                 <!-- jumlah produk -->
                                 <!-- user gak bisa beli melebihi stok -->
