@@ -174,7 +174,7 @@ if (isset($_POST["tambah"])) {
                                 <input type="number" class="form-control" name="stok" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Berat</label>
+                                <label class="form-label">Berat (gram)</label>
                                 <input type="number" class="form-control" name="berat" required>
                             </div>
                             <div class="mb-3">

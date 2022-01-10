@@ -179,7 +179,7 @@ if (isset($_POST["edit"])) {
                                 <input type="number" class="form-control" name="stok" value="<?= $produk["stok"]; ?>">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Berat</label>
+                                <label class="form-label">Berat (gram)</label>
                                 <input type="number" class="form-control" name="berat" value="<?= $produk["berat"]; ?>">
                             </div>
                             <div class="mb-3">
