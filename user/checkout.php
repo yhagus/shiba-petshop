@@ -6,20 +6,28 @@ if (!isset($_SESSION['id'])) {
     redirect('login');
 }
 
+
+
 $id = $_SESSION['id'];
 $result = $db->query("SELECT * FROM users WHERE id_user ='$id'");
 $user = $result->fetch_assoc();
 
-$id_keranjang = 1;
-$result = $db->query("SELECT * FROM keranjang INNER JOIN produk ON keranjang.id_produk=produk.id_produk INNER JOIN kategori ON kategori.id_kategori = produk.id_kategori ");
+$id_user = $_SESSION['id'];
+$result = $db->query("SELECT * FROM keranjang INNER JOIN produk ON keranjang.id_produk=produk.id_produk INNER JOIN kategori ON kategori.id_kategori = produk.id_kategori WHERE id_user='$id_user' ");
 
 while ($data = $result->fetch_assoc()) {
     $keranjang[] = $data;
 }
 
-// echo "<pre>";
-// print_r ($keranjang);
-// echo "</pre>";
+$cek = $result->num_rows;
+echo "<pre>";
+print_r ($cek);
+echo "</pre>";
+if($cek == 0)
+{
+    echo "<script>location='../catalog.php'</script>";
+}
+
 
 $total_berat = 0;
 $total_belanja = 0;
@@ -34,6 +42,12 @@ $prov = tampil_provinsi();
 <div class="container">
     <main>
         <div class="py-5 text-center">
+<?php 
+
+// echo "<pre>";
+// print_r ($_SESSION['id']);
+// echo "</pre>";
+ ?>
             <img class="d-block mx-auto mb-4" src="/shiba-petshop/assets/img/checkout.png" alt="" width="150">
             <h2>Checkout form</h2>
         </div>
@@ -42,7 +56,7 @@ $prov = tampil_provinsi();
         <div class="row g-5">
             <div class="col-md-6 col-lg-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-primary">Your cart</span>
+                    <span class="text-primary">Keranjang Belanja</span>
                     <span class="badge bg-primary rounded-pill"><?php echo count($keranjang) ?></span>
                 </h4>
                 <ul class="list-group mb-3">
@@ -77,7 +91,7 @@ $prov = tampil_provinsi();
                         <div class="col-sm-12">
                             <label for="firstName" class="form-label">Nama Penerima</label>
                             <input type="text" class="form-control" id="firstName" placeholder="" required
-                                   name="nama_penerima">
+                                   name="nama_penerima" required="">
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
@@ -86,7 +100,7 @@ $prov = tampil_provinsi();
                         <div class="col-12">
                             <label for="email" class="form-label">No Tlp / HP / WA</label>
                             <input type="number" class="form-control" id="email" placeholder="nomor HP / WA"
-                                   onkeydown="return event.keyCode !== 69" name="telp_penerima">
+                                   onkeydown="return event.keyCode !== 69" name="telp_penerima" required="">
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
                             </div>
@@ -94,7 +108,7 @@ $prov = tampil_provinsi();
 
                         <div class="col-12">
                             <label for="address" class="form-label">Alamat Lengkap</label>
-                            <textarea class="form-control" cols="30" rows="5" name="alamat_tujuan"></textarea>
+                            <textarea class="form-control" cols="30" rows="5" name="alamat_tujuan" required=""></textarea>
                             <div class="invalid-feedback">
                                 Please enter your shipping address.
                             </div>
@@ -145,13 +159,13 @@ $prov = tampil_provinsi();
 
                         <div class="col-md-4">
                             <label for="zip" class="form-label">Kurir</label>
-                            <select class="form-select" name="pilih_kurir">
+                            <select class="form-select" name="pilih_kurir" required="">
                             </select>
                         </div>
 
                         <div class="col-md-4">
                             <label for="zip" class="form-label">Jenis Layanan</label>
-                            <select class="form-select" name="pilih_layanan">
+                            <select class="form-select" name="pilih_layanan" required="">
                             </select>
                         </div>
 
@@ -163,74 +177,21 @@ $prov = tampil_provinsi();
                     </div>
 
                     <hr class="my-4">
-                    <input name="nama" value="<?= $user['nama_user'] ?>">
-                    <input name="tlp" value="<?= $user['no_tlp'] ?>">
-                    <input name="addr" value="<?= $user['alamat_user'] ?>">
+                    <input hidden="" name="nama" value="<?= $user['nama_user'] ?>">
+                    <input hidden="" name="tlp" value="<?= $user['no_tlp'] ?>">
+                    <input hidden="" name="addr" value="<?= $user['alamat_user'] ?>">
                     <br>
-                    <input name="prov_tujuan" placeholder="prov_tujuan">
-                    <input name="kota_tujuan" placeholder="kota_tujuan">
-                    <input name="kurir" placeholder="kurir">
-                    <input name="layanan" placeholder="layanan">
-                    <input name="total_berat" placeholder="total_berat" value="<?= $total_berat ?>">
-                    <input name="total_belanja" placeholder="total_belanja" value="<?= $total_belanja ?>">
-                    <input name="ongkir" placeholder="ongkir">
-                    <input name="total_biaya" placeholder="total_biaya">
+                    <input hidden="" name="prov_tujuan" placeholder="prov_tujuan">
+                    <input hidden="" name="kota_tujuan" placeholder="kota_tujuan">
+                    <input hidden="" name="kurir" placeholder="kurir">
+                    <input hidden="" name="layanan" placeholder="layanan">
+                    <input hidden="" name="total_berat" placeholder="total_berat" value="<?= $total_berat ?>">
+                    <input hidden="" name="total_belanja" placeholder="total_belanja" value="<?= $total_belanja ?>">
+                    <input hidden="" name="ongkir" placeholder="ongkir">
+                    <input hidden="" name="total_biaya" placeholder="total_biaya">
 
                     <br>
                     <br>
-
-
-                    <!-- <h4 class="mb-3">Payment</h4>
-
-                    <div class="my-3">
-                        <div class="form-check">
-                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                            <label class="form-check-label" for="credit">Credit card</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                            <label class="form-check-label" for="debit">Debit card</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                            <label class="form-check-label" for="paypal">PayPal</label>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="row gy-3">
-                        <div class="col-md-6">
-                            <label for="cc-name" class="form-label">Name on card</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                            <small class="text-muted">Full name as displayed on card</small>
-                            <div class="invalid-feedback">
-                                Name on card is required
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="cc-number" class="form-label">Credit card number</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Credit card number is required
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="cc-expiration" class="form-label">Expiration</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Expiration date required
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="cc-cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Security code required
-                            </div>
-                        </div>
-                    </div> -->
 
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Pesan Sekarang</button>
                 </form>

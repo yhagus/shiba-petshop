@@ -59,17 +59,35 @@ elseif($id_trans>=100)
 $db->query("UPDATE transaksi SET kode_transaksi='$kode_trans' WHERE id_transaksi='$id_trans' ");
 
 // // cuma testing nanti diganti session keranjang
-// $result = $db->query("SELECT * FROM keranjang INNER JOIN produk ON produk.id_produk = keranjang.id_produk");
-// while ($data = $result->fetch_assoc()) {
-// 	$krj[] = $data
-// }
+$result = $db->query("SELECT * FROM keranjang INNER JOIN produk ON produk.id_produk = keranjang.id_produk WHERE id_user='$id_user' ");
+while ($data = $result->fetch_assoc()) {
+	$krj[] = $data;
+}
 
-// foreach ($krj as $krj) 
-// {
-// 	$$krj['harga_produk'];
-// 	$sub_total = $krj['harga_produk'] * $krj['jumlah'];
 
-// $db->query("INSERT INTO detail_transaksi (id_transaksi,id_produk, produk, harga, jumlah, sub_total ) VALUES ('$id_trans', '$id_produk', '$nama_produk', '$harga', '$jumlah', '$sub_total')");
-// }
+
+foreach ($krj as $krjg) 
+{
+	$id_produk = $krjg['id_produk'];
+	$res = $db->query("SELECT * FROM produk WHERE id_produk ='$id_produk' ");
+	$prod = $res->fetch_assoc();
+
+	$nama_produk = $prod['nama_produk'];
+
+	$harga = $krjg['harga_produk'];
+	$jumlah = $krjg['jumlah'];
+	
+	$sub_total = $krjg['harga_produk'] * $krjg['jumlah'];
+
+	$db->query("INSERT INTO detail_transaksi (id_transaksi,id_produk, produk, harga, jumlah, sub_total ) VALUES ('$id_trans', '$id_produk', '$nama_produk', '$harga', '$jumlah', '$sub_total')");
+
+	$stok = $prod['stok'] - $jml; 
+	$db->query("UPDATE produk SET stok='$stok' WHERE id_produk='$id_produk' ");
+}
+
+$db->query("DELETE FROM keranjang WHERE id_user='$id_user'");
+
+echo "<script>alert('pemesanan berhasil, silakan lakukan pembayaran'); location='../../user/riwayat.php'</script>";
+
 
 ?>

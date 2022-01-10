@@ -9,6 +9,8 @@ include '../../../config.php';
  * METHODS
  */
 
+
+
 if(isset($_POST['removeItem'])){
     $id = $_GET['id_cart'];
     $result = $db->query("DELETE FROM keranjang WHERE id_keranjang='$id'");

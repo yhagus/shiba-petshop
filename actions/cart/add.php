@@ -20,4 +20,6 @@ else
 	$db->query("INSERT INTO keranjang(id_user,id_produk,jumlah) VALUES ('$id_user','$id_produk','$qty') ");
 }
 
+echo "<script>alert('produk berhasil ditambahkan ke keranjang');location='../../user/cart.php';</script>";
+
 ?>

@@ -12,7 +12,7 @@ if (isset($_SESSION['id'])){
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow-navbar">
     <div class="container-fluid">
-        <a class="navbar-brand mx-3" href="#">SHIBA</a>
+        <a class="navbar-brand mx-3" href="index.php">SHIBA</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -144,7 +144,7 @@ if (isset($_POST["cari"])) {
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Id Produk</th>
+                                
                                 <th scope="col">Id Kategori</th>
                                 
                                 <th scope="col">Nama Produk</th>
@@ -160,7 +160,7 @@ if (isset($_POST["cari"])) {
                             <?php $i = 1; ?>
                             <?php foreach ($produk as $row) : ?>
                                 <tr>
-                                    <td><?= $row["id_produk"]; ?></td>
+                                  
                                     <td><?= $row["id_kategori"]; ?></td>
                                     
                                     <td><?= $row["nama_produk"]; ?></td>
@@ -199,10 +199,6 @@ if (isset($_POST["cari"])) {
                             <?php endif; ?>
                         </ul>
                     </nav>
-
-
-
-
                 </div>
             </main>
         </div>

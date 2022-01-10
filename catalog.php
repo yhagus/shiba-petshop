@@ -55,7 +55,7 @@ while ($data = mysqli_fetch_assoc($result)) {
                         </div>
                         <!-- link ke keranjang -->
                         <div class="col-5 small text-end">
-                            <a href="beli.php?id=<?php echo $produk['id_produk'] ?>"
+                            <a href="detail.php?id=<?php echo $produk['id_produk'] ?>"
                                class="btn-sm btn-success btn-product text-decoration-none">
                                 <i class="bi bi-cart me-1"></i>
                                 Buy
