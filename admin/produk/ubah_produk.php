@@ -20,18 +20,18 @@ if (isset($_POST["edit"])) {
 
     if (ubah_produk($_POST) > 0) {
         echo "
-			<script>
-				alert('data berhasil diubah!');
-				document.location.href = 'produk.php';
-			</script>
-		";
+        <script>
+            alert('data berhasil diubah!');
+            document.location.href = 'produk.php';
+        </script>
+        ";
     } else {
         echo "
-			<script>
-				alert('data gagal diubah!');
-				document.location.href = 'produk.php';
-			</script>
-		";
+        <script>
+            alert('data gagal diubah!');
+            document.location.href = 'produk.php';
+        </script>
+        ";
     }
 }
 ?>
@@ -146,13 +146,24 @@ if (isset($_POST["edit"])) {
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="foto_produkLama" value="<?= $produk["foto_produk"]; ?>">
-                            <div class="mb-3">
+                            <div class="mb-3" hidden="">
                                 <label class="form-label">Id Produk</label>
                                 <input type="text" class="form-control" name="id_produk" value="<?= $produk["id_produk"]; ?>">
                             </div>
+
+                            <?php 
+                            $kategori = query("SELECT * FROM kategori ");
+                            ?>
                             <div class="mb-3">
-                                <label class="form-label">Id Kategori</label>
-                                <input type="text" class="form-control" name="id_kategori" value="<?= $produk["id_kategori"]; ?>">
+                                <label class="form-label">Kategori</label>
+                                <select class="form-control form-select" name="id_kategori" required="">
+                                    <option value="">-pilih-</option>
+                                    <?php foreach ($kategori as $ktg): ?>
+
+                                        <option <?php if($ktg['id_kategori']==$produk['id_kategori']){echo "selected";} ?> value="<?php echo $ktg['id_kategori'] ?>"><?php echo $ktg['nama_kategori'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                                <!-- <input type="text" class="form-control" name="id_kategori" required> -->
                             </div>
                             
                             <div class="mb-3">
@@ -173,11 +184,11 @@ if (isset($_POST["edit"])) {
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
-                                <input type="text" class="form-control" name="deskripsi" value="<?= $produk["deskripsi"]; ?>">
+                                <textarea class="form-control" name="deskripsi" rows="5" cols="30"><?= $produk["deskripsi"]; ?></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="foto_produk">Foto Produk </label> <br>
-                                <img src="../asset/img/<?= $produk['foto_produk']; ?>" width="40"> <br>
+                                <img src="../../assets/img/produk/<?= $produk['foto_produk']; ?>" width="150"> <br>
                                 <input type="file" name="foto_produk" id="foto_produk">
                             </div>
                             <br>
@@ -197,7 +208,7 @@ if (isset($_POST["edit"])) {
             <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+-->
 
 
 </body>

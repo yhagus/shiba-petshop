@@ -19,7 +19,7 @@ $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 
-$produk = query("SELECT * FROM produk LIMIT $awalData, $jumlahDataPerHalaman");
+$produk = query("SELECT * FROM produk INNER JOIN kategori ON kategori.id_kategori=produk.id_kategori LIMIT $awalData, $jumlahDataPerHalaman");
 
 
 
@@ -41,6 +41,7 @@ if (isset($_POST["cari"])) {
     <link rel="stylesheet" href="../asset/css/admin.css">
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     <style>
         .bd-placeholder-img {
@@ -138,22 +139,20 @@ if (isset($_POST["cari"])) {
                     <a class="btn btn-primary text-white" href="tambah_produk.php">Tambah produk</a><br>
                     <br>
 
-                    <?php echo "<pre>";
-                    print_r ($produk);
-                    echo "</pre>"; ?>
-                    <table class="table">
+                  
+                    <table class="table" style="table-layout: fixed;">
                         <thead>
                             <tr>
                                 
-                                <th scope="col">Id Kategori</th>
+                                <th></th>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
                                 
-                                <th scope="col">Nama Produk</th>
-                                <th scope="col">Harga Produk</th>
-                                <th scope="col">Stok</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Deskripsi</th>
-                                <th scope="col">Foto Produk</th>
-                                <th scope="col">Aksi</th>
+                                <th>Harga Produk</th>
+                                <th width="80px">Stok</th>
+                                <th>Berat (gram)</th>
+                                <th>Deskripsi</th>
+                                <th width="171px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -161,17 +160,18 @@ if (isset($_POST["cari"])) {
                             <?php foreach ($produk as $row) : ?>
                                 <tr>
                                   
-                                    <td><?= $row["id_kategori"]; ?></td>
+                                    <td><img src="../../assets/img/produk/<?= $row["foto_produk"]; ?>" width="80" ></td>
                                     
                                     <td><?= $row["nama_produk"]; ?></td>
+                                    <td><?= $row["nama_kategori"]; ?></td>
                                     <td><?= $row["harga_produk"]; ?></td>
                                     <td><?= $row["stok"]; ?></td>
                                     <td><?= $row["berat"]; ?></td>
-                                    <td><?= $row["deskripsi"]; ?></td>
-                                    <td><img src="../asset/img/<?= $row["foto_produk"]; ?>" width="80"></td>
+                                    <td><?= cut_desc($row["deskripsi"]); ?></td>
                                     <td>
-                                        <a class="btn btn-warning text-white" href="ubah_produk.php?id_produk=<?= $row["id_produk"]; ?>">Ubah</a>
-                                        <a class="btn btn-danger" href="hapus_produk.php?id_produk=<?= $row["id_produk"]; ?>" onclick="return confirm('yakin?');">Hapus</a>
+                                    <a title="Detail Produk" class="btn btn-outline-info " href="detail_produk.php?id_produk=<?= $row["id_produk"]; ?>"><i class="bi bi-info"></i></a>
+                                        <a title="Edit Produk" class="btn btn-outline-warning " href="ubah_produk.php?id_produk=<?= $row["id_produk"]; ?>"><i class="bi bi-pencil"></i></a>
+                                        <a title="Hapus Produk" class="btn btn-outline-danger" href="hapus_produk.php?id_produk=<?= $row["id_produk"]; ?>" onclick="return confirm('yakin?');"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

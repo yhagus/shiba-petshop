@@ -202,7 +202,7 @@ if (isset($_POST["cari"])) {
                              </td>
                                     <td>
                                         <a title="Detail" class="btn btn-outline-warning" href="detail.php?id_transaksi=<?= $transaksi["id_transaksi"]; ?>"><i class="bi bi-info"></i></a>
-                                        <a title="Pembayaran" class="btn btn-outline-danger" href="pembayaran.php?id_transaksi=<?= $transaksi["id_transaksi"]; ?>" ><i class="bi bi-cash-coin"></i></a>
+                                        <a title="Pembayaran" class="btn btn-outline-success" href="pembayaran.php?id_transaksi=<?= $transaksi["id_transaksi"]; ?>" ><i class="bi bi-cash-coin"></i></a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

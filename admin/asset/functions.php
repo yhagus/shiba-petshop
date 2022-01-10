@@ -45,6 +45,28 @@ function hapus_user($id_user)
 	return mysqli_affected_rows($conn);
 }
 
+
+function cut_desc($kalimat)
+{
+	$exp_kalimat = explode(" ", $kalimat);
+
+	$jumlah_kata = count($exp_kalimat);
+
+	if( $jumlah_kata >=10)
+	{
+		for ($i=0; $i < 10; $i++) { 
+			$kata[] = $exp_kalimat[$i];
+		}
+	}
+	else
+	{
+		for ($i=0; $i <= $jumlah_kata-1; $i++) { 
+			$kata[] = $exp_kalimat[$i];
+		}
+	}
+	echo implode(" ", $kata);
+}
+
 function ubah_user($data)
 {
 	global $conn;
@@ -179,7 +201,7 @@ $namaFileBaru = uniqid();
 $namaFileBaru .= '.';
 $namaFileBaru .= $ekstensiGambar;
 
-move_uploaded_file($tmpName, '../asset/img/' . $namaFileBaru);
+move_uploaded_file($tmpName, '../../assets/img/produk/' . $namaFileBaru);
 
 return $namaFileBaru;
 }
@@ -190,9 +212,9 @@ function tambah_produk($data)
 {
 	global $conn;
 
-	$id_produk = htmlspecialchars($data["id_produk"]);
+	
 	$id_kategori = htmlspecialchars($data["id_kategori"]);
-	$kode_produk = htmlspecialchars($data["kode_produk"]);
+	
 	$nama_produk = htmlspecialchars($data["nama_produk"]);
 	$harga_produk = htmlspecialchars($data["harga_produk"]);
 	$stok = htmlspecialchars($data["stok"]);
@@ -208,7 +230,7 @@ function tambah_produk($data)
 
 	$query = "INSERT INTO produk
 	VALUES
-	('$id_produk', '$id_kategori', '$kode_produk', '$nama_produk','$harga_produk','$stok','$berat','$deskripsi','$foto_produk')
+	('$id_produk', '$id_kategori', '$nama_produk','$harga_produk','$stok','$berat','$deskripsi','$foto_produk')
 	";
 	mysqli_query($conn, $query);
 
@@ -227,7 +249,7 @@ function ubah_produk($data)
 	global $conn;
 	$id_produk = htmlspecialchars($data["id_produk"]);
 	$id_kategori = htmlspecialchars($data["id_kategori"]);
-	$kode_produk = htmlspecialchars($data["kode_produk"]);
+	
 	$nama_produk = htmlspecialchars($data["nama_produk"]);
 	$harga_produk = htmlspecialchars($data["harga_produk"]);
 	$stok = htmlspecialchars($data["stok"]);
@@ -244,7 +266,7 @@ function ubah_produk($data)
 
 	$query = "UPDATE produk SET
 	id_kategori = '$id_kategori',
-	kode_produk = '$kode_produk',
+
 	nama_produk = '$nama_produk',
 	harga_produk = '$harga_produk',
 	stok = '$stok',
@@ -264,7 +286,7 @@ function cari_produk($keyword)
 	$query = "SELECT * FROM produk
 	WHERE
 	id_kategori LIKE '%$keyword%' OR
-	kode_produk LIKE '%$keyword%' OR
+	
 	nama_produk LIKE '%$keyword%' OR
 	harga_produk LIKE '%$keyword%' OR
 	stok LIKE '%$keyword%' OR
@@ -300,30 +322,30 @@ function detail_transaksi($id)
 
 function tanggal($tanggal)
 {
-    $tgl = explode("-", $tanggal);
-    $bln["01"]="Januari";
-    $bln["02"]="Februari";
-    $bln["03"]="Maret";
-    $bln["04"]="April";
-    $bln["05"]="Mei";
-    $bln["06"]="Juni";
-    $bln["07"]="Juli";
-    $bln["08"]="Agustus";
-    $bln["09"]="September";
-    $bln["10"]="Oktober";
-    $bln["11"]="November";
-    $bln["12"]="Desember";
-    if ($tgl[0]=="0000")
-    {
-        return $tanggal;
-    }
-    else
-    {
-        return abs($tgl[2])." ".$bln[$tgl[1]]." ".$tgl[0];
-    }
+	$tgl = explode("-", $tanggal);
+	$bln["01"]="Januari";
+	$bln["02"]="Februari";
+	$bln["03"]="Maret";
+	$bln["04"]="April";
+	$bln["05"]="Mei";
+	$bln["06"]="Juni";
+	$bln["07"]="Juli";
+	$bln["08"]="Agustus";
+	$bln["09"]="September";
+	$bln["10"]="Oktober";
+	$bln["11"]="November";
+	$bln["12"]="Desember";
+	if ($tgl[0]=="0000")
+	{
+		return $tanggal;
+	}
+	else
+	{
+		return abs($tgl[2])." ".$bln[$tgl[1]]." ".$tgl[0];
+	}
 }
 
 function rp($harga)
 {
-    echo "Rp ".str_replace(",", ".", number_format($harga));
+	echo "Rp ".str_replace(",", ".", number_format($harga));
 }

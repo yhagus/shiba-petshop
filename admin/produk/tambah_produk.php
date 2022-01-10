@@ -93,7 +93,8 @@ if (isset($_POST["tambah"])) {
     </nav>
     <div class="container-fluid">
         <div class="row">
-            //sidenav
+            <!-- //sidenav -->
+
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
@@ -137,19 +138,27 @@ if (isset($_POST["tambah"])) {
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="bg-light p-5 rounded">
-                    <br><br>
-                    <h1>Tambah User</h1><br>
+            <main class="col-md-6 ms-sm-auto col-lg-10 px-md-4">
+                <div class="bg-light p-2 rounded">
+                    
+                    <?php 
+                    $kategori = query("SELECT * FROM kategori ");
+
+                     ?>
+                    <h1>Tambah Produk</h1><br>
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
+                            
                             <div class="mb-3">
-                                <label class="form-label">Id Produk</label>
-                                <input type="text" class="form-control" name="id_produk" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Id Kategori</label>
-                                <input type="text" class="form-control" name="id_kategori" required>
+                                <label class="form-label">Kategori</label>
+                                <select class="form-control form-select" name="id_kategori" required="">
+                                    <option value="">-pilih-</option>
+                                    <?php foreach ($kategori as $ktg): ?>
+                                        
+                                    <option value="<?php echo $ktg['id_kategori'] ?>"><?php echo $ktg['nama_kategori'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                                <!-- <input type="text" class="form-control" name="id_kategori" required> -->
                             </div>
                             
                             <div class="mb-3">
@@ -170,7 +179,8 @@ if (isset($_POST["tambah"])) {
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
-                                <input type="text" class="form-control" name="deskripsi" required>
+                                <textarea class="form-control" name="deskripsi" rows="5" cols="30" required=""></textarea>
+                                <!-- <input type="text" class="form-control" name="deskripsi" required> -->
                             </div>
                             <div class="mb-3">
                                 <label for="foto_produk">Foto Produk </label> <br>
