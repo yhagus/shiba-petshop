@@ -2,9 +2,6 @@
 
 include '../../config.php';
 
-echo "<pre>";
-print_r ($_POST);
-echo "</pre>";
 
 unset($_POST['provinsi']);
 unset($_POST['pilih_kota']);
@@ -30,10 +27,6 @@ $telp_penerima = $_POST['telp_penerima'];
 $kota_tujuan = $_POST['kota_tujuan'];
 $alamat_tujuan = $_POST['alamat_tujuan'];
 
-echo "<pre>";
-print_r ($_POST);
-print_r ($_SESSION);
-echo "</pre>";
 
 // echo(date("Ymd"))
 
@@ -81,7 +74,7 @@ foreach ($krj as $krjg)
 
 	$db->query("INSERT INTO detail_transaksi (id_transaksi,id_produk, produk, harga, jumlah, sub_total ) VALUES ('$id_trans', '$id_produk', '$nama_produk', '$harga', '$jumlah', '$sub_total')");
 
-	$stok = $prod['stok'] - $jml; 
+	$stok = $prod['stok'] - $jumlah; 
 	$db->query("UPDATE produk SET stok='$stok' WHERE id_produk='$id_produk' ");
 }
 

@@ -6,7 +6,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 $id = $_SESSION['id'];
-$result = $db->query("SELECT * FROM transaksi WHERE id_user=1");
+$result = $db->query("SELECT * FROM transaksi WHERE id_user='$id'");
 $transactions = [];
 while ($data = mysqli_fetch_assoc($result)){
     $transactions[] = $data;
