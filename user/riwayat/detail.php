@@ -28,6 +28,9 @@ while ($data = $detail->fetch_assoc()){
     $products[] = $data;
 }
 
+
+$pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_transaksi' ")->fetch_assoc();
+
 ?>
 <main class="mt-4-5">
     <div class="container">
@@ -94,7 +97,7 @@ while ($data = $detail->fetch_assoc()){
                                     <th></th>
                                     <th></th>
                                     <th class="text-end">Jumlah</th>
-                                    <th class="text-end">Harga (Rp)</th>
+                                    <th class="text-end">Harga </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -102,7 +105,7 @@ while ($data = $detail->fetch_assoc()){
                                 <tr>
                                     <td colspan="6"><?= $product['produk']; ?></td>
                                     <td class="text-end"><?= $product['jumlah']; ?> x</td>
-                                    <td class="text-end"><?= $product['harga']; ?></td>
+                                    <td class="text-end"><?= rp($product['harga']); ?></td>
                                 </tr>
                                 <?php
                                 } ?>
@@ -114,13 +117,13 @@ while ($data = $detail->fetch_assoc()){
                     <div class="row mt-2">
                         <div class="col-1"></div>
                         <div class="col-8 text-end fw-bold">Sub Total</div>
-                        <div class="col-2 text-end"><?= $sum['total']; ?></div>
+                        <div class="col-2 text-end"><?= rp($sum['total']); ?></div>
                     </div>
 
                     <div class="row mt-2">
                         <div class="col-1"></div>
                         <div class="col-8 text-end fw-bold">Ongkir</div>
-                        <div class="col-2 text-end">0</div>
+                        <div class="col-2 text-end"><?php echo rp($pengiriman['biaya_ongkir']) ?></div>
                     </div>
 
                     <br>
@@ -128,7 +131,7 @@ while ($data = $detail->fetch_assoc()){
                     <div class="row mt-2 mb-3">
                         <div class="col-1"></div>
                         <div class="col-8 text-end fw-bold">Total</div>
-                        <div class="col-2 text-end">0</div>
+                        <div class="col-2 text-end"><?php echo rp($sum['total'] + $pengiriman['biaya_ongkir']) ?></div>
                     </div>
                 </div>
             </div>

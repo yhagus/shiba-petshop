@@ -53,6 +53,9 @@ input[type=number]::-webkit-inner-spin-button {
 #passwordModal label{
     color: grey;
 }
+.bulet{
+    border-radius: 50%;
+}
 
 /**/
 .bd-placeholder-img {

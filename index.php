@@ -1,58 +1,32 @@
 <?php
 include 'navbar.php';
+$favorit = $db->query("SELECT COUNT(w.id_produk) as jumlah , w.id_produk, p.* FROM wishlist w INNER JOIN produk p ON w.id_produk=p.id_produk GROUP BY w.id_produk DESC")->fetch_assoc();
+$terlaris = $db->query("SELECT COUNT(dt.id_produk) as jumlah , dt.id_produk, p.* FROM detail_transaksi dt INNER JOIN produk p ON dt.id_produk=p.id_produk GROUP BY dt.id_produk DESC")->fetch_assoc();;
+$terbaru = $db->query("SELECT * FROM produk ORDER BY id_produk DESC LIMIT 1 ")->fetch_assoc();
+
 ?>
 
 <main>
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
+        <!-- <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
-        </div>
+        </div> -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+                <img src="<?php asset('img/wallpaperdoge.jpg') ?>" width="100%">
 
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1>Example headline.</h1>
+                        <h1>Selamat Datang, .</h1>
                         <p>Some representative placeholder content for the first slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Sign up today</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Some representative placeholder content for the second slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
-                <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>One more for good measure.</h1>
-                        <p>Some representative placeholder content for the third slide of this carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Browse gallery</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
+
 
 
     <!-- Marketing messaging and features
@@ -64,25 +38,28 @@ include 'navbar.php';
         <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+                <h2>Terfavorit</h2>
+                <img src="<?php asset('img/produk/'.$favorit['foto_produk'])  ?>" class="bulet" width="140">
 
-                <h2>Heading</h2>
-                <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">View details »</a></p>
+                <h4><?= $favorit['nama_produk'] ?></h4>
+                <p>Difavoritkan oleh: <?= $favorit['jumlah'] ?> orang.</p>
+                <p><a class="btn btn-secondary" href="detail.php?id=<?php echo $favorit['id_produk'] ?>">View details »</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+                <h2>Terlaris</h2>
+                <img src="<?php asset('img/produk/'.$terlaris['foto_produk'])  ?>" class="bulet" width="140">
 
-                <h2>Heading</h2>
-                <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-                <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">View details »</a></p>
+                <h4><?= $terlaris['nama_produk'] ?></h4>
+                <p>Terjual sebanyak <?= $terlaris['jumlah'] ?> kali.</p>
+                <p><a class="btn btn-secondary" href="detail.php?id=<?php echo $terlaris['id_produk'] ?>">View details »</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+                <h2>Terbaru</h2>
+                <img src="<?php asset('img/produk/'.$terbaru['foto_produk'])  ?>" class="bulet" width="140">
 
-                <h2>Heading</h2>
-                <p>And lastly this, the third column of representative placeholder content.</p>
-                <p><a class="btn btn-secondary" href="https://getbootstrap.com/docs/5.0/examples/carousel/#">View details »</a></p>
+                <h4><?= $terbaru['nama_produk'] ?></h4>
+                <p>Produk terbaru.</p>
+                <p><a class="btn btn-secondary" href="detail.php?id=<?php echo $terbaru['id_produk'] ?>">View details »</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
