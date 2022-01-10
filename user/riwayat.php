@@ -15,6 +15,14 @@ while ($data = mysqli_fetch_assoc($result)){
 ?>
 <main class="mt-4-5">
     <div class="container">
+
+        <div class="row">
+            <div class="col text-end">
+                <div>
+                    <a href="<?php route('/');?>" class="text-decoration-none">Home</a> > Riwayat
+                </div>
+            </div>
+        </div>
         <div class="row">
                 <div class="col-8 card mx-auto">
                     <h1 class="display-6 mt-3">My Billing</h1>

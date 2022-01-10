@@ -15,6 +15,13 @@ while($data = $result->fetch_assoc()){
 ?>
 <main class="mt-4-5">
     <div class="container col-10">
+        <div class="row mb-5">
+            <div class="col text-end">
+                <div>
+                    <a href="<?php route('/');?>" class="text-decoration-none">Home</a> > Wishlist
+                </div>
+            </div>
+        </div>
         <div class="card rounded row">
             <div class="col-sm-12 col-md-12">
                 <table class="table table-hover">
