@@ -18,7 +18,7 @@ include 'header.php';
         </div>
         
         <br>
-        <button class="w-100 btn btn-lg btn-primary" type="submit" name="forgot">forget</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="forget">forget</button>
         <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
     </form>
 </main>
