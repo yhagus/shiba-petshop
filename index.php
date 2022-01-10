@@ -1,8 +1,38 @@
 <?php
 include 'navbar.php';
-$favorit = $db->query("SELECT COUNT(w.id_produk) as jumlah , w.id_produk, p.* FROM wishlist w INNER JOIN produk p ON w.id_produk=p.id_produk GROUP BY w.id_produk DESC")->fetch_assoc();
-$terlaris = $db->query("SELECT COUNT(dt.id_produk) as jumlah , dt.id_produk, p.* FROM detail_transaksi dt INNER JOIN produk p ON dt.id_produk=p.id_produk GROUP BY dt.id_produk DESC")->fetch_assoc();;
-$terbaru = $db->query("SELECT * FROM produk ORDER BY id_produk DESC LIMIT 1 ")->fetch_assoc();
+
+$favorit = $db->query("SELECT COUNT(w.id_produk) as jumlah , w.id_produk, p.* FROM wishlist w INNER JOIN produk p ON w.id_produk=p.id_produk GROUP BY w.id_produk DESC");
+if (mysqli_num_rows($favorit) > 0){
+    $favorit = $favorit->fetch_assoc();
+} else {
+    $favorit = [
+        'nama_produk' => 'Tidak ada',
+        'jumlah' => 0,
+        'foto_produk' => 'no_image_available.jpg',
+    ];
+}
+
+$terlaris = $db->query("SELECT COUNT(dt.id_produk) as jumlah , dt.id_produk, p.* FROM detail_transaksi dt INNER JOIN produk p ON dt.id_produk=p.id_produk GROUP BY dt.id_produk DESC");
+if (mysqli_num_rows($terlaris) > 0){
+    $terlaris = $terlaris->fetch_assoc();
+} else {
+    $terlaris = [
+        'nama_produk' => 'Tidak ada',
+        'jumlah' => 0,
+        'foto_produk' => 'no_image_available.jpg',
+    ];
+}
+
+$terbaru = $db->query("SELECT * FROM produk ORDER BY id_produk DESC LIMIT 1 ");
+if (mysqli_num_rows($terbaru) > 0){
+    $terbaru = $terbaru->fetch_assoc();
+} else {
+    $terbaru = [
+        'nama_produk' => 'Tidak ada',
+        'jumlah' => 0,
+        'foto_produk' => 'no_image_available.jpg',
+    ];
+}
 
 ?>
 
@@ -27,27 +57,24 @@ $terbaru = $db->query("SELECT * FROM produk ORDER BY id_produk DESC LIMIT 1 ")->
         </div>
     </div>
 
-
-
     <!-- Marketing messaging and features
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
-
         <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4">
                 <h2>Terfavorit</h2>
-                <img src="<?php asset('img/produk/'.$favorit['foto_produk'])  ?>" class="bulet" width="140">
+                <img src="<?php asset('img/produk/'.$favorit['foto_produk'])  ?>" class="bulet" width="140" alt="">
 
                 <h4><?= $favorit['nama_produk'] ?></h4>
                 <p>Difavoritkan oleh: <?= $favorit['jumlah'] ?> orang.</p>
-                <p><a class="btn btn-secondary" href="detail.php?id=<?php echo $favorit['id_produk'] ?>">View details »</a></p>
+                <p><a class="btn btn-secondary" <?php if($favorit['jumlah'] > 0) echo 'href="detail.php?id=' . $favorit['id_produk']?>">View details »</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <h2>Terlaris</h2>
-                <img src="<?php asset('img/produk/'.$terlaris['foto_produk'])  ?>" class="bulet" width="140">
+                <img src="<?php asset('img/produk/'.$terlaris['foto_produk'])  ?>" class="bulet" width="140" alt="">
 
                 <h4><?= $terlaris['nama_produk'] ?></h4>
                 <p>Terjual sebanyak <?= $terlaris['jumlah'] ?> kali.</p>
@@ -55,7 +82,7 @@ $terbaru = $db->query("SELECT * FROM produk ORDER BY id_produk DESC LIMIT 1 ")->
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <h2>Terbaru</h2>
-                <img src="<?php asset('img/produk/'.$terbaru['foto_produk'])  ?>" class="bulet" width="140">
+                <img src="<?php asset('img/produk/'.$terbaru['foto_produk'])  ?>" class="bulet" width="140" alt="">
 
                 <h4><?= $terbaru['nama_produk'] ?></h4>
                 <p>Produk terbaru.</p>
