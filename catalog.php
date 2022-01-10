@@ -29,13 +29,13 @@ while($data = mysqli_fetch_assoc($katresult)){
                 <div class="m-3">
                     <h4>Categories</h4>
                 </div>
-                <div class="mx-3">
+                <div class="mx-3 mb-2">
                     <a class="text-decoration-none" href="<?php route('catalog.php') ?>">Semua</a>
                 </div>
                 <ul>
                     <?php foreach ($kategoris as $produk){?>
                     <li>
-                        <a href="<?php route('catalog.php?kategori=' . $produk['id_kategori']);?>"><?= $produk['nama_kategori']; ?></a>
+                        <a class="text-decoration-none" href="<?php route('catalog.php?kategori=' . $produk['id_kategori']);?>"><?= $produk['nama_kategori']; ?></a>
                     </li>
                     <?php
                     }
