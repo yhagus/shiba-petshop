@@ -212,7 +212,7 @@ function tambah_produk($data)
 {
 	global $conn;
 
-	
+	$id_produk = "";
 	$id_kategori = htmlspecialchars($data["id_kategori"]);
 	
 	$nama_produk = htmlspecialchars($data["nama_produk"]);
