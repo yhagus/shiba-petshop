@@ -9,7 +9,7 @@ if (isset($_GET['kategori'])){
     $query = "SELECT p.*, k.* FROM produk p INNER JOIN kategori k on p.id_kategori=k.id_kategori";
 }
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
-$katquery = "SELECT p.*, k.* FROM produk p INNER JOIN kategori k on p.id_kategori=k.id_kategori";
+$katquery = "SELECT * FROM kategori ";
 $katresult = mysqli_query($db, $katquery) or die(mysqli_error($db));
 while ($data = mysqli_fetch_assoc($result)) {
     $semua_data[] = $data;
