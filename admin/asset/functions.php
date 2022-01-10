@@ -1,6 +1,7 @@
 <?php
 // koneksi ke database
 $conn = mysqli_connect("localhost", "root", "", "shiba_petshop");
+// $db = mysqli_connect("localhost", "root", "", "shiba_petshop");
 
 //tampil
 function query($query)
@@ -29,9 +30,9 @@ function tambah_user($data)
 
 
 	$query = "INSERT INTO users
-				VALUES
-			  ('$id_user', '$username', '$email', '$password','$nama_user','$no_tlp','$alamat_user')
-			";
+	VALUES
+	('$id_user', '$username', '$email', '$password','$nama_user','$no_tlp','$alamat_user')
+	";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
@@ -58,14 +59,14 @@ function ubah_user($data)
 
 
 	$query = "UPDATE users SET
-				username = '$username',
-				email = '$email',
-				password = '$password',
-				nama_user = '$nama_user',
-				no_tlp = '$no_tlp',
-				alamat_user = '$alamat_user'
-			  WHERE id_user = '$id_user'
-			";
+	username = '$username',
+	email = '$email',
+	password = '$password',
+	nama_user = '$nama_user',
+	no_tlp = '$no_tlp',
+	alamat_user = '$alamat_user'
+	WHERE id_user = '$id_user'
+	";
 
 	mysqli_query($conn, $query);
 
@@ -75,14 +76,14 @@ function ubah_user($data)
 function cari_user($keyword)
 {
 	$query = "SELECT * FROM users
-				WHERE
-			  username LIKE '%$keyword%' OR
-			  email LIKE '%$keyword%' OR
-			  nama_user LIKE '%$keyword%' OR
-			  no_tlp LIKE '%$keyword%' OR
-			  alamat_user LIKE '%$keyword%' OR
-			  id_user LIKE '%$keyword%'
-			";
+	WHERE
+	username LIKE '%$keyword%' OR
+	email LIKE '%$keyword%' OR
+	nama_user LIKE '%$keyword%' OR
+	no_tlp LIKE '%$keyword%' OR
+	alamat_user LIKE '%$keyword%' OR
+	id_user LIKE '%$keyword%'
+	";
 	return query($query);
 }
 
@@ -95,9 +96,9 @@ function tambah_kategori($data)
 	$nama_kategori = htmlspecialchars($data["nama_kategori"]);
 
 	$query = "INSERT INTO kategori
-				VALUES
-			  ('$id_kategori', '$nama_kategori')
-			";
+	VALUES
+	('$id_kategori', '$nama_kategori')
+	";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
@@ -118,9 +119,9 @@ function ubah_kategori($data)
 	$nama_kategori = htmlspecialchars($data["nama_kategori"]);
 
 	$query = "UPDATE kategori SET
-				nama_kategori = '$nama_kategori'
-			  WHERE id_kategori = '$id_kategori'
-			";
+	nama_kategori = '$nama_kategori'
+	WHERE id_kategori = '$id_kategori'
+	";
 
 	mysqli_query($conn, $query);
 
@@ -130,10 +131,10 @@ function ubah_kategori($data)
 function cari_kategori($keyword)
 {
 	$query = "SELECT * FROM kategori
-				WHERE
-			  nama_kategori LIKE '%$keyword%' OR
-			  id_kategori LIKE '%$keyword%'
-			";
+	WHERE
+	nama_kategori LIKE '%$keyword%' OR
+	id_kategori LIKE '%$keyword%'
+	";
 	return query($query);
 }
 
@@ -148,39 +149,39 @@ function upload()
 	// cek apakah tidak ada gambar yang diupload
 	if ($error === 4) {
 		echo "<script>
-				alert('pilih gambar terlebih dahulu!');
-			  </script>";
-		return false;
-	}
+		alert('pilih gambar terlebih dahulu!');
+	</script>";
+	return false;
+}
 
 	// cek apakah yang diupload adalah gambar
-	$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-	$ekstensiGambar = explode('.', $namaFile);
-	$ekstensiGambar = strtolower(end($ekstensiGambar));
-	if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-		echo "<script>
-				alert('yang anda upload bukan gambar!');
-			  </script>";
-		return false;
-	}
+$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+$ekstensiGambar = explode('.', $namaFile);
+$ekstensiGambar = strtolower(end($ekstensiGambar));
+if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+	echo "<script>
+	alert('yang anda upload bukan gambar!');
+</script>";
+return false;
+}
 
 	// cek jika ukurannya terlalu besar
-	if ($ukuranFile > 1000000) {
-		echo "<script>
-				alert('ukuran gambar terlalu besar!');
-			  </script>";
-		return false;
-	}
+if ($ukuranFile > 1000000) {
+	echo "<script>
+	alert('ukuran gambar terlalu besar!');
+</script>";
+return false;
+}
 
 	// lolos pengecekan, gambar siap diupload
 	// generate nama gambar baru
-	$namaFileBaru = uniqid();
-	$namaFileBaru .= '.';
-	$namaFileBaru .= $ekstensiGambar;
+$namaFileBaru = uniqid();
+$namaFileBaru .= '.';
+$namaFileBaru .= $ekstensiGambar;
 
-	move_uploaded_file($tmpName, '../asset/img/' . $namaFileBaru);
+move_uploaded_file($tmpName, '../asset/img/' . $namaFileBaru);
 
-	return $namaFileBaru;
+return $namaFileBaru;
 }
 
 
@@ -206,9 +207,9 @@ function tambah_produk($data)
 
 
 	$query = "INSERT INTO produk
-				VALUES
-			  ('$id_produk', '$id_kategori', '$kode_produk', '$nama_produk','$harga_produk','$stok','$berat','$deskripsi','$foto_produk')
-			";
+	VALUES
+	('$id_produk', '$id_kategori', '$kode_produk', '$nama_produk','$harga_produk','$stok','$berat','$deskripsi','$foto_produk')
+	";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
@@ -242,16 +243,16 @@ function ubah_produk($data)
 	}
 
 	$query = "UPDATE produk SET
-				id_kategori = '$id_kategori',
-				kode_produk = '$kode_produk',
-				nama_produk = '$nama_produk',
-				harga_produk = '$harga_produk',
-				stok = '$stok',
-				berat = '$berat',
-				deskripsi = '$deskripsi',
-				foto_produk = '$foto_produk'
-			  WHERE id_produk = '$id_produk'
-			";
+	id_kategori = '$id_kategori',
+	kode_produk = '$kode_produk',
+	nama_produk = '$nama_produk',
+	harga_produk = '$harga_produk',
+	stok = '$stok',
+	berat = '$berat',
+	deskripsi = '$deskripsi',
+	foto_produk = '$foto_produk'
+	WHERE id_produk = '$id_produk'
+	";
 
 	mysqli_query($conn, $query);
 
@@ -261,13 +262,68 @@ function ubah_produk($data)
 function cari_produk($keyword)
 {
 	$query = "SELECT * FROM produk
-				WHERE
-			  id_kategori LIKE '%$keyword%' OR
-			  kode_produk LIKE '%$keyword%' OR
-			  nama_produk LIKE '%$keyword%' OR
-			  harga_produk LIKE '%$keyword%' OR
-			  stok LIKE '%$keyword%' OR
-			  berat LIKE '%$keyword%' 
-			";
+	WHERE
+	id_kategori LIKE '%$keyword%' OR
+	kode_produk LIKE '%$keyword%' OR
+	nama_produk LIKE '%$keyword%' OR
+	harga_produk LIKE '%$keyword%' OR
+	stok LIKE '%$keyword%' OR
+	berat LIKE '%$keyword%' 
+	";
 	return query($query);
+}
+
+
+// ----------------transaksi-----------
+
+function tampil_transaksi()
+{
+	$data=[];
+	$result = $conn->query("SELECT * FROM transaksi");
+	while ($data = $result->fetch_assoc()) {
+		$data[] = $data;
+	}
+	return $data;
+}
+
+function detail_transaksi($id)
+{
+	$data=[];
+	$result = $conn->query("SELECT * FROM transaksi WHERE id_transaksi='$id'  ");
+	while ($data = $result->fetch_assoc()) {
+		$data[] = $data;
+	}
+	return $data;
+}
+
+
+
+function tanggal($tanggal)
+{
+    $tgl = explode("-", $tanggal);
+    $bln["01"]="Januari";
+    $bln["02"]="Februari";
+    $bln["03"]="Maret";
+    $bln["04"]="April";
+    $bln["05"]="Mei";
+    $bln["06"]="Juni";
+    $bln["07"]="Juli";
+    $bln["08"]="Agustus";
+    $bln["09"]="September";
+    $bln["10"]="Oktober";
+    $bln["11"]="November";
+    $bln["12"]="Desember";
+    if ($tgl[0]=="0000")
+    {
+        return $tanggal;
+    }
+    else
+    {
+        return abs($tgl[2])." ".$bln[$tgl[1]]." ".$tgl[0];
+    }
+}
+
+function rp($harga)
+{
+    echo "Rp ".str_replace(",", ".", number_format($harga));
 }

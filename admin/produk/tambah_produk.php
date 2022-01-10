@@ -104,7 +104,7 @@ if (isset($_POST["tambah"])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../transaksi/index.php">
                                 <span data-feather="file"></span>
                                 Orders
                             </a>
@@ -151,10 +151,7 @@ if (isset($_POST["tambah"])) {
                                 <label class="form-label">Id Kategori</label>
                                 <input type="text" class="form-control" name="id_kategori" required>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Kode Produk</label>
-                                <input type="text" class="form-control" name="kode_produk" required>
-                            </div>
+                            
                             <div class="mb-3">
                                 <label class="form-label">Nama Produk</label>
                                 <input type="text" class="form-control" name="nama_produk" required>

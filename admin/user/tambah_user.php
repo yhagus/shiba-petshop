@@ -104,7 +104,7 @@ if (isset($_POST["tambah"])) {
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="../transaksi/index.php">
 								<span data-feather="file"></span>
 								Orders
 							</a>

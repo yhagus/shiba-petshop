@@ -107,7 +107,7 @@ if (isset($_POST["edit"])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../transaksi/index.php">
                                 <span data-feather="file"></span>
                                 Orders
                             </a>
@@ -154,10 +154,7 @@ if (isset($_POST["edit"])) {
                                 <label class="form-label">Id Kategori</label>
                                 <input type="text" class="form-control" name="id_kategori" value="<?= $produk["id_kategori"]; ?>">
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Kode Produk</label>
-                                <input type="text" class="form-control" name="kode_produk" value="<?= $produk["kode_produk"]; ?>">
-                            </div>
+                            
                             <div class="mb-3">
                                 <label class="form-label">Nama Produk</label>
                                 <input type="text" class="form-control" name="nama_produk" value="<?= $produk["nama_produk"]; ?>">

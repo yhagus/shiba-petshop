@@ -93,7 +93,7 @@ if (isset($_POST["cari"])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../transaksi/index.php">
                                 <span data-feather="file"></span>
                                 Orders
                             </a>
@@ -137,12 +137,16 @@ if (isset($_POST["cari"])) {
                     </form><br><br>
                     <a class="btn btn-primary text-white" href="tambah_produk.php">Tambah produk</a><br>
                     <br>
+
+                    <?php echo "<pre>";
+                    print_r ($produk);
+                    echo "</pre>"; ?>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Id Produk</th>
                                 <th scope="col">Id Kategori</th>
-                                <th scope="col">Kode Produk</th>
+                                
                                 <th scope="col">Nama Produk</th>
                                 <th scope="col">Harga Produk</th>
                                 <th scope="col">Stok</th>
@@ -158,7 +162,7 @@ if (isset($_POST["cari"])) {
                                 <tr>
                                     <td><?= $row["id_produk"]; ?></td>
                                     <td><?= $row["id_kategori"]; ?></td>
-                                    <td><?= $row["kode_produk"]; ?></td>
+                                    
                                     <td><?= $row["nama_produk"]; ?></td>
                                     <td><?= $row["harga_produk"]; ?></td>
                                     <td><?= $row["stok"]; ?></td>

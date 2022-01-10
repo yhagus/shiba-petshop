@@ -69,8 +69,6 @@ $prov = tampil_provinsi();
                         <strong id="total_biaya">-</strong>
                     </li>
                 </ul>
-
-
             </div>
             <div class="col-md-6 col-lg-8">
                 <h4 class="mb-3">Penerima</h4>
