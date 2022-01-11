@@ -164,7 +164,7 @@ if (isset($_POST["cari"])) {
                                     
                                     <td><?= $row["nama_produk"]; ?></td>
                                     <td><?= $row["nama_kategori"]; ?></td>
-                                    <td><?= $row["harga_produk"]; ?></td>
+                                    <td><?= rp($row["harga_produk"]); ?></td>
                                     <td><?= $row["stok"]; ?></td>
                                     <td><?= $row["berat"]; ?></td>
                                     <td><?= cut_desc($row["deskripsi"]); ?></td>

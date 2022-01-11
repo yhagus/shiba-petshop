@@ -24,7 +24,6 @@ $produk = query("SELECT * FROM produk INNER JOIN kategori ON kategori.id_kategor
 
 $keyword = $_POST['keyword'];
 $cari = query("SELECT * FROM produk 
-    
     WHERE
     id_kategori LIKE '%$keyword%' OR
     nama_produk LIKE '%$keyword%' OR
@@ -32,9 +31,6 @@ $cari = query("SELECT * FROM produk
     stok LIKE '%$keyword%' OR
     berat LIKE '%$keyword%' 
     ");
-
-
-
 
 ?>
 <!doctype html>
@@ -170,7 +166,7 @@ $cari = query("SELECT * FROM produk
                                     
                                     <td><?= $row["nama_produk"]; ?></td>
                                   
-                                    <td><?= $row["harga_produk"]; ?></td>
+                                    <td><?= rp($row["harga_produk"]); ?></td>
                                     <td><?= $row["stok"]; ?></td>
                                     <td><?= $row["berat"]; ?></td>
                                     <td><?= cut_desc($row["deskripsi"]); ?></td>
