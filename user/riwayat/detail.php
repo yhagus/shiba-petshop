@@ -67,6 +67,14 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                                 <?= $transaksi['status'] === 'diproses' ? 'Diproses' : null; ?>
                                 <?= $transaksi['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                             </button>
+                            <br><br>
+                            <?php
+                            if ($transaksi['status'] === 'belum bayar'){?>
+                                <button type="button" title="Upload Bukti Transfer" class="btn btn-sm btn-outline-dark rounded-pill">
+                                    Upload Bukti Transfer <i class="ms-2 bi bi-upload"></i>
+                                </button>
+                                <?php
+                            }?>
                         </div>
                     </div>
 
@@ -132,6 +140,20 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                         <div class="col-1"></div>
                         <div class="col-8 text-end fw-bold">Total</div>
                         <div class="col-2 text-end"><?php echo rp($sum['total'] + $pengiriman['biaya_ongkir']) ?></div>
+                    </div>
+
+                    <hr class="mx-6">
+
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-3 mx-auto text-center">
+                            <img src="https://my.jagoweb.com/images/bank_logo/logo_bca.png" class="img-fluid" alt="">
+                            <p>Bank BCA</p>
+                            <p class="fw-bold">111111</p>
+                            <p>an. Bagus Pranowo</p>
+                        </div>
+                        <!--                    <div class="col-12 col-md-3 mx-auto"></div>-->
+                        <!--                    <div class="col-12 col-md-3 mx-auto"></div>-->
+                        <!--                    <div class="col-12 col-md-3 mx-auto"></div>-->
                     </div>
                 </div>
             </div>

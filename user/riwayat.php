@@ -33,7 +33,7 @@ while ($data = mysqli_fetch_assoc($result)){
                             <th scope="col">Tanggal</th>
                             <th scope="col">Total</th>
                             <th scope="col">Status</th>
-                            <th>Action</th>
+                            <th class="text-center">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,11 +58,18 @@ while ($data = mysqli_fetch_assoc($result)){
                                         <?= $transaction['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                                     </span>
                                 </td>
-                                <td class="mx-auto">
-                                    <a href="<?php route('user/riwayat/detail.php?kode=' . $transaction['kode_transaksi']);?>">
+                                <td class="mx-auto text-center">
+                                    <a class="me-1 text-decoration-none" href="<?php route('user/riwayat/detail.php?kode=' . $transaction['kode_transaksi']);?>">
                                         <button type="button" title="Show" class="btn btn-sm btn-outline-dark rounded-pill"><i
                                                     class="bi bi-search"></i></button>
                                     </a>
+                                    <?php
+                                    if ($transaction['status'] === 'belum bayar'){?>
+                                        <button type="button" title="Upload Bukti Transfer" class="btn btn-sm btn-outline-dark rounded-pill">
+                                            <i class="bi bi-upload"></i>
+                                        </button>
+                                    <?php
+                                    }?>
                                 </td>
                             </tr>
                             <?php
