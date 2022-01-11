@@ -143,7 +143,6 @@ if (isset($_POST["cari"])) {
                                 <th scope="col">Id User</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">No tlp</th>
                                 <th scope="col">Alamat</th>
@@ -157,7 +156,6 @@ if (isset($_POST["cari"])) {
                                     <td><?= $row["id_user"]; ?></td>
                                     <td><?= $row["username"]; ?></td>
                                     <td><?= $row["email"]; ?></td>
-                                    <td><?= $row["password"]; ?></td>
                                     <td><?= $row["nama_user"]; ?></td>
                                     <td><?= $row["no_tlp"]; ?></td>
                                     <td><?= $row["alamat_user"]; ?></td>
