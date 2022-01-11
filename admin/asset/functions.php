@@ -31,7 +31,7 @@ function tambah_user($data)
 
 	$query = "INSERT INTO users
 	VALUES
-	('$id_user', '$username', '$email', '$password','$nama_user','$no_tlp','$alamat_user')
+	('$id_user', '$username', 'user', '$email', '$password','$nama_user','$no_tlp','$alamat_user','')
 	";
 	mysqli_query($conn, $query);
 
@@ -52,15 +52,12 @@ function cut_desc($kalimat)
 
 	$jumlah_kata = count($exp_kalimat);
 
-	if( $jumlah_kata >=10)
-	{
-		for ($i=0; $i < 10; $i++) { 
+	if ($jumlah_kata >= 10) {
+		for ($i = 0; $i < 10; $i++) {
 			$kata[] = $exp_kalimat[$i];
 		}
-	}
-	else
-	{
-		for ($i=0; $i <= $jumlah_kata-1; $i++) { 
+	} else {
+		for ($i = 0; $i <= $jumlah_kata - 1; $i++) {
 			$kata[] = $exp_kalimat[$i];
 		}
 	}
@@ -82,11 +79,13 @@ function ubah_user($data)
 
 	$query = "UPDATE users SET
 	username = '$username',
+	role = 'user',
 	email = '$email',
 	password = '$password',
 	nama_user = '$nama_user',
 	no_tlp = '$no_tlp',
-	alamat_user = '$alamat_user'
+	alamat_user = '$alamat_user',
+	foto_user = ''
 	WHERE id_user = '$id_user'
 	";
 
@@ -173,37 +172,37 @@ function upload()
 		echo "<script>
 		alert('pilih gambar terlebih dahulu!');
 	</script>";
-	return false;
-}
+		return false;
+	}
 
 	// cek apakah yang diupload adalah gambar
-$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-$ekstensiGambar = explode('.', $namaFile);
-$ekstensiGambar = strtolower(end($ekstensiGambar));
-if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-	echo "<script>
+	$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+	$ekstensiGambar = explode('.', $namaFile);
+	$ekstensiGambar = strtolower(end($ekstensiGambar));
+	if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+		echo "<script>
 	alert('yang anda upload bukan gambar!');
 </script>";
-return false;
-}
+		return false;
+	}
 
 	// cek jika ukurannya terlalu besar
-if ($ukuranFile > 1000000) {
-	echo "<script>
+	if ($ukuranFile > 1000000) {
+		echo "<script>
 	alert('ukuran gambar terlalu besar!');
 </script>";
-return false;
-}
+		return false;
+	}
 
 	// lolos pengecekan, gambar siap diupload
 	// generate nama gambar baru
-$namaFileBaru = uniqid();
-$namaFileBaru .= '.';
-$namaFileBaru .= $ekstensiGambar;
+	$namaFileBaru = uniqid();
+	$namaFileBaru .= '.';
+	$namaFileBaru .= $ekstensiGambar;
 
-move_uploaded_file($tmpName, '../../assets/img/produk/' . $namaFileBaru);
+	move_uploaded_file($tmpName, '../../assets/img/produk/' . $namaFileBaru);
 
-return $namaFileBaru;
+	return $namaFileBaru;
 }
 
 
@@ -214,7 +213,7 @@ function tambah_produk($data)
 
 	$id_produk = "";
 	$id_kategori = htmlspecialchars($data["id_kategori"]);
-	
+
 	$nama_produk = htmlspecialchars($data["nama_produk"]);
 	$harga_produk = htmlspecialchars($data["harga_produk"]);
 	$stok = htmlspecialchars($data["stok"]);
@@ -249,7 +248,7 @@ function ubah_produk($data)
 	global $conn;
 	$id_produk = htmlspecialchars($data["id_produk"]);
 	$id_kategori = htmlspecialchars($data["id_kategori"]);
-	
+
 	$nama_produk = htmlspecialchars($data["nama_produk"]);
 	$harga_produk = htmlspecialchars($data["harga_produk"]);
 	$stok = htmlspecialchars($data["stok"]);
@@ -300,7 +299,7 @@ function cari_produk($keyword)
 
 function tampil_transaksi()
 {
-	$data=[];
+	$data = [];
 	$result = $conn->query("SELECT * FROM transaksi");
 	while ($data = $result->fetch_assoc()) {
 		$data[] = $data;
@@ -310,7 +309,7 @@ function tampil_transaksi()
 
 function detail_transaksi($id)
 {
-	$data=[];
+	$data = [];
 	$result = $conn->query("SELECT * FROM transaksi WHERE id_transaksi='$id'  ");
 	while ($data = $result->fetch_assoc()) {
 		$data[] = $data;
@@ -323,29 +322,26 @@ function detail_transaksi($id)
 function tanggal($tanggal)
 {
 	$tgl = explode("-", $tanggal);
-	$bln["01"]="Januari";
-	$bln["02"]="Februari";
-	$bln["03"]="Maret";
-	$bln["04"]="April";
-	$bln["05"]="Mei";
-	$bln["06"]="Juni";
-	$bln["07"]="Juli";
-	$bln["08"]="Agustus";
-	$bln["09"]="September";
-	$bln["10"]="Oktober";
-	$bln["11"]="November";
-	$bln["12"]="Desember";
-	if ($tgl[0]=="0000")
-	{
+	$bln["01"] = "Januari";
+	$bln["02"] = "Februari";
+	$bln["03"] = "Maret";
+	$bln["04"] = "April";
+	$bln["05"] = "Mei";
+	$bln["06"] = "Juni";
+	$bln["07"] = "Juli";
+	$bln["08"] = "Agustus";
+	$bln["09"] = "September";
+	$bln["10"] = "Oktober";
+	$bln["11"] = "November";
+	$bln["12"] = "Desember";
+	if ($tgl[0] == "0000") {
 		return $tanggal;
-	}
-	else
-	{
-		return abs($tgl[2])." ".$bln[$tgl[1]]." ".$tgl[0];
+	} else {
+		return abs($tgl[2]) . " " . $bln[$tgl[1]] . " " . $tgl[0];
 	}
 }
 
 function rp($harga)
 {
-	echo "Rp ".str_replace(",", ".", number_format($harga));
+	echo "Rp " . str_replace(",", ".", number_format($harga));
 }
