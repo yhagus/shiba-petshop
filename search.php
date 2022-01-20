@@ -35,9 +35,9 @@ while($data = $result->fetch_assoc())
                             </a>
 
                             <!-- menampilkan harga produk dari perulangan produk -->
-                            <h5>Rp. <?php echo $produk['harga_produk'] ?></h5>
+                            <h5><?php echo rp($produk['harga_produk']) ?></h5>
 
-                            <h5>deskripsi : <br><h6> <?php echo $produk['deskripsi'] ?></h6></h5>
+                            <h5>deskripsi : <br><h6> <?php echo cut_desc($produk['deskripsi']) ?></h6></h5>
                         </div>
                     </div>
                     <div class="row mt-4-5">
@@ -51,7 +51,7 @@ while($data = $result->fetch_assoc())
                         </div>
                         <!-- link ke keranjang -->
                         <div class="col-5 small text-end">
-                            <a href="beli.php?id=<?php echo $produk['id_produk'] ?>"
+                            <a href="detail.php?id=<?php echo $produk['id_produk'] ?>"
                                class="btn-sm btn-success btn-product text-decoration-none">
                                 <i class="bi bi-cart me-1"></i>
                                 Buy

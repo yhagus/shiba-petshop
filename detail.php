@@ -20,7 +20,7 @@ include 'navbar.php';
                         <div class="product-info">
                         <!-- menampilkan nama produk -->
                             <div class="product-name"><?php echo $produk['nama_produk'] ?></div>
-                            <div class="product-price-discount"><span>Rp <?php echo $produk['harga_produk'] ?></span></div>
+                            <div class="product-price-discount"><span><?php echo rp($produk['harga_produk']) ?></span></div>
                         </div>
                         <!-- tampil deskripsi -->
                         <p><?php echo $produk['deskripsi'] ?></p>

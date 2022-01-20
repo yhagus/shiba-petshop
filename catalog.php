@@ -73,7 +73,7 @@ while($data = mysqli_fetch_assoc($katresult)){
                                     </a>
 
                             <!-- menampilkan harga produk dari perulangan produk -->
-                            <h5>Rp <?php echo $produk['harga_produk'] ?></h5>
+                            <h5><?php echo rp($produk['harga_produk']) ?></h5>
                         </div>
                     </div>
                     <div class="row mt-4-5">

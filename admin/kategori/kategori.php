@@ -13,7 +13,7 @@ require '../asset/functions.php';
 
 // pagination
 // konfigurasi
-$jumlahDataPerHalaman = 3;
+$jumlahDataPerHalaman = 5;
 $jumlahData = count(query("SELECT * FROM kategori"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;

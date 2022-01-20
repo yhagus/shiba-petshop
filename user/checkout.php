@@ -20,9 +20,7 @@ while ($data = $result->fetch_assoc()) {
 }
 
 $cek = $result->num_rows;
-echo "<pre>";
-print_r ($cek);
-echo "</pre>";
+
 if($cek == 0)
 {
     echo "<script>location='../catalog.php'</script>";

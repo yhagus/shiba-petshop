@@ -13,7 +13,7 @@ require '../asset/functions.php';
 
 // pagination
 // konfigurasi
-$jumlahDataPerHalaman = 3;
+$jumlahDataPerHalaman = 10;
 $jumlahData = count(query("SELECT * FROM users"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
@@ -135,34 +135,34 @@ if (isset($_POST["cari"])) {
                         <input class="form-control me-2" type="search" size="40" autofocus placeholder="Search" aria-label="Search" name="keyword" autocomplete="off">
                         <button class="btn btn-outline-success" type="submit" name="cari">Search</button>
                     </form><br><br>
-                    <a class="btn btn-primary text-white" href="tambah_user.php">Tambah User</a><br>
+                   <!--  <a class="btn btn-primary text-white" href="tambah_user.php">Tambah User</a><br> -->
                     <br>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Id User</th>
+                                <!-- <th scope="col">Id User</th> -->
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">No tlp</th>
                                 <th scope="col">Alamat</th>
-                                <th scope="col">Aksi</th>
+                               <!--  <th scope="col">Aksi</th> -->
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
                             <?php foreach ($users as $row) : ?>
                                 <tr>
-                                    <td><?= $row["id_user"]; ?></td>
+                                   <!--  <td><?=// $row["id_user"]; ?></td> -->
                                     <td><?= $row["username"]; ?></td>
                                     <td><?= $row["email"]; ?></td>
                                     <td><?= $row["nama_user"]; ?></td>
                                     <td><?= $row["no_tlp"]; ?></td>
                                     <td><?= $row["alamat_user"]; ?></td>
-                                    <td>
-                                        <a class="btn btn-warning text-white" href="ubah_user.php?id_user=<?= $row["id_user"]; ?>">Ubah</a>
-                                        <a class="btn btn-danger" href="hapus_user.php?id_user=<?= $row["id_user"]; ?>" onclick="return confirm('yakin?');">Hapus</a>
-                                    </td>
+                                    <!-- <td>
+                                        <a class="btn btn-warning text-white" href="ubah_user.php?id_user=<?= //$row["id_user"]; ?>">Ubah</a>
+                                        <a class="btn btn-danger" href="hapus_user.php?id_user=<?=// $row["id_user"]; ?>" onclick="return confirm('yakin?');">Hapus</a>
+                                    </td> -->
                                 </tr>
                                 <?php $i++; ?>
                             <?php endforeach; ?>
