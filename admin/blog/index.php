@@ -19,7 +19,7 @@ $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 
-$produk = query("SELECT * FROM produk INNER JOIN kategori ON kategori.id_kategori=produk.id_kategori LIMIT $awalData, $jumlahDataPerHalaman");
+$produk = query("SELECT * FROM blog LIMIT $awalData, $jumlahDataPerHalaman");
 
 
 

@@ -25,6 +25,7 @@ require 'asset/functions.php';
 	<link rel="stylesheet" href="asset/css/admin.css">
 	<!-- Bootstrap core CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
 	<style>
 		.bd-placeholder-img {
@@ -69,47 +70,54 @@ require 'asset/functions.php';
 		<div class="row">
 			//sidenav
 			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-				<div class="position-sticky pt-3">
-					<ul class="nav flex-column">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="index.php">
-								<span data-feather="home"></span>
-								Dashboard
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="transaksi/index.php">
-								<span data-feather="file"></span>
-								Orders
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="produk/produk.php">
-								<span data-feather="shopping-cart"></span>
-								Products
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="kategori/kategori.php">
-								<span data-feather="layers"></span>
-								Category
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="user/user.php">
-								<span data-feather="users"></span>
-								Users
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								<span data-feather="bar-chart-2"></span>
-								Reports
-							</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.php">
+                                <span data-feather="home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="transaksi/index.php">
+                                <span data-feather="file"></span>
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="produk.php">
+                                <span data-feather="shopping-cart"></span>
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="kategori/kategori.php">
+                                <span data-feather="layers"></span>
+                                Category
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="blog/index.php">
+                                <span data-feather="Books"><i class="bi bi-book"></i></span>
+                                Blog
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="user/user.php">
+                                <span data-feather="users"><i class="bi bi-people"></i></span>
+                                Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="bar-chart-2"></span>
+                                Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
 			//main
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

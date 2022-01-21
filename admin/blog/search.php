@@ -22,11 +22,15 @@ $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 $produk = query("SELECT * FROM produk INNER JOIN kategori ON kategori.id_kategori=produk.id_kategori LIMIT $awalData, $jumlahDataPerHalaman");
 
 
-
-//search
-if (isset($_POST["cari"])) {
-    $produk = cari_produk($_POST["keyword"]);
-}
+$keyword = $_POST['keyword'];
+$cari = query("SELECT * FROM produk 
+    WHERE
+    id_kategori LIKE '%$keyword%' OR
+    nama_produk LIKE '%$keyword%' OR
+    harga_produk LIKE '%$keyword%' OR
+    stok LIKE '%$keyword%' OR
+    berat LIKE '%$keyword%' 
+    ");
 
 ?>
 <!doctype html>
@@ -112,15 +116,8 @@ if (isset($_POST["cari"])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="../blog/index.php">
-                                <span data-feather="Books"><i class="bi bi-book"></i></span>
-                                Blog
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link " href="../user/user.php">
-                                <span data-feather="users"><i class="bi bi-people"></i></span>
+                                <span data-feather="users"></span>
                                 Users
                             </a>
                         </li>
@@ -134,10 +131,11 @@ if (isset($_POST["cari"])) {
                 </div>
             </nav>
 
-            //main
+     <!--        //main -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <br><br>
-                <h1 class="h2">Produk</h1><br>
+                <!-- <h1 class="h2">Search Produk</h1><br> -->
+                    <h4>Hasil pencarian keyword <?php echo $_POST['keyword'] ?></h4>
                 <div class="bg-light p-5 rounded">
                     <form class="d-flex" action="search.php" method="POST">
                         <input class="form-control me-2" type="search" size="40" autofocus placeholder="Search" aria-label="Search" name="keyword" autocomplete="off">
@@ -146,15 +144,12 @@ if (isset($_POST["cari"])) {
                     <a class="btn btn-primary text-white" href="tambah_produk.php">Tambah produk</a><br>
                     <br>
 
-                  
                     <table class="table" style="table-layout: fixed;">
                         <thead>
                             <tr>
                                 
                                 <th></th>
-                                <th>Nama Produk</th>
-                                <th>Kategori</th>
-                                
+                                <th>Nama Produk</th>   
                                 <th>Harga Produk</th>
                                 <th width="80px">Stok</th>
                                 <th>Berat (gram)</th>
@@ -164,13 +159,13 @@ if (isset($_POST["cari"])) {
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($produk as $row) : ?>
+                            <?php foreach ($cari as $row) : ?>
                                 <tr>
                                   
                                     <td><img src="../../assets/img/produk/<?= $row["foto_produk"]; ?>" width="80" ></td>
                                     
                                     <td><?= $row["nama_produk"]; ?></td>
-                                    <td><?= $row["nama_kategori"]; ?></td>
+                                  
                                     <td><?= rp($row["harga_produk"]); ?></td>
                                     <td><?= $row["stok"]; ?></td>
                                     <td><?= $row["berat"]; ?></td>
@@ -210,7 +205,6 @@ if (isset($_POST["cari"])) {
             </main>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

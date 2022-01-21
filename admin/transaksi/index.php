@@ -92,26 +92,33 @@ if (isset($_POST["cari"])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="../transaksi/index.php">
                                 <span data-feather="file"></span>
                                 Orders
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../produk/produk.php">
+                            <a class="nav-link active" href="../produk/produk.php">
                                 <span data-feather="shopping-cart"></span>
                                 Products
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="kategori.php">
+                            <a class="nav-link " href="../kategori/kategori.php">
                                 <span data-feather="layers"></span>
                                 Category
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link " href="../blog/index.php">
+                                <span data-feather="Books"><i class="bi bi-book"></i></span>
+                                Blog
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link " href="../user/user.php">
-                                <span data-feather="users"></span>
+                                <span data-feather="users"><i class="bi bi-people"></i></span>
                                 Users
                             </a>
                         </li>

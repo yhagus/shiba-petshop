@@ -12,6 +12,12 @@ while($data = $result->fetch_assoc()){
     $products[] = $data;
 }
 
+
+if(empty($products))
+{
+    echo "<script>alert('keranjang Belanja Kosong.');window.history.go(-1);</script>";
+}
+
 ?>
 <main class="mt-4-5">
     <div class="container col-10">

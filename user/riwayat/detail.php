@@ -72,7 +72,7 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                             <button
                                 <?= $transaksi['status'] === 'selesai' ? 'class="btn rounded-pill btn-success"' : null;?>
                                 <?= $transaksi['status'] === 'dikirim' ? 'class="btn rounded-pill btn-warning"' : null;?>
-                                <?= $transaksi['status'] === 'diproses' ? 'class="btn rounded-pill btn-info"' : null;?>
+                                <?= $transaksi['status'] === 'diproses' ? 'class="btn rounded-pill btn-info text-white"' : null;?>
                                 <?= $transaksi['status'] === 'belum bayar' ? 'class="btn rounded-pill btn-danger"' : null;?>
                                 disabled
                             >
@@ -90,6 +90,10 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                                 </button>
                                 <?php
                             }?>
+
+                            <?php if ($transaksi['status'] === 'dikirim' || $transaksi['status'] === 'selesai'): ?>
+                                Resi : 
+                            <?php endif ?>
                         </div>
                     </div>
 
@@ -180,7 +184,6 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
             </div>
         </div>
 
-
         <div class="modal fade" id="upload_bukti" tabindex="-1" aria-labelledby="imgModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -194,7 +197,7 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                                     <div class="form-group mb-4">
 
                                         <input type="file" name="bukti_transfer">
-                                        <input type="" name="id_transaksi" value="<?php echo $id_transaksi ?>">
+                                        <input hidden="" name="id_transaksi" value="<?php echo $id_transaksi ?>">
                                     </div>
                                     <button class="btn btn-success" name="upload_bukti_transfer">Upload</button>
                                 </form>
@@ -202,8 +205,6 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                         </div>
                     </div>
                 </div>
-
-
     </div>
 </main>
 

@@ -41,6 +41,7 @@ if (isset($_POST["cari"])) {
     <link rel="stylesheet" href="../asset/css/admin.css">
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     <style>
         .bd-placeholder-img {
@@ -99,20 +100,27 @@ if (isset($_POST["cari"])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../produk/produk.php">
+                            <a class="nav-link active" href="produk.php">
                                 <span data-feather="shopping-cart"></span>
                                 Products
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../kategori/kategori.php">
+                            <a class="nav-link " href="../kategori/kategori.php">
                                 <span data-feather="layers"></span>
                                 Category
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="user.php">
-                                <span data-feather="users"></span>
+                            <a class="nav-link " href="../blog/index.php">
+                                <span data-feather="Books"><i class="bi bi-book"></i></span>
+                                Blog
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="../user/user.php">
+                                <span data-feather="users"><i class="bi bi-people"></i></span>
                                 Users
                             </a>
                         </li>
@@ -130,13 +138,6 @@ if (isset($_POST["cari"])) {
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <br><br>
                 <h1 class="h2">Users</h1><br>
-<?php 
-
-$date = date("Y-m-d");
-$n = date('Y-m-d', strtotime( $date . " +1 days")); 
-
-
-?>
 
                 <div class="bg-light p-5 rounded">
                     <form class="d-flex" action="" method="POST">
