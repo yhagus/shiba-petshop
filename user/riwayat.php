@@ -33,8 +33,8 @@ while ($data = mysqli_fetch_assoc($result)){
                             <th scope="col">Invoice</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Total</th>
-                            <th>Resi</th>
                             <th scope="col">Status</th>
+                            <th>Resi</th>
                             <th class="text-center" width="150px">Action</th>
                         </tr>
                     </thead>
@@ -47,7 +47,6 @@ while ($data = mysqli_fetch_assoc($result)){
                                 <th scope="row"><?= $transaction['kode_transaksi']; ?></th>
                                 <td><?= tanggal($transaction['tgl_transaksi']); ?></td>
                                 <td><?= rp($transaction['total_biaya']); ?>,-</td>
-                                <td><?php echo $transaction['no_resi'] ?></td>
                                 <td>
                                     <span
                                     <?= $transaction['status'] === 'selesai' ? 'class="badge rounded-pill bg-success"' : null;?>
@@ -63,6 +62,7 @@ while ($data = mysqli_fetch_assoc($result)){
                                     <?= $transaction['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                                 </span>
                             </td>
+                                <td><?php echo $transaction['no_resi'] ?></td>
                             <td class="mx-auto text-center">
                                 <a class="me-1 text-decoration-none" href="<?php route('user/riwayat/detail.php?kode=' . $transaction['kode_transaksi']);?>">
                                     <button type="button" title="Detail" class="btn btn-sm btn-outline-dark rounded-pill"><i
@@ -70,7 +70,7 @@ while ($data = mysqli_fetch_assoc($result)){
                                     </a>
 
                                     <?php if ($transaction['status'] == "dikirim" ): ?>
-
+                                        
                                         <button type="button" title="Lacak Resi" class="btn btn-sm btn-outline-dark rounded-pill" data-bs-toggle="modal"
                                         data-bs-target="#lacak" ><i
                                         class="bi bi-truck"></i></button>

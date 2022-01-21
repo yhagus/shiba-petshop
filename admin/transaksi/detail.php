@@ -116,10 +116,10 @@ $pengiriman = $result->fetch_assoc();
                         <?= $transaksi['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                     </button>      
                     <br><br>
-                    
+
 
                     <?php if ($transaksi['status'] === 'dikirim' || $transaksi['status'] === 'selesai'): ?>
-                        Resi : 
+                        Resi : <?php echo $pengiriman['no_resi']; ?>
                     <?php endif ?>
                 </div>
             </div>
@@ -172,10 +172,14 @@ $pengiriman = $result->fetch_assoc();
                     </div>
                 </div>
 
-                <br><br><hr><br><br>
-                <table class="table">
+                </div>
+                <br>
+
+                <div class="card p-5">
+                    <table class="table">
                     <thead>
                         <tr>
+                        <th></th>
                             <th scope="col">Produk</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Jumlah</th>
@@ -189,6 +193,7 @@ $pengiriman = $result->fetch_assoc();
                         ?>
                         <?php foreach ($detail as $transaksi) : ?>
                             <tr>
+                            <td><img src="../../assets/img/produk/<?php echo $transaksi['foto_produk'] ?>" width="100px"></td>
                                 <td><?= $transaksi["produk"]; ?></td>
                                 <td><?= rp($transaksi["harga"]); ?></td>
                                 <td><?php echo $transaksi['jumlah'] ?></td>
@@ -202,10 +207,12 @@ $pengiriman = $result->fetch_assoc();
                         <tr>
                             <th></th>
                             <th></th>
+                            <th></th>
                             <th scope="col">Total Belanja</th>
                             <th><?php rp($total_blj) ?></th>
                         </tr>
                         <tr>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th>Ongkir</th>
@@ -214,12 +221,14 @@ $pengiriman = $result->fetch_assoc();
                         <tr>
                             <th></th>
                             <th></th>
+                            <th></th>
                             <th>Total Biaya</th>
                             <th><?php echo rp($pengiriman['biaya_ongkir'] + $total_blj) ?></th>
                         </tr>
 
                     </tbody>
                 </table>
+                </div>
 
                 <br><br>
 
@@ -227,7 +236,7 @@ $pengiriman = $result->fetch_assoc();
 
 
 
-            </div>
+            
         </main>
     </div>
 </div>

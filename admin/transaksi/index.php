@@ -131,8 +131,8 @@ if (isset($_POST["cari"])) {
                     <th scope="col">Kode Transaksi</th>
                     <th scope="col">Tgl Transaksi</th>
                     <th scope="col">Total</th>
-                    <th scope="col">Resi</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Resi</th>
                     <th scope="col">Action</th>
                            <!--      <th scope="col">Tgl Transaksi</th>
                            <th scope="col">Aksi</th> -->
@@ -145,7 +145,6 @@ if (isset($_POST["cari"])) {
                             <td><?= $transaksi["kode_transaksi"]; ?></td>
                             <td><?= tanggal($transaksi["tgl_transaksi"]); ?></td>
                             <td><?= rp($transaksi["total_biaya"]); ?></td>
-                            <td><?= $transaksi["no_resi"]; ?></td>
                             <td>
 
                                <span
@@ -163,6 +162,7 @@ if (isset($_POST["cari"])) {
                            </span>
 
                        </td>
+                            <td><?= $transaksi["no_resi"]; ?></td>
                        <td>
                         <a title="Detail" class="btn btn-outline-warning" href="detail.php?id_transaksi=<?= $transaksi["id_transaksi"]; ?>"><i class="bi bi-info"></i></a>
                         <a title="Pembayaran" class="btn btn-outline-success" href="pembayaran.php?id_transaksi=<?= $transaksi["id_transaksi"]; ?>" ><i class="bi bi-cash-coin"></i></a>
@@ -264,8 +264,6 @@ if (isset($_POST["cari"])) {
             var id_trans = $(this).attr('id_trans');
             var no_resi = $(this).attr('no_resi');
 
-           
-            
             $("input[name=no_resi]").val(no_resi);
             $("input[name=id_trans]").val(id_trans);
 
