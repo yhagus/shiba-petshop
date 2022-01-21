@@ -21,20 +21,20 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="http://localhost/shiba-petshop/admin/kategori/kategori.php">
-                                <span data-feather="layers"></span>
+                                <span data-feather="tag"></span>
                                 Category
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="http://localhost/shiba-petshop/admin/blog/index.php">
-                                <span data-feather="Books"><i class="bi bi-book"></i></span>
+                                <span data-feather="Books"><i class="bi bi-book"></i></span>&nbsp;
                                 Blog
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link " href="http://localhost/shiba-petshop/admin/user/user.php">
-                                <span data-feather="users"><i class="bi bi-people"></i></span>
+                                <span data-feather="users"><i class="bi bi-people"></i></span>&nbsp;
                                 Users
                             </a>
                         </li>

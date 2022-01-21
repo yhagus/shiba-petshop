@@ -35,7 +35,7 @@ while ($data = mysqli_fetch_assoc($result)){
                             <th scope="col">Total</th>
                             <th>Resi</th>
                             <th scope="col">Status</th>
-                            <th class="text-center">Action</th>
+                            <th class="text-center" width="150px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,11 +52,13 @@ while ($data = mysqli_fetch_assoc($result)){
                                     <span
                                     <?= $transaction['status'] === 'selesai' ? 'class="badge rounded-pill bg-success"' : null;?>
                                     <?= $transaction['status'] === 'dikirim' ? 'class="badge rounded-pill bg-warning"' : null;?>
+                                    <?= $transaction['status'] === 'terverifikasi' ? 'class="badge rounded-pill bg-primary"' : null;?>
                                     <?= $transaction['status'] === 'diproses' ? 'class="badge rounded-pill bg-info"' : null;?>
                                     <?= $transaction['status'] === 'belum bayar' ? 'class="badge rounded-pill bg-danger"' : null;?>
                                     >
                                     <?= $transaction['status'] === 'selesai' ? 'Selesai' : null; ?>
                                     <?= $transaction['status'] === 'dikirim' ? 'Dikirim' : null; ?>
+                                    <?= $transaction['status'] === 'terverifikasi' ? 'Pembayraran terverifikasi' : null; ?>
                                     <?= $transaction['status'] === 'diproses' ? 'Diproses' : null; ?>
                                     <?= $transaction['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                                 </span>
@@ -69,10 +71,13 @@ while ($data = mysqli_fetch_assoc($result)){
 
                                     <?php if ($transaction['status'] == "dikirim" ): ?>
 
-                                            <button type="button" title="Lacak Resi" class="btn btn-sm btn-outline-dark rounded-pill" data-bs-toggle="modal"
-                                            data-bs-target="#lacak" ><i
-                                            class="bi bi-truck"></i></button>
-                                       
+                                        <button type="button" title="Lacak Resi" class="btn btn-sm btn-outline-dark rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#lacak" ><i
+                                        class="bi bi-truck"></i></button>
+                                        <button  title="Selesai" class="btn btn-sm btn-outline-dark rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#lacak" ><i
+                                        class="bi bi-check2-all"></i></button>
+                                        
                                     <?php endif ?>
 
                                 </td>
@@ -101,14 +106,14 @@ while ($data = mysqli_fetch_assoc($result)){
 
                     
 
-                         <div id="cekresicom_id"></div>
-                  
+                   <div id="cekresicom_id"></div>
+                   
 
 
-             </div>
-         </div>
-     </div>
- </div>
+               </div>
+           </div>
+       </div>
+   </div>
 
 
 

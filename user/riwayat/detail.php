@@ -14,17 +14,12 @@ $transaksi = $db->query("SELECT * FROM transaksi WHERE kode_transaksi='$kode_tra
 $id_transaksi = $transaksi['id_transaksi'];
 $user_id = $transaksi['id_user'];
 
-
-//$data_trans = $db->query("SELECT * FROM transaksi WHERE kode_transaksi='$kode_transaksi'")->fetch_assoc();
-
-
 if($id_user !== $user_id)
 {
     echo "<script>alert('Hayoo jangan ngintip belanjaan user lain yaa');location='../riwayat.php'</script>";
     exit();
 
 }
-
 
 // table detail join produk
 $detail = $db->query("SELECT detail_transaksi.*, produk.* FROM detail_transaksi INNER JOIN produk ON detail_transaksi.id_produk=produk.id_produk WHERE id_transaksi='$id_transaksi'");
@@ -72,12 +67,14 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                             <button
                             <?= $transaksi['status'] === 'selesai' ? 'class="btn rounded-pill btn-success"' : null;?>
                             <?= $transaksi['status'] === 'dikirim' ? 'class="btn rounded-pill btn-warning"' : null;?>
+                            <?= $transaksi['status'] === 'terverifikasi' ? 'class="btn btn-sm rounded-pill btn-primary"' : null;?>
                             <?= $transaksi['status'] === 'diproses' ? 'class="btn rounded-pill btn-info text-white"' : null;?>
                             <?= $transaksi['status'] === 'belum bayar' ? 'class="btn rounded-pill btn-danger"' : null;?>
                             disabled
                             >
                             <?= $transaksi['status'] === 'selesai' ? 'Selesai' : null; ?>
                             <?= $transaksi['status'] === 'dikirim' ? 'Dikirim' : null; ?>
+                            <?= $transaksi['status'] === 'terverifikasi' ? 'Pembayaran Terverifikasi' : null; ?>
                             <?= $transaksi['status'] === 'diproses' ? 'Diproses' : null; ?>
                             <?= $transaksi['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                         </button>

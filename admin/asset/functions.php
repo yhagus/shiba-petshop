@@ -137,7 +137,7 @@ function tambah_kategori($data)
 {
 	global $conn;
 
-	$id_kategori = htmlspecialchars($data["id_kategori"]);
+	
 	$nama_kategori = htmlspecialchars($data["nama_kategori"]);
 
 	$query = "INSERT INTO kategori
