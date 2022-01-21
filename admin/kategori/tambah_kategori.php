@@ -94,59 +94,15 @@ if (isset($_POST["tambah"])) {
 	<div class="container-fluid">
 		<div class="row">
 			//sidenav
-			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-				<div class="position-sticky pt-3">
-					<ul class="nav flex-column">
-						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="../index.php">
-								<span data-feather="home"></span>
-								Dashboard
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="../transaksi/index.php">
-								<span data-feather="file"></span>
-								Orders
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="../produk/produk.php">
-								<span data-feather="shopping-cart"></span>
-								Products
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link active" href="kategori.php">
-								<span data-feather="layers"></span>
-								Category
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link " href="../user/user.php">
-								<span data-feather="users"></span>
-								Users
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								<span data-feather="bar-chart-2"></span>
-								Reports
-							</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
+			 <?php include "../sidemenu.php" ?>
 
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 				<div class="bg-light p-5 rounded">
 					<br><br>
-					<h1>Tambah User</h1><br>
+					<h1>Tambah Kategori</h1><br>
 					<div class="card-body">
 						<form action="" method="post" enctype="multipart/form-data">
-							<div class="mb-3">
-								<label class="form-label">Id Kategori</label>
-								<input type="text" class="form-control" name="id_kategori" required>
-							</div>
+							
 							<div class="mb-3">
 								<label class="form-label">Nama Kategori</label>
 								<input type="text" class="form-control" name="nama_kategori" required>

@@ -2,7 +2,6 @@
 
 include '../../config.php';
 
-
 unset($_POST['provinsi']);
 unset($_POST['pilih_kota']);
 unset($_POST['pilih_kurir']);
@@ -24,6 +23,7 @@ $total_biaya = $_POST['total_biaya'];
 
 // pengiriman
 $kurir = $_POST['kurir'];
+$layanan = $_POST['layanan'];
 $biaya_ongkir = $_POST['ongkir'];
 $nama_penerima = $_POST['nama_penerima'];
 $telp_penerima = $_POST['telp_penerima'];
@@ -37,7 +37,7 @@ $alamat_tujuan = $_POST['alamat_tujuan'];
 $db->query("INSERT INTO transaksi (id_user,tgl_transaksi,batas_bayar,total_biaya,status) VALUES ('$id_user', '$tgl_trans', '$batas_bayar', '$total_biaya', '$status')") or die(mysqli_error($db));
 $id_trans = $db->insert_id;
 
-$db->query("INSERT INTO pengiriman (id_transaksi,kurir,biaya_ongkir,nama_penerima,telp_penerima,kota_tujuan, alamat_tujuan) VALUES ('$id_trans', '$kurir', '$biaya_ongkir', '$nama_penerima','$telp_penerima','$kota_tujuan','$alamat_tujuan')") or die(mysqli_error($db));
+$db->query("INSERT INTO pengiriman (id_transaksi,kurir,service,biaya_ongkir,nama_penerima,telp_penerima,kota_tujuan, alamat_tujuan) VALUES ('$id_trans', '$kurir','$layanan', '$biaya_ongkir', '$nama_penerima','$telp_penerima','$kota_tujuan','$alamat_tujuan')") or die(mysqli_error($db));
 
 if ($id_trans < 10 ) 
 {
@@ -59,7 +59,6 @@ $result = $db->query("SELECT * FROM keranjang INNER JOIN produk ON produk.id_pro
 while ($data = $result->fetch_assoc()) {
 	$krj[] = $data;
 }
-
 
 
 foreach ($krj as $krjg) 

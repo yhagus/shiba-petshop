@@ -14,19 +14,19 @@ require '../asset/functions.php';
 // pagination
 // konfigurasi
 $jumlahDataPerHalaman = 10;
-$jumlahData = count(query("SELECT * FROM produk"));
+$jumlahData = count(query("SELECT * FROM blog"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 
-$produk = query("SELECT * FROM blog LIMIT $awalData, $jumlahDataPerHalaman");
+$blog = query("SELECT * FROM blog LIMIT $awalData, $jumlahDataPerHalaman");
 
 
 
 //search
-if (isset($_POST["cari"])) {
-    $produk = cari_produk($_POST["keyword"]);
-}
+// if (isset($_POST["cari"])) {
+//     $blog = cari_blog($_POST["keyword"]);
+// }
 
 ?>
 <!doctype html>
@@ -84,66 +84,18 @@ if (isset($_POST["cari"])) {
     <div class="container-fluid">
         <div class="row">
             //sidenav
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../index.php">
-                                <span data-feather="home"></span>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../transaksi/index.php">
-                                <span data-feather="file"></span>
-                                Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="produk.php">
-                                <span data-feather="shopping-cart"></span>
-                                Products
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../kategori/kategori.php">
-                                <span data-feather="layers"></span>
-                                Category
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../blog/index.php">
-                                <span data-feather="Books"><i class="bi bi-book"></i></span>
-                                Blog
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link " href="../user/user.php">
-                                <span data-feather="users"><i class="bi bi-people"></i></span>
-                                Users
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                Reports
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <?php include "../sidemenu.php" ?>
 
             //main
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <br><br>
-                <h1 class="h2">Produk</h1><br>
+                <h1 class="h2">Blog</h1><br>
                 <div class="bg-light p-5 rounded">
-                    <form class="d-flex" action="search.php" method="POST">
+                    <!-- <form class="d-flex" action="search.php" method="POST">
                         <input class="form-control me-2" type="search" size="40" autofocus placeholder="Search" aria-label="Search" name="keyword" autocomplete="off">
                         <button class="btn btn-outline-success" type="submit" name="cari">Search</button>
-                    </form><br><br>
-                    <a class="btn btn-primary text-white" href="tambah_produk.php">Tambah produk</a><br>
+                    </form><br><br> -->
+                    <a class="btn btn-primary text-white" href="tambah_blog.php">Tambah Blog</a><br>
                     <br>
 
                   
@@ -152,33 +104,27 @@ if (isset($_POST["cari"])) {
                             <tr>
                                 
                                 <th></th>
-                                <th>Nama Produk</th>
-                                <th>Kategori</th>
+                                <th>Judul</th>
+                                <th>Isi Blog</th>
+                               
                                 
-                                <th>Harga Produk</th>
-                                <th width="80px">Stok</th>
-                                <th>Berat (gram)</th>
-                                <th>Deskripsi</th>
                                 <th width="171px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($produk as $row) : ?>
+                            <?php foreach ($blog as $row) : ?>
                                 <tr>
                                   
-                                    <td><img src="../../assets/img/produk/<?= $row["foto_produk"]; ?>" width="80" ></td>
+                                    <td><img src="../../assets/img/blog/<?= $row["foto_blog"]; ?>" width="80" ></td>
                                     
-                                    <td><?= $row["nama_produk"]; ?></td>
-                                    <td><?= $row["nama_kategori"]; ?></td>
-                                    <td><?= rp($row["harga_produk"]); ?></td>
-                                    <td><?= $row["stok"]; ?></td>
-                                    <td><?= $row["berat"]; ?></td>
-                                    <td><?= cut_desc($row["deskripsi"]); ?></td>
+                                    <td><?= $row["judul"]; ?></td>
+                                    <td><?= cut_blog_desc($row["isi_blog"]); ?></td>
+                                   
                                     <td>
-                                    <a title="Detail Produk" class="btn btn-outline-info " href="detail_produk.php?id_produk=<?= $row["id_produk"]; ?>"><i class="bi bi-info"></i></a>
-                                        <a title="Edit Produk" class="btn btn-outline-warning " href="ubah_produk.php?id_produk=<?= $row["id_produk"]; ?>"><i class="bi bi-pencil"></i></a>
-                                        <a title="Hapus Produk" class="btn btn-outline-danger" href="hapus_produk.php?id_produk=<?= $row["id_produk"]; ?>" onclick="return confirm('yakin?');"><i class="bi bi-trash"></i></a>
+                                    <a title="Detail Blog" class="btn btn-outline-info " href="detail_blog.php?id_blog=<?= $row["id_blog"]; ?>"><i class="bi bi-info"></i></a>
+                                        <a title="Edit blog" class="btn btn-outline-warning " href="ubah_blog.php?id_blog=<?= $row["id_blog"]; ?>"><i class="bi bi-pencil"></i></a>
+                                        <a title="Hapus blog" class="btn btn-outline-danger" href="hapus_blog.php?id_blog=<?= $row["id_blog"]; ?>" onclick="return confirm('yakin?');"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>
