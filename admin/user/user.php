@@ -130,6 +130,14 @@ if (isset($_POST["cari"])) {
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <br><br>
                 <h1 class="h2">Users</h1><br>
+<?php 
+
+$date = date("Y-m-d");
+$n = date('Y-m-d', strtotime( $date . " +1 days")); 
+
+
+?>
+
                 <div class="bg-light p-5 rounded">
                     <form class="d-flex" action="" method="POST">
                         <input class="form-control me-2" type="search" size="40" autofocus placeholder="Search" aria-label="Search" name="keyword" autocomplete="off">
@@ -151,21 +159,18 @@ if (isset($_POST["cari"])) {
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($users as $row) : ?>
-                                <tr>
-                                   <!--  <td><?=// $row["id_user"]; ?></td> -->
-                                    <td><?= $row["username"]; ?></td>
-                                    <td><?= $row["email"]; ?></td>
-                                    <td><?= $row["nama_user"]; ?></td>
-                                    <td><?= $row["no_tlp"]; ?></td>
-                                    <td><?= $row["alamat_user"]; ?></td>
-                                    <!-- <td>
-                                        <a class="btn btn-warning text-white" href="ubah_user.php?id_user=<?= //$row["id_user"]; ?>">Ubah</a>
-                                        <a class="btn btn-danger" href="hapus_user.php?id_user=<?=// $row["id_user"]; ?>" onclick="return confirm('yakin?');">Hapus</a>
-                                    </td> -->
-                                </tr>
+                           
+
+                            <?php foreach ($users as $user_data): ?>
+                            <tr>                            
+                                    <td><?= $user_data["username"] ?></td>
+                                    <td><?= $user_data["email"] ?></td>
+                                    <td><?= $user_data["nama_user"] ?></td>
+                                    <td><?= $user_data["no_tlp"] ?></td>
+                                    <td><?= $user_data["alamat_user"] ?></td>
                                 <?php $i++; ?>
-                            <?php endforeach; ?>
+                            </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
 

@@ -32,6 +32,7 @@ while ($data = mysqli_fetch_assoc($result)){
                             <th scope="col">Invoice</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Total</th>
+                            <th>Resi</th>
                             <th scope="col">Status</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -44,7 +45,8 @@ while ($data = mysqli_fetch_assoc($result)){
                             <tr>
                                 <th scope="row"><?= $transaction['kode_transaksi']; ?></th>
                                 <td><?= tanggal($transaction['tgl_transaksi']); ?></td>
-                                <td>Rp. <?= $transaction['total_biaya']; ?>,-</td>
+                                <td><?= rp($transaction['total_biaya']); ?>,-</td>
+                                <td></td>
                                 <td>
                                     <span
                                         <?= $transaction['status'] === 'selesai' ? 'class="badge rounded-pill bg-success"' : null;?>

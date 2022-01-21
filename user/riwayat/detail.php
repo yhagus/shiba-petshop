@@ -13,6 +13,19 @@ $kode_transaksi = $_GET['kode'];
 $transaksi = $db->query("SELECT * FROM transaksi WHERE kode_transaksi='$kode_transaksi'")->fetch_assoc();
 $id_transaksi = $transaksi['id_transaksi'];
 
+$data_trans = $db->query("SELECT * FROM transaksi WHERE kode_transaksi='$kode_transaksi'")->fetch_assoc();
+$user_id = $data_trans['id_user'];
+
+
+if($id_user !== $user_id)
+{
+echo "<script>alert('Hayoo jangan ngintip belanjaan user lain yaa');location='../riwayat.php'</script>";
+exit();
+
+}
+
+
+
 // table detail join produk
 $detail = $db->query("SELECT detail_transaksi.*, produk.* FROM detail_transaksi INNER JOIN produk ON detail_transaksi.id_produk=produk.id_produk WHERE id_transaksi='$id_transaksi'");
 
@@ -53,8 +66,9 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                             <img src="<?php asset('img/bg_login.PNG');?>" width="150" alt="">
                         </div>
                         <div class="col-3 text-start">
-                            <p><span class="fw-bold">Invoice Date: </span><?= $transaksi['tgl_transaksi']; ?></p>
-                            <p><span class="fw-bold">Invoice: </span><?= $kode_transaksi; ?></p>
+                            <p><span class="fw-bold">Invoice Date: </span><?= tanggal($transaksi['tgl_transaksi']); ?></p>
+                            <p><span class="fw-bold">Invoice Code: </span><?= $kode_transaksi; ?></p>
+                            <span><b>Status : </b></span>
                             <button
                                 <?= $transaksi['status'] === 'selesai' ? 'class="btn rounded-pill btn-success"' : null;?>
                                 <?= $transaksi['status'] === 'dikirim' ? 'class="btn rounded-pill btn-warning"' : null;?>
@@ -70,7 +84,8 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                             <br><br>
                             <?php
                             if ($transaksi['status'] === 'belum bayar'){?>
-                                <button type="button" title="Upload Bukti Transfer" class="btn btn-sm btn-outline-dark rounded-pill">
+                                <button type="button" title="Upload Bukti Transfer" class="btn btn-sm btn-outline-dark rounded-pill"  data-bs-toggle="modal"
+                                data-bs-target="#upload_bukti">
                                     Upload Bukti Transfer <i class="ms-2 bi bi-upload"></i>
                                 </button>
                                 <?php
@@ -95,9 +110,12 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
 
                     <div class="row">
                         <div class="col-md-10 col-11 mx-auto">
+
+                        
                             <table class="table mt-2 border">
                                 <thead>
                                 <tr class="table-info">
+                                <th></th>
                                     <th>Item</th>
                                     <th></th>
                                     <th></th>
@@ -111,6 +129,9 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                                 <tbody>
                                 <?php foreach ($products as $product) { ?>
                                 <tr>
+                                <td>
+                                    <img src="../../assets/img/produk/<?php echo $product['foto_produk'] ?>" class="img-fluid" width="120">
+                                </td>
                                     <td colspan="6"><?= $product['produk']; ?></td>
                                     <td class="text-end"><?= $product['jumlah']; ?> x</td>
                                     <td class="text-end"><?= rp($product['harga']); ?></td>
@@ -158,6 +179,31 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="upload_bukti" tabindex="-1" aria-labelledby="imgModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="imgModalLabel">Upload Bukti Transfer kamu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" enctype="multipart/form-data" action="<?php action('../actions/transaction/payment.php');?>">
+                                    <div class="form-group mb-4">
+
+                                        <input type="file" name="bukti_transfer">
+                                        <input type="" name="id_transaksi" value="<?php echo $id_transaksi ?>">
+                                    </div>
+                                    <button class="btn btn-success" name="upload_bukti_transfer">Upload</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
     </div>
 </main>
 

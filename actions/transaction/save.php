@@ -14,6 +14,9 @@ unset($_POST['tlp']);
 unset($_POST['addr']);
 
 $tgl_trans = date("Ymd");
+
+$batas_bayar = date('Ymd', strtotime( $tgl_trans . " +1 days")); 
+
 $id_user = $_SESSION['id'];
 $status = "belum bayar";
 
@@ -31,7 +34,7 @@ $alamat_tujuan = $_POST['alamat_tujuan'];
 // echo(date("Ymd"))
 
 // insert new trans
-$db->query("INSERT INTO transaksi (id_user,tgl_transaksi,total_biaya,status) VALUES ('$id_user', '$tgl_trans', '$total_biaya', '$status')") or die(mysqli_error($db));
+$db->query("INSERT INTO transaksi (id_user,tgl_transaksi,batas_bayar,total_biaya,status) VALUES ('$id_user', '$tgl_trans', '$batas_bayar', '$total_biaya', '$status')") or die(mysqli_error($db));
 $id_trans = $db->insert_id;
 
 $db->query("INSERT INTO pengiriman (id_transaksi,kurir,biaya_ongkir,nama_penerima,telp_penerima,kota_tujuan, alamat_tujuan) VALUES ('$id_trans', '$kurir', '$biaya_ongkir', '$nama_penerima','$telp_penerima','$kota_tujuan','$alamat_tujuan')") or die(mysqli_error($db));

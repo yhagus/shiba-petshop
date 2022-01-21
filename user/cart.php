@@ -62,9 +62,9 @@ while($data = $result->fetch_assoc()){
                             <td class="col-sm-1 col-md-1" style="text-align: center">
                                 <input type="number" class="form-control" id="exampleInputEmail1" value="<?= $product['jumlah']?>" readonly>
                             </td>
-                            <td class="col-sm-1 col-md-1 text-center"><?= $product['harga_produk']; ?></td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong><?= $product['harga_produk']*$product['jumlah']; ?></strong></td>
-                            <td class="col-sm-1 col-md-1">
+                            <td class="col-sm-1 col-md-1 text-center"><?= rp($product['harga_produk']); ?></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong><?= rp($product['harga_produk']*$product['jumlah']); ?></strong></td>
+                            <td class="col-sm-1 col-md-2 text-center">
                                 <form action="<?php action('user/cart/delete.php?id_cart=' . $product['id_keranjang']);?>" method="post">
                                     <button class="btn btn-danger rounded-pill" name="removeItem">
                                         Remove
@@ -76,12 +76,10 @@ while($data = $result->fetch_assoc()){
                         <?php
                     }
                     ?>
-                    <tr class="text-end">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><h3>Total</h3></td>
-                        <td><h3><strong><?= $total; ?></strong></h3></td>
+                    <tr>
+                        
+                        <td colspan="4" class="text-end" ><h5>Total</h5></td>
+                        <td class="text-center"><h4><strong><?= rp($total); ?></strong></h4></td>
                     </tr>
                     <tr>
                         <td></td>
