@@ -56,6 +56,27 @@ function cut_desc($kalimat)
     echo implode(" ", $kata);
 }
 
+function cut_blog_desc($kalimat)
+{
+    $exp_kalimat = explode(" ", $kalimat);
+
+    $jumlah_kata = count($exp_kalimat);
+
+    if( $jumlah_kata >=10)
+    {
+        for ($i=0; $i < 20; $i++) { 
+            $kata[] = $exp_kalimat[$i];
+        }
+    }
+    else
+    {
+        for ($i=0; $i <= $jumlah_kata-1; $i++) { 
+            $kata[] = $exp_kalimat[$i];
+        }
+    }
+    echo implode(" ", $kata);
+}
+
 function redirect($url){
 
     if ($url === '/'){

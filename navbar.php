@@ -24,6 +24,10 @@ if (isset($_SESSION['id'])){
                 <li class="nav-item">
                     <a class="nav-link" id="catalog" href="<?php route('catalog.php');?>">Catalog</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="blog" href="<?php route('blog.php');?>">Blog</a>
+                </li>
+
             </ul>
             <form action="<?php route('search.php');?>" method="get" class="d-flex">
                     <input class="form-control me-3" type="text" name="cari" placeholder="Search" >

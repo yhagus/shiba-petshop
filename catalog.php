@@ -68,8 +68,11 @@ while($data = mysqli_fetch_assoc($katresult)){
                             <div class="row">
                                 <div class="col-auto">
                                     <!-- menampilkan nama produk dari perulangan produk -->
-                                    <a href="detail.php?id=<?= $produk['id_produk'] ?>" class="text-decoration-none">
+                                    <div style="min-height: 105px;">
+                                        
+                                    <a href="detail.php?id=<?= $produk['id_produk'] ?>" class="text-decoration-none" >
                                         <h3><?php echo $produk['nama_produk'] ?></h3>
+                                    </div>
                                     </a>
 
                             <!-- menampilkan harga produk dari perulangan produk -->
