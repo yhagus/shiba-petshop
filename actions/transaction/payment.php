@@ -30,7 +30,7 @@ if(isset($_POST))
 			$db->query("INSERT INTO pembayaran (id_transaksi,waktu_pembayaran,bukti_transfer) VALUES ('$id_transaksi', '$waktu_pembayaran', '$file_name') ");
 			$db->query("UPDATE transaksi SET status='$status' WHERE id_transaksi='$id_transaksi' ");
 
-			echo "<script>alert('Terima kasih sudah melakukan pembayaran, Pesananmu akan segera diproses');window.history.go(-1);</script>";
+			echo "<script>alert('Terima kasih sudah melakukan pembayaran, Pesananmu akan segera diproses');location='../../user/riwayat.php';</script>";
 			
 		}
 	}

@@ -38,20 +38,14 @@ if (isset($_SESSION['login'])) {
 
 // pagination
 // konfigurasi
-$jumlahDataPerHalaman = 3;
+$jumlahDataPerHalaman = 10;
 $jumlahData = count(query("SELECT * FROM transaksi WHERE tgl_transaksi BETWEEN '$tgl_awal' AND '$tgl_akhir'"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 
-$transaksi = query("SELECT * FROM transaksi WHERE tgl_transaksi BETWEEN '$tgl_awal' AND '$tgl_akhir' LIMIT $awalData, $jumlahDataPerHalaman");
+$transaksi = $conn->query("SELECT * FROM transaksi LEFT JOIN pengiriman ON transaksi.id_transaksi = pengiriman.id_transaksi  WHERE tgl_transaksi BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY transaksi.id_transaksi DESC LIMIT $awalData, $jumlahDataPerHalaman");
 
-
-
-//search
-if (isset($_POST["cari"])) {
-    $transaksi = cari_transaksi($_POST["keyword"]);
-}
 
 ?>
 <!doctype html>
@@ -66,6 +60,7 @@ if (isset($_POST["cari"])) {
     <link rel="stylesheet" href="../asset/css/admin.css">
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
     <style>
         .bd-placeholder-img {
@@ -108,58 +103,14 @@ if (isset($_POST["cari"])) {
     <div class="container-fluid">
         <div class="row">
             //sidenav
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../index.php">
-                                <span data-feather="home"></span>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">
-                                <span data-feather="file"></span>
-                                Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../produk/produk.php">
-                                <span data-feather="shopping-cart"></span>
-                                Products
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="kategori.php">
-                                <span data-feather="layers"></span>
-                                Category
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="../user/user.php">
-                                <span data-feather="users"></span>
-                                Users
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                Reports
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <?php include "../sidemenu.php" ?>
 
             //main
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <br><br>
                 <h1 class="h2">Transaksi tanggal <?php echo tanggal($_GET['tgl_awal']) ?> - <?php echo tanggal($_GET['tgl_akhir']) ?> </h1><br>
                 <div class="bg-light p-5 rounded">
-                   <!--  <form class="d-flex" action="" method="POST">
-                        <input class="form-control me-2" type="search" size="40" autofocus placeholder="Search" aria-label="Search" name="keyword" autocomplete="off">
-                        <button class="btn btn-outline-success" type="submit" name="cari">Search</button>
-                    </form><br><br> -->
+          
 
                     <div class="accordion col-md-3" id="accordionExample">
                       <div class="accordion-item">
@@ -190,6 +141,8 @@ if (isset($_POST["cari"])) {
 
 
         <br>
+
+       
         <table class="table">
             <thead>
                 <tr>
@@ -197,46 +150,71 @@ if (isset($_POST["cari"])) {
                     <th scope="col">Tgl Transaksi</th>
                     <th scope="col">Total</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Resi</th>
+                    <th scope="col">Action</th>
                            <!--      <th scope="col">Tgl Transaksi</th>
                            <th scope="col">Aksi</th> -->
                        </tr>
                    </thead>
                    <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($transaksi as $row) : ?>
+                    <?php foreach ($transaksi as $transaksi) : ?>
                         <tr>
-                            <td><?= $row["kode_transaksi"]; ?></td>
-                            <td><?= tanggal($row["tgl_transaksi"]); ?></td>
-                            <td><?= rp($row["total_biaya"]); ?></td>
-                            <td><?= $row["status"]; ?></td>
-                                    <!-- <td><?= $row[""]; ?></td>
-                                    <td>
-                                        <a class="btn btn-warning text-white" href="ubah_kategori.php?id_kategori=<?= $row["id_kategori"]; ?>">Ubah</a>
-                                        <a class="btn btn-danger" href="hapus_kategori.php?id_kategori=<?= $row["id_kategori"]; ?>" ;">Hapus</a>
-                                    </td> -->
-                                </tr>
-                                <?php $i++; ?>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            <td><?= $transaksi["kode_transaksi"]; ?></td>
+                            <td><?= tanggal($transaksi["tgl_transaksi"]); ?></td>
+                            <td><?= rp($transaksi["total_biaya"]); ?></td>
+                            <td>
+
+                               <span
+                               <?= $transaksi['status'] === 'selesai' ? 'class="badge rounded-pill bg-success"' : null;?>
+                               <?= $transaksi['status'] === 'dikirim' ? 'class="badge rounded-pill bg-warning"' : null;?>
+                               <?= $transaksi['status'] === 'terverifikasi' ? 'class="badge rounded-pill bg-primary"' : null;?>
+                               <?= $transaksi['status'] === 'diproses' ? 'class="badge rounded-pill bg-info"' : null;?>
+                               <?= $transaksi['status'] === 'belum bayar' ? 'class="badge rounded-pill bg-danger"' : null;?>
+                               >
+                               <?= $transaksi['status'] === 'selesai' ? 'Selesai' : null; ?>
+                               <?= $transaksi['status'] === 'dikirim' ? 'Dikirim' : null; ?>
+                               <?= $transaksi['status'] === 'terverifikasi' ? 'Segera kirimkan pesanan' : null; ?>
+                               <?= $transaksi['status'] === 'diproses' ? 'Menunggu Verifikasi' : null; ?>
+                               <?= $transaksi['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
+                           </span>
+
+                       </td>
+                            <td><?= $transaksi["no_resi"]; ?></td>
+                       <td>
+                        <a title="Detail" class="btn btn-outline-warning" href="detail.php?id_transaksi=<?= $transaksi["id_transaksi"]; ?>"><i class="bi bi-info"></i></a>
+                        <a title="Pembayaran" class="btn btn-outline-success" href="pembayaran.php?id_transaksi=<?= $transaksi["id_transaksi"]; ?>" ><i class="bi bi-cash-coin"></i></a>
+
+                        <?php if ($transaksi['status']=='terverifikasi' || $transaksi['status']=='dikirim'): ?>
+                           <!--  <button data-bs-toggle="modal" data-bs-target="#resi" type="button"> resi</button> -->
+                            <a title="Input Resi" class="btn btn-outline-primary resi" href="#" id_trans="<?php echo $transaksi['id_transaksi'] ?>" no_resi="<?php echo $transaksi['no_resi'] ?>" data-bs-toggle="modal"
+                        data-bs-target="#resi" ><i class="bi bi-truck"></i></a>
+                        <?php endif ?>
+
+                    </td>
+                </tr>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
                     <br><br>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <?php if ($halamanAktif > 1) : ?>
-                                <li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>&tgl_awal=<?php echo $tgl_awal ?>&tgl_akhir=<?php echo $tgl_akhir ?>">Previous</a></li>
                             <?php endif; ?>
 
                             <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
                                 <?php if ($i == $halamanAktif) : ?>
-                                    <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <li class="page-item active"><a class="page-link" href="?halaman=<?= $i; ?>&tgl_awal=<?php echo $tgl_awal ?>&tgl_akhir=<?php echo $tgl_akhir ?>"><?= $i; ?></a></li>
                                 <?php else : ?>
-                                    <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>&tgl_awal=<?php echo $tgl_awal ?>&tgl_akhir=<?php echo $tgl_akhir ?>"><?= $i; ?></a></li>
                                 <?php endif; ?>
                             <?php endfor; ?>
 
                             <?php if ($halamanAktif < $jumlahHalaman) : ?>
-                                <li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>">Next</a></li>
+                                <li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>&tgl_awal=<?php echo $tgl_awal ?>&tgl_akhir=<?php echo $tgl_akhir ?>">Next</a></li>
                             <?php endif; ?>
                         </ul>
                     </nav>

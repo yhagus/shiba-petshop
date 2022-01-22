@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="http://localhost/shiba-petshop/admin/laporan/index.php">
                                 <span data-feather="bar-chart-2"></span>
                                 Reports
                             </a>
