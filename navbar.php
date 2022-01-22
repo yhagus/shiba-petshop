@@ -53,7 +53,8 @@ if (isset($_SESSION['id'])){
             <?php
             } else{
             ?>
-                <a class="nav-link me-3" href="login.php">Log in</a>
+            <a href="register.php" class="nav-link">Register</a>
+                <a class="nav-link" href="login.php">Log in</a>
             <?php
             }
             ?>

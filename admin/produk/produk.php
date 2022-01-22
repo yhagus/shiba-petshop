@@ -128,9 +128,9 @@ if (isset($_POST["cari"])) {
                                     <td><?= $row["berat"]; ?></td>
                                     <td><?= cut_desc($row["deskripsi"]); ?></td>
                                     <td>
-                                    <!-- <a title="Detail Produk" class="btn btn-outline-info " href="detail_produk.php?id_produk=<?= $row["id_produk"]; ?>"><i class="bi bi-info"></i></a> -->
+                                   
                                         <a title="Edit Produk" class="btn btn-outline-warning " href="ubah_produk.php?id_produk=<?= $row["id_produk"]; ?>"><i class="bi bi-pencil"></i></a>
-                                        <a title="Hapus Produk" class="btn btn-outline-danger" href="hapus_produk.php?id_produk=<?= $row["id_produk"]; ?>" onclick="return confirm('yakin?');"><i class="bi bi-trash"></i></a>
+                                        <a title="Hapus Produk" class="btn btn-outline-danger" href="hapus_produk.php?id_produk=<?= $row["id_produk"]; ?>" onclick="return confirm('hapus produk ini?');"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

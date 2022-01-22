@@ -113,7 +113,7 @@ if (isset($_POST["cari"])) {
                                     <td><?= $row["nama_kategori"]; ?></td>
                                     <td>
                                         <a class="btn btn-warning text-white" href="ubah_kategori.php?id_kategori=<?= $row["id_kategori"]; ?>">Ubah</a>
-                                        <a class="btn btn-danger" href="hapus_kategori.php?id_kategori=<?= $row["id_kategori"]; ?>" onclick="return confirm('yakin?');">Hapus</a>
+                                        <a class="btn btn-danger" href="hapus_kategori.php?id_kategori=<?= $row["id_kategori"]; ?>" onclick="return confirm('hapus kategori ini?');">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>
