@@ -73,7 +73,7 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                             disabled
                             >
                             <?= $transaksi['status'] === 'selesai' ? 'Selesai' : null; ?>
-                            <?= $transaksi['status'] === 'dikirim' ? 'Dikirim' : null; ?>
+                            <?= $transaksi['status'] === 'dikirim' ? 'Sedang dikirim' : null; ?>
                             <?= $transaksi['status'] === 'terverifikasi' ? 'Pembayaran Terverifikasi' : null; ?>
                             <?= $transaksi['status'] === 'diproses' ? 'Diproses' : null; ?>
                             <?= $transaksi['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
@@ -87,9 +87,9 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                     </button>
                     <?php } ?>
 
-                <?php if ($transaksi['status'] === 'dikirim' || $transaksi['status'] === 'selesai'): ?>
-                    Resi : 
-                <?php endif ?>
+               <!--  <?php if ($transaksi['status'] === 'dikirim' || $transaksi['status'] === 'selesai'): ?>
+                    Resi : <?php echo $transaksi['no_resi'] ?>
+                <?php endif ?> -->
             </div>
         </div>
 
@@ -230,10 +230,10 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
                 </div>
                 <form method="post" enctype="multipart/form-data" action="<?php action('../actions/transaction/payment.php');?>">
                     <div class="form-group mb-4">
-
                         <input type="file" name="bukti_transfer">
                         <input hidden="" name="id_transaksi" value="<?php echo $id_transaksi ?>">
                     </div>
+                    
                     <button class="btn btn-success" name="upload_bukti_transfer">Upload</button>
                 </form>
             </div>
@@ -246,3 +246,10 @@ $pengiriman = $db->query("SELECT * FROM pengiriman WHERE id_transaksi='$id_trans
 <script>
     document.title = "<?= $_GET['kode'] ?>";
 </script>
+
+<!-- <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+<script src="../../assets/js/pickadate/lib/picker.date.js"></script>
+<script src="../../assets/js/pickadate/lib/picker.time.js"></script>
+<script type="text/javascript">
+    $('.datepicker').pickadate()
+</script> -->

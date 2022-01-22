@@ -87,10 +87,7 @@ require '../asset/functions.php';
 
                 <div class="bg-light p-2 rounded">
 
-                    <?php 
-                    $kategori = query("SELECT * FROM kategori ");
-
-                    ?>
+                
                     <h1>Tambah Blog</h1><br>
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
@@ -149,16 +146,11 @@ require '../asset/functions.php';
                                 if(move_uploaded_file($tmp, "../../assets/img/blog/$file_name"))
                                 {
 
-
-
                                     $conn->query("INSERT INTO blog (judul, isi_blog, tgl_blog,foto_blog) VALUES('$judul', '$isi_blog', '$tgl', '$file_name') ");
                                     echo "<script>alert('Blog berhasil ditambahkan');location='index.php';</script>";
-
                                 }
                             }
-
-
-                            
+                           
                         } 
                         ?>
 

@@ -19,7 +19,7 @@ $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 
-$transaksi = query("SELECT * FROM transaksi LEFT JOIN pengiriman ON transaksi.id_transaksi = pengiriman.id_transaksi LIMIT $awalData, $jumlahDataPerHalaman");
+$transaksi = $conn->query("SELECT * FROM transaksi LEFT JOIN pengiriman ON transaksi.id_transaksi = pengiriman.id_transaksi ORDER BY transaksi.id_transaksi DESC LIMIT $awalData, $jumlahDataPerHalaman ") or die(mysqli_error($conn));
 
 //search
 if (isset($_POST["cari"])) {
@@ -156,7 +156,7 @@ if (isset($_POST["cari"])) {
                                >
                                <?= $transaksi['status'] === 'selesai' ? 'Selesai' : null; ?>
                                <?= $transaksi['status'] === 'dikirim' ? 'Dikirim' : null; ?>
-                               <?= $transaksi['status'] === 'terverifikasi' ? 'Menunggu Pengiriman' : null; ?>
+                               <?= $transaksi['status'] === 'terverifikasi' ? 'Segera kirimkan pesanan' : null; ?>
                                <?= $transaksi['status'] === 'diproses' ? 'Menunggu Verifikasi' : null; ?>
                                <?= $transaksi['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                            </span>

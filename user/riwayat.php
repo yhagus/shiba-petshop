@@ -6,7 +6,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 $id = $_SESSION['id'];
-$result = $db->query("SELECT * FROM transaksi INNER JOIN pengiriman ON transaksi.id_transaksi = pengiriman.id_transaksi WHERE id_user='$id'");
+$result = $db->query("SELECT * FROM transaksi INNER JOIN pengiriman ON transaksi.id_transaksi = pengiriman.id_transaksi WHERE id_user='$id' ORDER BY transaksi.id_transaksi DESC ");
 $transactions = [];
 while ($data = mysqli_fetch_assoc($result)){
     $transactions[] = $data;
@@ -56,64 +56,61 @@ while ($data = mysqli_fetch_assoc($result)){
                                     <?= $transaction['status'] === 'belum bayar' ? 'class="badge rounded-pill bg-danger"' : null;?>
                                     >
                                     <?= $transaction['status'] === 'selesai' ? 'Selesai' : null; ?>
-                                    <?= $transaction['status'] === 'dikirim' ? 'Dikirim' : null; ?>
+                                    <?= $transaction['status'] === 'dikirim' ? 'Sedang dikirim' : null; ?>
                                     <?= $transaction['status'] === 'terverifikasi' ? 'Pembayraran terverifikasi' : null; ?>
                                     <?= $transaction['status'] === 'diproses' ? 'Diproses' : null; ?>
                                     <?= $transaction['status'] === 'belum bayar' ? 'Belum Bayar' : null; ?>
                                 </span>
                             </td>
-                                <td><?php echo $transaction['no_resi'] ?></td>
+                            <td><?php echo $transaction['no_resi'] ?></td>
                             <td class="mx-auto text-center">
+
+
+
                                 <a class="me-1 text-decoration-none" href="<?php route('user/riwayat/detail.php?kode=' . $transaction['kode_transaksi']);?>">
-                                    <button type="button" title="Detail" class="btn btn-sm btn-outline-dark rounded-pill"><i
-                                        class="bi bi-search"></i></button>
+                                    <button type="button" title="Detail" class="btn btn-sm btn-outline-dark rounded-pill">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </a>
+
+                                <?php if ($transaction['status'] == "dikirim" ): ?>
+
+                                    <button type="button" title="Lacak Resi" class="btn btn-sm btn-outline-dark rounded-pill" data-bs-toggle="modal"
+                                    data-bs-target="#lacak" ><i class="bi bi-truck"></i></button>
+
+                                    <a href="selesai.php?id=<?php echo $transaction['id_transaksi'] ?>" onclick="return confirm('apakah kamu sudah menerima pesananmu?')">
+                                        <button name="selesai" title="Selesai" class="btn btn-sm btn-outline-dark rounded-pill" >
+                                            <i class="bi bi-check2-all"></i>
+                                        </button>
                                     </a>
 
-                                    <?php if ($transaction['status'] == "dikirim" ): ?>
-                                        
-                                        <button type="button" title="Lacak Resi" class="btn btn-sm btn-outline-dark rounded-pill" data-bs-toggle="modal"
-                                        data-bs-target="#lacak" ><i
-                                        class="bi bi-truck"></i></button>
-                                        <button  title="Selesai" class="btn btn-sm btn-outline-dark rounded-pill" data-bs-toggle="modal"
-                                        data-bs-target="#lacak" ><i
-                                        class="bi bi-check2-all"></i></button>
-                                        
-                                    <?php endif ?>
-
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                                <?php endif ?>                                
+                            </td>
+                        </tr>
+                        <?php } ?>
+                </tbody>
+            </table>
 
 
-            </div>
         </div>
     </div>
+</div>
 
 
-    <div class="modal fade" id="lacak" tabindex="-1" aria-labelledby="imgModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imgModalLabel">Lacak Resi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    
-
-                   <div id="cekresicom_id"></div>
-                   
-
-
-               </div>
-           </div>
-       </div>
-   </div>
+<div class="modal fade" id="lacak" tabindex="-1" aria-labelledby="imgModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imgModalLabel">Lacak Resi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             <div id="cekresicom_id"></div>
+         </div>
+     </div>
+ </div>
+</div>
 
 
 

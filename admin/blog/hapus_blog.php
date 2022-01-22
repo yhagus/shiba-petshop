@@ -1,20 +1,15 @@
 <?php
 require '../asset/functions.php';
 
-$id_produk = $_GET["id_produk"];
+$id = $_GET['id_blog'];
+$blog = $conn->query("SELECT * FROM blog WHERE id_blog='$id'")->fetch_assoc();
+$foto_lama = $blog['foto_blog'];
 
-if (hapus_produk($id_produk) > 0) {
-	echo "
-		<script>
-			alert('data berhasil dihapus!');
-			document.location.href = 'produk.php';
-		</script>
-	";
-} else {
-	echo "
-		<script>
-			alert('data gagal ditambahkan!');
-			document.location.href = 'produk.php';
-		</script>
-	";
+
+if(file_exists("../../assets/img/blog/$foto_lama"))
+{
+	unlink("../../assets/img/blog/$foto_lama");
 }
+
+$conn->query("DELETE FROM blog  WHERE id_blog='$id' ");
+echo "<script>alert('Blog berhasil dihapus');location='index.php';</script>";

@@ -39,7 +39,7 @@ if (isset($_SESSION['login'])) {
 // pagination
 // konfigurasi
 $jumlahDataPerHalaman = 3;
-$jumlahData = count(query("SELECT * FROM transaksi"));
+$jumlahData = count(query("SELECT * FROM transaksi WHERE tgl_transaksi BETWEEN '$tgl_awal' AND '$tgl_akhir'"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;

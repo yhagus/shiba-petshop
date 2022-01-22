@@ -123,7 +123,7 @@ $blog = query("SELECT * FROM blog LIMIT $awalData, $jumlahDataPerHalaman");
                                    
                                     <td>
                                     <a title="Detail Blog" class="btn btn-outline-info " href="detail_blog.php?id_blog=<?= $row["id_blog"]; ?>"><i class="bi bi-info"></i></a>
-                                        <a title="Edit blog" class="btn btn-outline-warning " href="ubah_blog.php?id_blog=<?= $row["id_blog"]; ?>"><i class="bi bi-pencil"></i></a>
+                                        <a title="Edit blog" class="btn btn-outline-warning " href="edit_blog.php?id_blog=<?= $row["id_blog"]; ?>"><i class="bi bi-pencil"></i></a>
                                         <a title="Hapus blog" class="btn btn-outline-danger" href="hapus_blog.php?id_blog=<?= $row["id_blog"]; ?>" onclick="return confirm('yakin?');"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
