@@ -96,7 +96,7 @@ if (isset($_POST["cari"])) {
                         <button class="btn btn-outline-success" type="submit" name="cari">Search</button>
                     </form><br><br> -->
 
-                    <div class="accordion col-md-3" id="accordionExample">
+                    <!-- <div class="accordion col-md-3" id="accordionExample">
                       <div class="accordion-item">
                         <h5 class="accordion-header" id="headingOne">
                           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -122,7 +122,7 @@ if (isset($_POST["cari"])) {
             </div>
 
 
-        </div>
+        </div> -->
 
 
 
