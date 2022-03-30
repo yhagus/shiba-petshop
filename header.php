@@ -10,24 +10,10 @@ require 'config.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <!-- FILE CSS MASUK SINI   -->
-    <link rel="stylesheet" href="<?php asset('css/bootstrap.min.css');?>">
-    <link rel="stylesheet" href="<?php asset('css/styles.css');?>">
-    <link rel="stylesheet" href="<?php asset('css/grid.css');?>">
-    <link rel="stylesheet" href="<?php asset('css/all.min.css');?>">
-    <link rel="stylesheet" href="<?php asset('css/owl.carousel.min.css');?>">
-    <link rel="stylesheet" href="<?php asset('css/owl.theme.default.min.css');?>">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- FILE JS MASUK SINI   -->
-    <script src="<?php asset('js/bootstrap.bundle.min.js');?>"></script>
-    <script src="<?php asset('js/jquery-3.6.0.min.js');?>"></script>
-    <script src="<?php asset('js/sweetalert.min.js');?>"></script>
-    <script src="<?php asset('js/owl.carousel.min.js');?>"></script>
-    <script src="<?php asset('js/popper.min.js');?>"></script>
-
-    <script src="<?php asset('js/script.js');?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </head>
 <body>

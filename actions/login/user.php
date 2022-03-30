@@ -11,7 +11,7 @@ include '../../config.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+$query = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
 
 $res = mysqli_query($db, $query);
 
